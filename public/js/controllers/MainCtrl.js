@@ -2,7 +2,7 @@
 
 /* MAIN Controller */
 
-angular.module('basic-auth')
+angular.module('peckbox')
   .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http',  function ($scope, $rootScope, $location, $auth, $http) {
 
     // LOGIN/REGISTER
