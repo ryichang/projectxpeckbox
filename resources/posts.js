@@ -4,20 +4,57 @@ var Post = require('../models/post.js'),
 
 module.exports = function(app) {
 
-	//CREATE EVENT
-	app.post('/api/posts', auth.ensureAuthenticated, function (req,res) {
-		User.findById(req.userId).exec(function(err, user) {
-			var post = new Post(req.body);
-			post.save(function(err, post) {
-				user.posts.unshift(post._id);
-				user.save();
-				res.send(post);				
-			});
+	// get all posts
+	app.get('/api/posts', function(req, res) {
+
+		// use mongoose to get all todos in the database
+		Post.find(function(err, posts) {
+
+			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+			if (err)
+				res.send(err)
+
+			res.json(posts); // return all todos in JSON format
 		});
 	});
 
-	app.delete('/api/posts/:id', function(req,res) {
-		Post.findById({ _id: req.params.id}).remove().exec();
-		res.sendStatus(200);
-	}
+	// create post and send back all posts after creation
+	app.post('/api/posts', function(req, res) {
+
+		// create a post, information comes from AJAX request from Angular
+		Post.create({
+			title : req.body.title,
+			body: req.body.body,
+		}, function(err, post) {
+			if (err)
+				res.send(err);
+
+			// get and return all the todos after you create another
+			Post.find(function(err, posts) {
+				if (err)
+					res.send(err)
+				res.json(posts);
+			});
+		});
+
+	});
+
+	// delete a post
+	app.delete('/api/posts/:post_id', function(req, res) {
+		Post.remove({
+			_id : req.params.post_id
+		}, function(err, post) {
+			if (err)
+				res.send(err);
+
+			// get and return all the todos after you create another
+			Post.find(function(err, posts) {
+				if (err)
+					res.send(err)
+				res.json(posts);
+			});
+		});
+	});
 };
+
+

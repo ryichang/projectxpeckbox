@@ -3,7 +3,7 @@
 
 /* Services */
 
-angular.module('basic-auth.services', [])
+angular.module('peckbox.services', [])
 
   .factory('Auth', ['$auth', function ($auth) {
     return {

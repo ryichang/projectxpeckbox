@@ -1,31 +1,32 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-3"><br/>
-      <h4>welcome {{user.first}} {{user.last}} {{user.email}}</h4>
-    </div>    
-    
-    <!-- <div class="col-sm-9">
+    <div class="col-sm-9">
       <div class="page-header">
         <h4>Posts</h4>
       </div>
+      <!-- FORM TO CREATE POSTS -->
+      <div id="post-form" class="row">
+        
       <form ng-submit="createPost()">
         <div class="form-group">
           <label for="title">Title</label>
-          <input class="form-control" type="text" ng-model="post.title">
+          <input class="form-control" type="text" ng-model="formData.title">
         </div>
         <div class="form-group">
-          <textarea class="form-control" ng-model="post.body"></textarea>
+          <textarea class="form-control" ng-model="formData.body"></textarea>
         </div>
         <button type="submit">Save</button>
       </form>
-      <div ng-repeat="post in user.posts">
+
+     
+      
+      <div ng-repeat="post in posts">
         <div class="card">
-          <i class="fa fa-close pull-right" ng-click="deletePost()"></i>
+          <i class="fa fa-close pull-right" ng-click="deletePost(post._id)"></i>
           <h3>{{post.title}}</h3>
           <p>{{post.body}}</p>
           <p>{{post.created_at | date: 'MMMM d @ h:mma'}}</p>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </div>
