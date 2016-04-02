@@ -6,6 +6,13 @@
   animation: 0.5s slideOutLeft;
 }
 */
+body {
+  margin:0px; 
+  padding:0px;
+  background-color: rgba(245,245,245,1);
+  color: #454545;
+
+  }
 
 .jumbotron {
   padding:100px 0 130px 0;
@@ -33,9 +40,9 @@ a {
 }
 
 .card {
-  background: linear-gradient(120deg, #52549c, #7e4281);
+  background: rgba(226,222,219,0.9);
   border-color: black;
-  color: white;
+  color: #000;
   padding: 1rem;
   min-height: 16rem;
   position: relative;
@@ -45,6 +52,10 @@ a {
 }
 
 h3 {
-	color: white;
+	color: #000;
 }
+
+
+
+
 

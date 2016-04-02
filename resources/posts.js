@@ -12,7 +12,7 @@ module.exports = function(app) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
-				res.send(err)
+				res.send(err);
 
 			res.json(posts); // return all todos in JSON format
 		});
@@ -32,7 +32,7 @@ module.exports = function(app) {
 			// get and return all the todos after you create another
 			Post.find(function(err, posts) {
 				if (err)
-					res.send(err)
+					res.send(err);
 				res.json(posts);
 			});
 		});
@@ -50,7 +50,7 @@ module.exports = function(app) {
 			// get and return all the todos after you create another
 			Post.find(function(err, posts) {
 				if (err)
-					res.send(err)
+					res.send(err);
 				res.json(posts);
 			});
 		});

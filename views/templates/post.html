@@ -9,10 +9,10 @@
       <form ng-submit="createPost()">
         <div class="form-group">
           <label for="title">Title</label>
-          <input class="form-control" type="text" ng-model="formData.title">
+          <input class="form-control" type="text" ng-model="formData.title" required="true">
         </div>
         <div class="form-group">
-          <textarea class="form-control" ng-model="formData.body"></textarea>
+          <textarea class="form-control" ng-model="formData.body" required="true"></textarea>
         </div>
         <button type="submit">Save</button>
       </form>
