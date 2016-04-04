@@ -30,3 +30,5 @@ angular.module('peckbox', ['peckbox.services',
 
       $locationProvider.html5Mode(true);
     }]);
+
+

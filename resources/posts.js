@@ -7,14 +7,14 @@ module.exports = function(app) {
 	// get all posts
 	app.get('/api/posts', function(req, res) {
 
-		// use mongoose to get all todos in the database
+		// use mongoose to get all posts in the database
 		Post.find(function(err, posts) {
 
 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 			if (err)
 				res.send(err);
 
-			res.json(posts); // return all todos in JSON format
+			res.json(posts); // return all posts in JSON format
 		});
 	});
 
@@ -29,7 +29,7 @@ module.exports = function(app) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
+			// get and return all the posts after you create another
 			Post.find(function(err, posts) {
 				if (err)
 					res.send(err);
@@ -47,7 +47,7 @@ module.exports = function(app) {
 			if (err)
 				res.send(err);
 
-			// get and return all the todos after you create another
+			// get and return all the posts after you create another
 			Post.find(function(err, posts) {
 				if (err)
 					res.send(err);

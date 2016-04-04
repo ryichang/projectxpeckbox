@@ -1,6 +1,6 @@
 'use strict';
 
-/* USER Controllers */
+/* POST Controllers */
 
 angular.module('peckbox')
   .controller('PostsCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
