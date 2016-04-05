@@ -5,38 +5,42 @@ var Post = require('../models/post.js'),
 module.exports = function(app) {
 
 	// get all posts
-	app.get('/api/posts', function(req, res) {
+	app.get('/api/posts', auth.ensureAuthenticated, function(req, res) {
+		User.findById(req.userId).exec(function(err, user) {
+			// use mongoose to get all posts in the database
+			Post.find(function(err, posts) {
 
-		// use mongoose to get all posts in the database
-		Post.find(function(err, posts) {
+				// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+				if (err)
+					res.send(err);
 
-			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
-			if (err)
-				res.send(err);
-
-			res.json(posts); // return all posts in JSON format
+				res.json(posts); // return all posts in JSON format
+			});
 		});
 	});
 
 	// create post and send back all posts after creation
-	app.post('/api/posts', function(req, res) {
-
+	app.post('/api/posts', auth.ensureAuthenticated, function(req, res) {
+		User.findById(req.userId).exec(function(err, user) {
 		// create a post, information comes from AJAX request from Angular
-		Post.create({
-			title : req.body.title,
-			body: req.body.body,
-		}, function(err, post) {
-			if (err)
-				res.send(err);
-
-			// get and return all the posts after you create another
-			Post.find(function(err, posts) {
+			Post.create({
+				title : req.body.title,
+				body : req.body.body,
+				owner : req.userId,
+				start : false,
+				done : false
+			}, function(err, post) {
 				if (err)
 					res.send(err);
-				res.json(posts);
-			});
-		});
 
+				// get and return all the posts after you create another
+				Post.find(function(err, posts) {
+					if (err)
+						res.send(err);
+					res.json(posts);
+				});
+			});
+		});	
 	});
 
 	// delete a post

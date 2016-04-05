@@ -19,7 +19,6 @@ angular.module('peckbox')
         console.log('Error: ' + data);
       });
 
-
     $scope.createPost = function() {
       $http.post('/api/posts', $scope.formData)
         .success(function(data) {
