@@ -7,9 +7,11 @@ var PostSchema = Schema({
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
   owner : [{type: Schema.Types.ObjectId, ref: 'User'}],
+  // note  : [{type: Schema.Types.ObjectId, ref: 'Note'}], 
   start : Boolean,
   done  : Boolean
 });
+
 
 // MIDDLEWARE
 PostSchema.pre('save', function(next){

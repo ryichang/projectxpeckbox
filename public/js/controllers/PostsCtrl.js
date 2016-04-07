@@ -41,7 +41,37 @@ angular.module('peckbox')
           console.log('Error: ' + data);
         });
     };
-   
+
+
+    // $scope.start = function() {
+    //   if ($scope.class === "start")
+    //       $scope.class = "none";
+    //    else
+    //       $scope.class = "start";
+    // } ;   
+
+    // $scope.done = function() {
+    //   if($scope.class === "done")
+    //      $scope.class = "none";
+    //    else 
+    //      $scope.class = "done";
+    // };
+
+        $scope.class = "none";
+        
+        $scope.start = function(){
+            if ($scope.class === "start")
+                $scope.class = "none";
+             else
+                $scope.class = "start";
+        };
+        
+        $scope.done = function(){
+            if ($scope.class === "done")
+                $scope.class = "none";
+             else
+                $scope.class = "done";
+        };
 
   }]);
 

@@ -26,6 +26,7 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'PostsCtrl'
       });
 
+
       $routeProvider.otherwise({redirectTo: '/'});
 
       $locationProvider.html5Mode(true);
