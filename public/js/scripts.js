@@ -1,6 +1,7 @@
 $(document).ready(function(){
+	
+// console.log("SANITY CHECK!!!!!!!");
 
-console.log("SANITY CHECK!!!!!!!");
 
 $(window).scroll(function() {
   var scroll = $(window).scrollTop();
