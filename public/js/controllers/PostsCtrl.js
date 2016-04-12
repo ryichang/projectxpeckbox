@@ -22,6 +22,7 @@ angular.module('peckbox')
     $scope.createPost = function() {
       $http.post('/api/posts', $scope.post)
         .success(function(response) {
+          // $scope.user.posts.unshift(response);
           $scope.user.posts.unshift(response);
           $scope.post = {};
         })

@@ -6,7 +6,7 @@ var PostSchema = Schema({
   body   : String,
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
-  owner : [{type: Schema.Types.ObjectId, ref: 'User'}],
+  user : [{type: Schema.Types.ObjectId, ref: 'User'}],
   start : Boolean,
   done  : Boolean
 });
@@ -22,6 +22,16 @@ PostSchema.pre('save', function(next){
   }
   next();
 });
+
+PostSchema.pre('remove', function(next){
+    this.model('User').update(
+        {_id: {$in: this.users}}, 
+        {$pull: {posts: this._id}}, 
+        {multi: true},
+        next
+    );
+});
+
 
 var Post = mongoose.model('Post', PostSchema);
 
