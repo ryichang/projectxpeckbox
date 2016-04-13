@@ -5,19 +5,23 @@
     </div>
     <div class="col-sm-9">
       <div class="page-header">
-        <h4>Posts</h4> <p>Total Posts: {{user.posts.length}}</p>
+        <h4>Posts</h4><p>User ID: {{user._id}}</p> <p>Total Posts: {{user.posts.length}}</p>
       </div>
       <!-- FORM TO CREATE POSTS -->
       <div id="post-form" class="row">
         
-      <form ng-submit="createPost()">
+      <form ng-submit="createPost(user)">
         <div class="form-group">
           <label for="title">Title</label>
           <input class="form-control" type="text" ng-model="post.title" required="true">
         </div>
+
         <div class="form-group">
+          <label for="description">Description</label>
           <textarea class="form-control" ng-model="post.body" required="true"></textarea>
         </div>
+
+  
         <button type="submit">Save</button>
       </form>
       
@@ -30,7 +34,7 @@
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
             <h3>{{post.title}}</h3>
             <p>{{post.body}}</p>
-            <p>User: {{post.owner}}</p>
+            <p>User: {{post.userId}}</p>
             <p>Start: {{post.start}}</p>
             <p>Done: {{post.done}}</p>
 

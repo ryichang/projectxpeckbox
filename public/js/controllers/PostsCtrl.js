@@ -19,16 +19,36 @@ angular.module('peckbox')
     //     console.log('Error: ' + data);
     //   });
 
-    $scope.createPost = function() {
-      $http.post('/api/posts', $scope.post)
-        .success(function(response) {
-          // $scope.user.posts.unshift(response);
-          $scope.user.posts.unshift(response);
-          $scope.post = {};
+    // $scope.createPost = function() {
+    //   $http.post('/api/posts', $scope.post)
+    //     .success(function(response) {
+    //       // $scope.user.posts.unshift(response);
+    //       $scope.user.posts.unshift(response);
+    //       $scope.post = {};
+    //     })
+    //     .error(function(response) {
+    //       console.log(response);
+    //     });
+    // };
+
+
+    $scope.createPost = function(user) {
+     
+        var config = {
+            userId: user._id,
+            title : $scope.post.title,
+            body  : $scope.post.body
+        };
+        console.log(config);
+        $http.post('/api/posts', config)
+        .success(function(response){
+            console.log('response', response);
+             $scope.user.posts.unshift(response);
         })
-        .error(function(response) {
-          console.log(response);
+        .error(function(response){
+            console.log('err', response);
         });
+
     };
 
 
@@ -62,6 +82,7 @@ angular.module('peckbox')
         .success(function(data) {
           var index = $scope.user.posts.indexOf(post);
           $scope.user.posts.splice(index,1);
+
         })
         .error(function(data) {
           console.log('Error: ' + data);

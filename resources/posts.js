@@ -19,6 +19,8 @@ module.exports = function(app) {
 		});
 	});
 
+
+
 	// create post and send back all posts after creation
 	// app.post('/api/posts', auth.ensureAuthenticated, function(req, res) {
 	// 	User.findById(req.userId).exec(function(err, user) {
@@ -42,6 +44,32 @@ module.exports = function(app) {
 	// 		});
 	// 	});	
 	// });
+
+
+	// app.post('/api/posts', auth.ensureAuthenticated, function(req, res) {
+	// 	User.findById(req.userId).exec(function(err, user) {
+	// 	// create a post, information comes from AJAX request from Angular
+	// 		Post.create({
+	// 			title : req.body.title,
+	// 			body : req.body.body,
+	// 			owner : req.userId,
+	// 			start : false,
+	// 			done : false
+	// 		}, function(err, post) {
+	// 			if (err)
+	// 				res.send(err);
+
+	// 			// get and return all the posts after you create another
+	// 			Post.create(function(err, posts) {
+	// 				user.posts.unshift();
+	// 				user.save();
+	// 				res.send(post);
+	// 			});
+	// 		});
+	// 	});	
+	// });
+
+
 	app.post('/api/posts', auth.ensureAuthenticated, function (req,res) {
 		User.findById(req.userId).exec(function(err, user) {
 			var post = new Post(req.body);
@@ -52,6 +80,7 @@ module.exports = function(app) {
 			});
 		});
 	});
+
 
 
 	// // delete a post
@@ -82,11 +111,12 @@ module.exports = function(app) {
 			// get and return all the todos after you create another
 			Post.find(function(err, posts) {
 				if (err)
-					res.send(err)
+					res.send(err);
 				res.json(posts);
 			});
 		});
 	});
+
 	// app.delete('/api/posts/:post_id', auth.ensureAuthenticated, function(req, res) {
 	// 	User.findById(req.userId).exec(function(err, user) {
 	// 		// use mongoose to get all posts in the database
