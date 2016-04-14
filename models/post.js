@@ -23,14 +23,6 @@ PostSchema.pre('save', function(next){
   next();
 });
 
-PostSchema.pre('remove', function(next){
-    this.model('User').update(
-        {_id: {$in: this.users}}, 
-        {$pull: {posts: this._id}}, 
-        {multi: true},
-        next
-    );
-});
 
 
 var Post = mongoose.model('Post', PostSchema);

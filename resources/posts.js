@@ -101,33 +101,46 @@ module.exports = function(app) {
 	// });
 
 	// delete a todo
-	app.delete('/api/posts/:post_id', function(req, res) {
-		Post.remove({
-			_id : req.params.post_id
-		}, function(err, post) {
-			if (err)
-				res.send(err);
+	// app.delete('/api/posts/:post_id', function(req, res) {
+	// 	Post.remove({
+	// 		_id : req.params.post_id
+	// 	}, function(err, post) {
+	// 		if (err)
+	// 			res.send(err);
 
-			// get and return all the todos after you create another
-			Post.find(function(err, posts) {
-				if (err)
-					res.send(err);
-				res.json(posts);
-			});
-		});
-	});
-
-	// app.delete('/api/posts/:post_id', auth.ensureAuthenticated, function(req, res) {
-	// 	User.findById(req.userId).exec(function(err, user) {
-	// 		// use mongoose to get all posts in the database
-	// 		User.find(function(err, post) {
+	// 		// get and return all the todos after you create another
+	// 		Post.find(function(err, posts) {
 	// 			if (err)
 	// 				res.send(err);
-	// 			post.remove();
-	// 			// if there is an error retrieving, send the error. nothing after res.send(err) will execute
+	// 			res.json(posts);
 	// 		});
 	// 	});
 	// });
+
+	app.delete('/api/posts/:post_id', function(req, res) {
+		Post.findByIdAndRemove({
+			_id : req.params.post_id
+		 }, function(err, post) {
+			if (err)
+				res.send(err);
+
+			// get and return all the posts after you create another
+			User.findOneAndUpdate(
+				{ posts: req.params.post_id},
+				{ "$pull": {"posts": req.params.post_id}},
+				// { "new": true},
+				function (err, post){
+					if(err) {
+						res.send(err);
+					} else {
+						console.log("OBjectID", post);
+						res.status(200).send('Find user and deleted');
+					}
+					
+				});
+			});
+	});
+
 
 };
 
