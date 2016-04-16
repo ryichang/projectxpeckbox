@@ -14,5 +14,4 @@ $('.text-1').children('p').each(function(index){
   var blinkInt=setInterval(function(){},1000);
 });
 
-
 });

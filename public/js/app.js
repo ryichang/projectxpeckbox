@@ -26,6 +26,16 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'PostsCtrl'
       });
 
+      $routeProvider.when('/profile', {
+        templateUrl: 'templates/profile',
+        controller: 'EventsCtrl'
+      });
+
+      $routeProvider.when('/events', {
+        templateUrl: 'templates/event',
+        controller: 'EventsCtrl'
+      });
+
 
       $routeProvider.otherwise({redirectTo: '/'});
 
