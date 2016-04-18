@@ -15,15 +15,15 @@ angular.module('peckbox')
 
     $scope.createEvent = function(user) {
      
-        var event = {
+        var config = {
             title : $scope.event.title,
             description  : $scope.event.description,
             location : $scope.event.location,
             date : $scope.event.date,
             userId: user._id,
         };
-        console.log("front is", event);
-        $http.post('/api/events', event)
+        console.log("front is", config);
+        $http.post('/api/events', config)
         .success(function(response){
             console.log('response', response);
              $scope.user.events.unshift(response);

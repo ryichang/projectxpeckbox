@@ -3,9 +3,9 @@ var mongoose = require('mongoose'),
 
 var EventSchema = Schema({
   title  : String,
-  description: { type: String},
-  location: { type: Object},
-  date: { type: Date},
+  description: String,
+  location: Object,
+  date: Date,
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
   userId : [{type: Schema.Types.ObjectId, ref: 'User'}],

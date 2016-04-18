@@ -11,6 +11,21 @@
   border-radius: 0 !important;
 }
 
+*::selection {
+    background-color: #9f9f9f;
+    color: #fff;
+}
+
+@font-face {
+    font-family: VCR;
+    src: url("/font/VCR_OSD_MONO.ttf");
+}
+
+@font-face {
+    font-family: Paralines;
+    src: url("/font/Paralines-Regular.otf");
+}
+
 body {
   margin:0px; 
   padding:0px;
@@ -319,6 +334,7 @@ p {
     opacity: 1;
   }
 }
+
 
 
 /*

@@ -12,7 +12,6 @@ module.exports = function(app) {
 				// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 				if (err)
 					res.send(err);
-				console.log(events);
 				res.json(events); // return all posts in JSON format
 			});
 		});
