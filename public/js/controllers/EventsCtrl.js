@@ -15,15 +15,15 @@ angular.module('peckbox')
 
     $scope.createEvent = function(user) {
      
-        var config = {
+        var body = {
             title : $scope.event.title,
             description  : $scope.event.description,
             location : $scope.event.location,
             date : $scope.event.date,
             userId: user._id,
         };
-        console.log("front is", config);
-        $http.post('/api/events', config)
+        console.log("front is", body);
+        $http.post('/api/events', body)
         .success(function(response){
             console.log('response', response);
              $scope.user.events.unshift(response);
@@ -34,7 +34,16 @@ angular.module('peckbox')
 
     };
 
-
+   // $scope.createEvent = function() {
+   //    console.log('scope.event is ', $scope.event);
+   //    $scope.event.owner = $scope.currentUser;
+   //    var event = new Event($scope.event);
+   //    event.$save(function(data) {
+   //      $scope.events.unshift(data);
+   //      $scope.event = {};
+   //      console.log('after save createEventForm is: ', $scope.createEvent);
+   //    });
+   // };
 
     $scope.deleteEvent = function(event) {
       $http.delete('/api/events/' + event._id)

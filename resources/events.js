@@ -4,22 +4,26 @@ var Event = require('../models/event.js'),
 
 module.exports = function(app) {
 
+	
 	// get all events
 	app.get('/api/events', auth.ensureAuthenticated, function(req, res) {
 		User.findById(req.userId).exec(function(err, user) {
 			// use mongoose to get all posts in the database
 			User.find(function(err, events) {
+
 				// if there is an error retrieving, send the error. nothing after res.send(err) will execute
 				if (err)
 					res.send(err);
+
 				res.json(events); // return all posts in JSON format
 			});
 		});
 	});
 
-
 	app.post('/api/events', auth.ensureAuthenticated, function (req,res) {
 		User.findById(req.userId).exec(function(err, user) {
+			if (err)
+				res.send(err);
 			var event = new Event(req.body);
 			event.save(function(err, event) {
 				if (err) 

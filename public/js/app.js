@@ -4,7 +4,8 @@
 angular.module('peckbox', ['peckbox.services',
                               'ngRoute',
                               'ngResource',
-                              'satellizer'])
+                              'satellizer',
+                              ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
       $routeProvider.when('/', {

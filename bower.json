@@ -1,5 +1,5 @@
 {
-  "name": "basic-auth",
+  "name": "peckbox",
   "version": "1.0.0",
   "dependencies": {
     "angular": "latest",
