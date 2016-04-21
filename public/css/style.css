@@ -324,10 +324,10 @@ p {
 
 .navbar-brand:after,
 .navbar-brand:before {
-  top: 19%;
+  top: 18%;
 /*  content: 'PECK\A BOX';*/
   position: absolute;
-  left: 25%;
+  left: 23%;
   white-space: pre;
 }
 .navbar-brand:after {

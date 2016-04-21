@@ -23,7 +23,7 @@
 
         <div class="form-group">
           <label for="title">Location</label>
-          <input g-places-autocomplete options="autocompleteOptions" type="text" ng-model="event.location" class='form-control'>
+          <input type="text" g-places-autocomplete options="autocompleteOptions"ng-model="event.location" class='form-control'>
         </div>
 
         <div class="form-group">
@@ -48,7 +48,7 @@
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
             <h3>{{event.title}}</h3>
             <p>{{event.description}}</p>
-            <p>Location: {{event.location}}</p>
+            <p>Location: {{event.location.formatted_address}}</p>
             <p>Date: {{event.date}}</p>
 
         </div>
