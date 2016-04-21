@@ -12,8 +12,9 @@ module.exports = function(app) {
   app.get('/api/me', auth.ensureAuthenticated, function(req, res) {
     User.findOne({ _id: req.userId })
         .populate('posts')
+        .populate('events')
         .exec(function(err, user) {
-          console.log(user)
+          console.log(user);
           res.send(user);
         });
   });
@@ -36,7 +37,7 @@ module.exports = function(app) {
         return res.status(401).send({ message: 'Wrong email or password' });
       }
       user.comparePassword(req.body.password, function(err, isMatch) {
-        console.log(isMatch)
+        console.log(isMatch);
         if (!isMatch) {
           return res.status(401).send({ message: 'Wrong email or password' });
         }

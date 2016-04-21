@@ -7,6 +7,7 @@ module.exports = function(app) {
 	
 	// get all events
 	app.get('/api/events', auth.ensureAuthenticated, function(req, res) {
+		console.log("HIT API")
 		User.findById(req.userId).exec(function(err, user) {
 			// use mongoose to get all posts in the database
 			User.find(function(err, events) {

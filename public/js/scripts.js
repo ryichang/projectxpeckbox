@@ -14,7 +14,7 @@ $('.text-1').children('p').each(function(index){
   var blinkInt=setInterval(function(){},1000);
 });
 
-
+//CALENDAR
 	setInterval(function(){
 	var hour=new Date().getHours();
 		if(hour<10){
@@ -32,7 +32,7 @@ $('.text-1').children('p').each(function(index){
 		else{
 		$(".hour").html(hour);
 		}
-	},1000)
+	},1000);
 	setInterval(function(){
 		var minutes=new Date().getMinutes();
 		if(minutes < 10){
@@ -41,7 +41,7 @@ $('.text-1').children('p').each(function(index){
 		else{
 		$(".minutes").html(minutes);
 		}
-	})
+	});
 	setInterval(function(){
 		var seconds=new Date().getSeconds();
 		if(seconds<10){
@@ -64,7 +64,7 @@ $('.text-1').children('p').each(function(index){
 		$(".day").html(dow);
 		$(".month").html(date);
 		$(".year").html(yr);
-	},1000)
+	},1000);
 
 
 });

@@ -5,6 +5,7 @@
 angular.module('peckbox')
   .controller('EventsCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
     $http.get('/api/me').success(function(data) {
+      console.log(data)
       $scope.user = data;
     });
 
