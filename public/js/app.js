@@ -5,7 +5,8 @@ angular.module('peckbox', ['peckbox.services',
                               'ngRoute',
                               'ngResource',
                               'satellizer',
-                              'google.places'
+                              'google.places',
+                              '720kb.datepicker'
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {

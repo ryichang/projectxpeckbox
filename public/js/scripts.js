@@ -14,7 +14,7 @@ $('.text-1').children('p').each(function(index){
   var blinkInt=setInterval(function(){},1000);
 });
 
-//CALENDAR
+// //CALENDAR
 	setInterval(function(){
 	var hour=new Date().getHours();
 		if(hour<10){

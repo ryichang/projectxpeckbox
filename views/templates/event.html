@@ -28,15 +28,16 @@
 
         <div class="form-group">
           <label for="title">Date</label>
-          <input class="form-control" type="text" ng-model="event.date"></textarea>
+  
+          <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+          <input ng-model="event.date" type="text" class="form-control"/>
+          </datepicker>
+          <!-- <input type="text" datetimepicker class="form-control" ng-model="event.date"></textarea> -->
         </div>
-
+      
   
         <button type="submit">Save</button>
       </form>
-      
-
-
 
 
      <!-- 
@@ -44,12 +45,12 @@
       <div ng-repeat="event in user.events">
         <div class="col-sm-3 card fade" ng-class="none">  
             <i class="fa fa-close pull-right" ng-click="deleteEvent(event)"></i>
-            <div class="card-date">{{event.created_at | date: 'MMMM d @ h:mma'}}</div>
+            <div class="card-date">{{event.date | date: 'EEE MMMM d @ hh:mma'}}</div>
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
             <h3>{{event.title}}</h3>
             <p>{{event.description}}</p>
-            <p>Location: {{event.location.formatted_address}}</p>
-            <p>Date: {{event.date}}</p>
+            <p>{{event.location.formatted_address}}</p>
+        <!--     <p>Date: {{event.date}}</p> -->
 
         </div>
       </div>
