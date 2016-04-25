@@ -66,5 +66,21 @@ $('.text-1').children('p').each(function(index){
 		$(".year").html(yr);
 	},1000);
 
+$(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.scrollup').fadeIn();
+        } else {
+            $('.scrollup').fadeOut();
+        }
+    });
+
+    $('.scrollup').click(function () {
+        $("html, body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });
+
+    
 
 });
