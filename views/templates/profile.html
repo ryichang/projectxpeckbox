@@ -8,26 +8,28 @@
 </div>
  
   <div class="row">
-    <div class="col-sm-3"><br/>
-      <h4>Welcome {{user.first}} {{user.last}} {{user.email}}</h4>
+    <div class="col-sm-3">
+      <!-- <h4>Welcome {{user.first}} {{user.last}} {{user.email}}</h4>
       <label for="Search">Search</label>
-      <input type="text" ng-model="search" class="form-control">
-    </div>    
-    
-      
-      <div class="col-sm-6">
-        <!-- <div ng-repeat="post in posts | orderBy:'-created_at' "> -->
-        <!-- <div ng-repeat="post in user.posts">
-          <h3>{{post.title}}</h3>
-          <p>{{post.body}}</p>
-        </div> -->
-        
-        <div ng-repeat="post in user.posts | filter:search">
+      <input type="text" ng-model="search" class="form-control"> -->
+      <div ng-repeat="post in user.posts | filter:search">
           <div class="card fade">
               <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
               <h3>{{post.title}}</h3>
               <p>{{post.body}}</p>
           </div>
+        </div>
+    </div>    
+    
+      
+      <div class="col-sm-6">
+        <div class="card">
+          <img src="{{user.picture}}" alt="">
+          <h4 >{{user.displayName}}</h4>
+        </div>
+
+        <div class="card">
+        <pre class='code' contenteditable='true' spellcheck='false'><span></span></pre>
         </div>
       </div>
       <div class="col-sm-3">

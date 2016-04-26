@@ -43,6 +43,23 @@ angular.module('peckbox', ['peckbox.services',
       $routeProvider.otherwise({redirectTo: '/'});
 
       $locationProvider.html5Mode(true);
-    }]);
+    }])
 
-
+ 
+     .config(function($authProvider, $windowProvider) {
+      var $window = $windowProvider.$get();
+      if ($window.location.host == 'localhost:1337') {
+        console.log('development app');
+        $authProvider.facebook({        
+          clientId: '1603892236604415 ',
+          // redirectUri: 'http://localhost:1337/&display=popup&scope=email'
+        });
+      } else {
+        console.log('production app');
+        $authProvider.facebook({        
+          clientId: '1603892236604415 ',
+          // redirectUri: 'http://localhost:1337'
+        });
+      }
+    
+    });

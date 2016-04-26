@@ -16,6 +16,9 @@ var UserSchema = new Schema({
   last          : { type: String, trim: true },
   posts         : [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   events        : [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+  displayName: String,
+  picture: String,
+  facebook: String
 });
 
 UserSchema.virtual('fullname').get(function() {

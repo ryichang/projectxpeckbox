@@ -30,6 +30,7 @@ node_modules
 *.DS_Store
 
 env/development.js
+env/production.js
 
 #.env
 token secret

@@ -12,8 +12,9 @@
 }
 
 *::selection {
-    background-color: #9f9f9f;
-    color: #fff;
+    background-color: rgba(252, 238, 48, 1);
+    /*background-color: #9f9f9f;*/
+    color: #000;
 }
 
 @font-face {
@@ -141,7 +142,7 @@ a {
     text-indent: -9999px;
     color: #fff;
     background-color: #000;
-   /* background-image: url(/img/arrow.jpg);*/
+/*    background-image: url(/img/arrow.jpg);*/
 }
 
 svg.close-btn {
@@ -154,6 +155,7 @@ svg.close-btn {
     box-sizing: content-box;
     border: 0.8px solid rgba(0,0,0,0.9);
     background-color: rgba(0,0,0,1);
+    cursor: pointer;
 }
 
 .card {
@@ -164,8 +166,8 @@ svg.close-btn {
     background: rgba(238,238,238, 1); 
   /*  background: rgba(235,231,227, 0.9); */
     border: 2px solid rgba(0,0,0,0.9);
-    font-family: Helvetica, Arial;
-    cursor: pointer;
+    font-family: Helvetica, sans-serif;
+   /* cursor: pointer;*/
     -webkit-transition: all 0.3s 0.2s ease-out;
     transition: all 0.3s 0.2s ease-out;
 }
@@ -412,6 +414,38 @@ svg.close-btn {
   }
 }
 
+.code {
+  min-height: 50vh;
+  border: 0;
+  outline: 0;
+  counter-reset: code;
+  background-color: transparent;
+  overflow-y: auto;
+  /*box-shadow: inset 50px 0 #42b0ff, inset 51px 0 #61bdff;*/
+}
+.code span {
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  line-height: 25px;
+}
+.code span:first-child {
+/*  border: 0;*/
+}
+.code span:before {
+  counter-increment: code;
+  content: counter(code,decimal-leading-zero);
+  float: left;
+  width: 40px;
+ /* padding: 0 5px;*/
+  margin-right: 10px;
+  display: inline-block;
+  box-shadow: inset 0 -1px #000;
+  font-size: 8pt;
+  font-weight: bold;
+  text-align: right;
+}
 
 
 /*

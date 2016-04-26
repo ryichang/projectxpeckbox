@@ -3,7 +3,7 @@
 /* MAIN Controller */
 
 angular.module('peckbox')
-  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http',  function ($scope, $rootScope, $location, $auth, $http) {
+  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', 'Auth', '$route', function ($scope, $rootScope, $location, $auth, $http, Auth, $route) {
 
     // LOGIN/REGISTER
     $scope.user = {};
@@ -58,4 +58,49 @@ angular.module('peckbox')
           $location.path('/')
         });
     };
+
+    $scope.authenticate = function(provider) {
+      $auth.authenticate(provider).then(function() {
+        console.log('auth.cu is: ', Auth.currentUser);
+        $scope.currentUser = Auth.currentUser();
+        $scope.user = $scope.currentUser;
+        console.log('navbar currentuser is: ', $scope.currentUser);
+        // $('#login-modal').modal('hide');
+        $location.path('/profile'); 
+      });
+    };
+
+    //FACEBOOK
+    $scope.authenticate = function(provider) {
+      $auth.authenticate(provider).then(function() {
+        //notify user they have succesfully logged in with facebook
+        // toastr.success('You have successfully signed in with ' + provider + '!');
+        //set current user
+        $scope.currentUser = Auth.currentUser();
+        //set user
+        $scope.user = $scope.currentUser;
+        //hide login modal
+        $('#login-modal').modal('hide');
+        //check if on splash page
+        if($route.current.loadedTemplateUrl === 'templates/splash') {
+          //redirect to profile page
+          $location.path('/profile');
+        } else {
+          //reload current page
+          $route.reload(); 
+        }
+      })
+      .catch(function(error) {
+          if (error.error) {
+            // popup error
+            // toastr.error(error.error);
+          } else if (error.data) {
+            // HTTP response error from server
+            // toastr.error(error.data.message, error.status);
+          } else {
+            // toastr.error(error);
+          }
+        });
+    };
+    
   }]);
