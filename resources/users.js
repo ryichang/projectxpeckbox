@@ -115,11 +115,22 @@ module.exports = function(app) {
               var token = auth.createJWT(existingUser);
               return res.send({ token: token });
             }
+
+
             var user = new User();
             user.facebook = profile.id;
             user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
             user.displayName = profile.name;
-            user.save(function() {
+            console.log('USER ISSSSSSSSS', user)
+            // var user = new User({
+            // email: req.body.email,
+            // password: req.body.password
+            // });
+
+            user.save(function(err) {
+              if(err){
+                console.log(err)
+              }
               res.send({ token: auth.createJWT(user) });
             });
           });

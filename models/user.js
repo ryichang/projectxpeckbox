@@ -10,7 +10,7 @@ function toLower (v) {
 var UserSchema = new Schema({
   created_at    : { type: Date },
   updated_at    : { type: Date },
-  email         : { type: String, required: true, unique: true, trim: true, set: toLower },
+  email         : { type: String, required: false, unique: true, trim: true, set: toLower },
   password      : { type: String, select: false },
   first         : { type: String, trim: true },
   last          : { type: String, trim: true },

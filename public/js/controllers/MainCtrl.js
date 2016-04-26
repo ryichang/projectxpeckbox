@@ -57,7 +57,7 @@ angular.module('peckbox')
         .then(function() {
           $auth.removeToken();
           $scope.currentUser = null;
-          $location.path('/')
+          $location.path('/');
         });
     };
 
@@ -86,6 +86,7 @@ angular.module('peckbox')
         $scope.currentUser = Auth.currentUser();
         //set user
         $scope.user = $scope.currentUser;
+        console.log('user is', user);
         //hide login modal
         $('#login-modal').modal('hide');
         //check if on splash page
