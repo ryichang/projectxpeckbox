@@ -51,14 +51,12 @@ angular.module('peckbox', ['peckbox.services',
       if ($window.location.host == 'localhost:1337') {
         console.log('development app');
         $authProvider.facebook({        
-          clientId: '1603892236604415 ',
-          // redirectUri: 'http://localhost:1337/&display=popup&scope=email'
+          clientId: '1603892236604415',
         });
       } else {
         console.log('production app');
         $authProvider.facebook({        
-          clientId: '1603892236604415 ',
-          // redirectUri: 'http://localhost:1337'
+          clientId: '1603892236604415',
         });
       }
     

@@ -102,9 +102,9 @@ module.exports = function(app) {
               user.facebook = profile.id;
               user.picture = user.picture || 'https://graph.facebook.com/v2.6/' + profile.id + '/picture?type=large';
               user.displayName = user.displayName || profile.name;
+              
               user.save(function() {
-                var token = auth.createJWT(user);
-                res.send({ token: token });
+                res.send({ token: auth.createJWT(user) });
               });
             });
           });
@@ -120,8 +120,7 @@ module.exports = function(app) {
             user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
             user.displayName = profile.name;
             user.save(function() {
-              var token = createJWT(user);
-              res.send({ token: token });
+              res.send({ token: auth.createJWT(user) });
             });
           });
         }
