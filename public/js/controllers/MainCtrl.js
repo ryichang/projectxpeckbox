@@ -67,7 +67,7 @@ angular.module('peckbox')
         $scope.currentUser = Auth.currentUser();
         $scope.user = $scope.currentUser;
         console.log('navbar currentuser is: ', $scope.currentUser);
-        // $('#login-modal').modal('hide');
+        $('#login-modal').modal('hide');
         $location.path('/profile'); 
       });
     };
@@ -86,7 +86,7 @@ angular.module('peckbox')
         $scope.currentUser = Auth.currentUser();
         //set user
         $scope.user = $scope.currentUser;
-        console.log('user is', user);
+        // console.log('user is', user);
         //hide login modal
         $('#login-modal').modal('hide');
         //check if on splash page

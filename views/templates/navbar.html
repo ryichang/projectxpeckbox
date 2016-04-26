@@ -30,15 +30,15 @@
           <form>
             <div class="form-group">
               <label for="">Email</label>
-              <input type="text" ng-model="user.email" class="form-control"/>
+              <input type="text" ng-model="user.email" required class="form-control"/>
             </div>
             <div class="form-group">
               <label for="">Password</label>
-              <input type="password" ng-model="user.password" class="form-control"/>
+              <input type="password" ng-model="user.password" required class="form-control"/>
             </div>
             <div class="form-group">
               <label for="">Confirm Password</label>
-              <input type="password" ng-model="user.confirm" class="form-control"/>
+              <input type="password" ng-model="user.confirm" required class="form-control"/>
             </div>
             <button type="submit" ng-click="signup()" class="btn btn-info">Sign Up</button>
           </form>
@@ -76,15 +76,15 @@
         <form>
           <div class="form-group">
             <label for="">Email</label>
-            <input type="text" ng-model="user.email" class="form-control"/>
+            <input type="text" ng-model="user.email" required class="form-control"/>
           </div>
           <div class="form-group">
             <label for="">Password</label>
-            <input type="password" ng-model="user.password" class="form-control"/>
+            <input type="password" ng-model="user.password" required class="form-control"/>
           </div>
           <div ng-show="signupMode" class="form-group">
             <label for="">Confirm Password</label>
-            <input type="password" ng-model="user.confirm" class="form-control"/>
+            <input type="password" ng-model="user.confirm" required class="form-control"/>
           </div>
         </form>
       </div>

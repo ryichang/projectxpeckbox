@@ -58,7 +58,7 @@ module.exports = function(app) {
       });
 
       user.save(function(err) {
-        if (err) { return res.status(400).send({err: err}) }
+        if (err) { return res.status(400).send({err: err}) ;}
 
         res.send({ token: auth.createJWT(user) });
       });
@@ -121,7 +121,7 @@ module.exports = function(app) {
             user.facebook = profile.id;
             user.picture = 'https://graph.facebook.com/' + profile.id + '/picture?type=large';
             user.displayName = profile.name;
-            console.log('USER ISSSSSSSSS', user)
+            console.log('USER ISSSSSSSSS', user);
             // var user = new User({
             // email: req.body.email,
             // password: req.body.password
@@ -129,7 +129,7 @@ module.exports = function(app) {
 
             user.save(function(err) {
               if(err){
-                console.log(err)
+                console.log(err);
               }
               res.send({ token: auth.createJWT(user) });
             });
