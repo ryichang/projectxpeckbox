@@ -19,6 +19,11 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'ProfileCtrl'
       });
 
+      $routeProvider.when('/navbar', {
+        templateUrl: 'templates/navbar',
+        controller: 'ProfileCtrl'
+      });
+
       $routeProvider.when('/profile', {
         templateUrl: 'templates/profile',
         controller: 'PostsCtrl'
@@ -53,10 +58,16 @@ angular.module('peckbox', ['peckbox.services',
         $authProvider.facebook({        
           clientId: '1603892236604415',
         });
+        $authProvider.google({
+          clientId: '443314981286-hij2tse2619ppccl6ar7qom10jt3ci0p.apps.googleusercontent.com',
+        });
       } else {
         console.log('production app');
         $authProvider.facebook({        
           clientId: '1603892236604415',
+        });
+        $authProvider.google({
+          clientId: '443314981286-hij2tse2619ppccl6ar7qom10jt3ci0p.apps.googleusercontent.com',
         });
       }
     
