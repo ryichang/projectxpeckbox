@@ -61,16 +61,16 @@ angular.module('peckbox')
         });
     };
 
-    $scope.authenticate = function(provider) {
-      $auth.authenticate(provider).then(function() {
-        console.log('auth.cu is: ', Auth.currentUser);
-        $scope.currentUser = Auth.currentUser();
-        $scope.user = $scope.currentUser;
-        console.log('navbar currentuser is: ', $scope.currentUser);
-        $('#login-modal').modal('hide');
-        $location.path('/profile'); 
-      });
-    };
+    // $scope.authenticate = function(provider) {
+    //   $auth.authenticate(provider).then(function() {
+    //     console.log('auth.cu is: ', Auth.currentUser);
+    //     $scope.currentUser = Auth.currentUser();
+    //     $scope.user = $scope.currentUser;
+    //     console.log('navbar currentuser is: ', $scope.currentUser);
+    //     $('#login-modal').modal('hide');
+    //     $location.path('/profile'); 
+    //   });
+    // };
 
 
 

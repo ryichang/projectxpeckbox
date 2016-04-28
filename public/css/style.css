@@ -330,7 +330,7 @@ svg.close-btn {
 .neon:after,
 .neon:before {
   top: 23%;
-  content: 'PE\A CK';
+ /* content: 'PE\A CK';*/
   position: absolute;
   left: 29%;
   white-space: pre;
@@ -521,5 +521,7 @@ html, body {
   color: rgba(255, 255, 255, 1);
   letter-spacing: 5px;
 }
+
+
 
 

@@ -30,8 +30,8 @@
       <div ng-repeat="post in user.posts">
         <div class="col-sm-3 card fade" ng-class="none">
               <svg width="10" height="10" class="close-btn" ng-click="deletePost(post)">
-                              <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
-                              <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
+                  <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
+                  <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
               </svg>  
           <!--   <i class="fa fa-close pull-right" ng-click="deletePost(post)"></i> -->
             <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>

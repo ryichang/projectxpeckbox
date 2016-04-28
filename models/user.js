@@ -11,7 +11,7 @@ var UserSchema = new Schema({
   created_at    : { type: Date },
   updated_at    : { type: Date },
   email         : { type: String, required: false, unique: true, trim: true, set: toLower },
-  password      : { type: String, select: false },
+  password      : { type: String, select: false, required: true },
   first         : { type: String, trim: true },
   last          : { type: String, trim: true },
   posts         : [{ type: Schema.Types.ObjectId, ref: 'Post' }],

@@ -1,6 +1,6 @@
 
 <div class="container">
-
+<div id="wrapper">
 <div class='clock'>
   <div class='hour'></div>
   <div class='minutes'></div>
@@ -35,14 +35,13 @@
       <div class="col-sm-3">
         <div ng-repeat="event in user.events | filter:search">
           <div class="card fade">
-              <div class="card-date">{{event.created_at | date: 'MMMM d @ h:mma'}}</div>
+              <div class="card-date">{{event.date | date: 'EEE MMMM d @ hh:mma'}}</div>
               <h3>{{event.title}}</h3>
               <p>{{event.description}}</p>
               <p>{{event.location.formatted_address}}</p>
-              <p>{{event.date}}</p>
           </div>
         </div>
       </div>
     </div>
-
+</div>
 </div>
