@@ -8,6 +8,8 @@ angular.module('peckbox')
       $scope.user = data;
     });
 
+    
+
     // $scope.createPost = function() {
     //     $http.post('/api/posts', $scope.post)
     //         .success(function(response) {

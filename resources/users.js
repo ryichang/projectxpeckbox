@@ -13,6 +13,7 @@ module.exports = function(app) {
     User.findOne({ _id: req.userId })
         .populate('posts')
         .populate('events')
+        .populate('notes')
         .exec(function(err, user) {
           console.log(user);
           res.send(user);
@@ -158,7 +159,7 @@ module.exports = function(app) {
        // Step 2. Retrieve profile information about the current user.
        request.get({ url: peopleApiUrl, headers: headers, json: true }, function(err, response, profile) {
          if (profile.error) {
-           console.log(profile.error)
+           console.log(profile.error);
            return res.status(500).send({message: profile.error.message});
          }
          // Step 3a. Link user accounts.
@@ -178,7 +179,7 @@ module.exports = function(app) {
                user.displayName = user.displayName || profile.name;
                user.save(function(err) {
                  if (err){
-                   console.log('Step2:', err)
+                   console.log('Step2:', err);
                  }
                  var token = auth.createJWT(user);
                  res.send({ token: token });
@@ -200,7 +201,7 @@ module.exports = function(app) {
              console.log('Google', user.displayName);
              user.save(function(err) {
                if (err){
-                 console.log("step 3", err)
+                 console.log("step 3", err);
                }
                var token = auth.createJWT(user);
                res.send({ token: token });

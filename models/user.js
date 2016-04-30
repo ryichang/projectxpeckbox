@@ -15,6 +15,7 @@ var UserSchema = new Schema({
   first         : { type: String, trim: true },
   last          : { type: String, trim: true },
   posts         : [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  notes         : [{ type: Schema.Types.ObjectId, ref: 'Note' }],
   events        : [{ type: Schema.Types.ObjectId, ref: 'Event' }],
   displayName: String,
   picture: String,

@@ -57,22 +57,27 @@
                 <ul class="nav">
                 <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
               </ul>
-               
+                 <div id="profile">
+                 <img src="{{user.picture}}" alt="">
+                 <h4>WELCOME <br> {{user.displayName}}</h4>
+                 </div>
+                 <div id="search">
+                 <label for="Search">Search</label>
+                 <input type="text" ng-model="search" class="form-control">
+                 </div>
                 <ul class="nav hidden-xs" id="lg-menu">
                     <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
                     <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
                     <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
                 </ul>
-                <ul class="list-unstyled hidden-xs" id="sidebar-footer">
+                <ul id="sidebar-footer">
                    <!--  <div class='clock'>
                       <div class='hour'></div>
                       <div class='minutes'></div>
                       <div class='seconds'></div>
                     </div> -->
-                    <li>
-                      <a href="http://www.bootply.com"><h3>Bootstrap</h3> <i class="glyphicon glyphicon-heart-empty"></i> Bootply</a>
-                    </li>
+                       <li><a ng-click="logout()">Logout</a></li>
                 </ul>
               
                 <!-- tiny only nav-->
@@ -152,11 +157,11 @@
                           
                            <div class="row">
                              <div class="col-sm-3">
-
-                               <!-- <h4>Welcome {{user.first}} {{user.last}} {{user.email}}</h4>
+<!-- 
+                               <h4>Welcome {{user.first}} {{user.last}} {{user.email}}</h4>
                                <label for="Search">Search</label>
-                               <input type="text" ng-model="search" class="form-control"> -->
-
+                               <input type="text" ng-model="search" class="form-control">
+ -->
                                <div ng-repeat="post in user.posts | filter:search">
                                    <div class="card fade">
                                        <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
@@ -168,14 +173,36 @@
                              
                                
                                <div class="col-sm-6">
-                                 <div class="card">
+                                 <!-- <div class="card">
                                    <img src="{{user.picture}}" alt="">
                                    <h4 >{{user.displayName}}</h4>
-                                 </div>
+                                 </div> -->
 
                                  <div class="card">
-                                 <pre class='code' contenteditable='true' spellcheck='false'><span></span></pre>
-                                 </div>
+                                 <form ng-submit="createNote(user)">
+                                    <div class="form-group">
+                                      <input class="form-control" type="text" ng-model="note.body" required="true">
+                                    </div>            
+                                     <button type="submit">Save</button>
+                                     <!--  <pre class='code' contenteditable='true' spellcheck='false'><span></span></pre> -->
+                                   </div>
+                                </form>
+                          
+                                <div ng-repeat="note in user.notes">
+                                  <div class="col-sm-3 card fade" ng-class="none">
+                                      <svg width="10" height="10" class="close-btn" ng-click="deleteNote(note)">
+                                        <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
+                                         <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
+                                      </svg>    
+                                      <div class="card-date">{{note.date | date: 'EEE MMMM d @ hh:mma'}}</div>
+                                      <h3>{{note.body}}</h3>
+                                  <!--     <p>{{event.description}}</p>
+                                      <p>{{event.location.formatted_address}}</p> -->
+                                  </div>
+                                </div>
+     
+
+
                                </div>
                                <div class="col-sm-3">
                                  <div ng-repeat="event in user.events | filter:search">
@@ -191,27 +218,11 @@
                        <!--   </div> -->
                          
                       
-                        <div class="row">
-                          <div class="col-sm-6">
-                            <a href="#">Twitter</a> <small class="text-muted">|</small> <a href="#">Facebook</a> <small class="text-muted">|</small> <a href="#">Google+</a>
-                          </div>
-                        </div>
-                      
-                        <div class="row" id="footer">    
-                          <div class="col-sm-6">
-                            
-                          </div>
-                          <div class="col-sm-6">
-                            <p>
-                            <a href="#" class="pull-right">©Copyright 2013</a>
-                            </p>
-                          </div>
-                        </div>
-                      
+                       
                       <hr>
                       
                       <h4 class="text-center">
-                      <a href="http://bootply.com/96266" target="ext">Download this Template @Bootply</a>
+                       <p>SDLKJFKLDSJFLKJSDLFJKLDSFJLKD:SFJLKSDJFL SOME TEXT</p>
                       </h4>
                         
                       <hr>

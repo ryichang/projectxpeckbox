@@ -5,6 +5,8 @@
 angular.module('peckbox')
   .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', 'Auth', '$route', function ($scope, $rootScope, $location, $auth, $http, Auth, $route) {
 
+  
+
     // LOGIN/REGISTER
     $scope.user = {};
 
@@ -110,5 +112,7 @@ angular.module('peckbox')
           }
         });
     };
+
+
     
   }]);

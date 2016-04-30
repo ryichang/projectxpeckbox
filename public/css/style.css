@@ -72,13 +72,7 @@ html, body {
     overflow-y: auto;
 }
 
-.diagonal-bg {
-  position: fixed;
-  top: 0;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-}
+
 
 .jumbotron {
  /* padding:100px 0 130px 0;*/
@@ -201,52 +195,11 @@ svg.close-btn {
     border-left: 10px solid transparent;
 }
 
-.start{
-    background: linear-gradient(135deg, #44c8a0, #71b685); 
-/*    background-color: rgba(157,218,158,0.9);*/
-    border: 2px solid rgba(157,218,158,0.9);
-    color: #fff;
-}
-
-.done{
-    background: linear-gradient(135deg, #ce4564, #fb3349); 
-  /*  background-color: rgba(233,97,81,0.9);*/
-    border: 2px solid rgba(233,97,81,0.9);
-    color: #fff;
-}
 
 .button.active {
-            color: yellow;
+            color: rgba(255,255,255,1);
         }
 
-.button.start{
-  background: linear-gradient(135deg, #44c8a0, #71b685); 
- /* background-color: rgba(157,218,158,0.9);*/
-/*  border: 2px solid rgba(157,218,158,0.9);*/
-  color: #fff;
-}
-
-.button.done{
-  background: linear-gradient(135deg, #ce4564, #fb3349); 
- /* background-color: rgba(233,97,81,0.9);*/
-  /*border: 2px solid rgba(233,97,81,0.9);*/
-  color: #fff;
-}
-
-
-.start {
-      background: linear-gradient(135deg, #44c8a0, #71b685); 
-  /*    background-color: rgba(157,218,158,0.9);*/
-      border: 2px solid rgba(157,218,158,0.9);
-      color: #fff;
-}
-
-.done {
-    background: linear-gradient(135deg, #ce4564, #fb3349); 
-  /*  background-color: rgba(233,97,81,0.9);*/
-    border: 2px solid rgba(233,97,81,0.9);
-    color: #fff;
-}
 
 @-webkit-keyframes fadeIn {
   from {
@@ -299,9 +252,28 @@ svg.close-btn {
 
 .modal-body {
     font-family:"vcr";
+    margin-top: 20px;
+    position: relative;
+    padding: 15px;
+}
+
+.modal-content {
+    font-family:"vcr";
     margin-top: 80px;
     position: relative;
     padding: 15px;
+}
+
+.btn {
+  font-size: 11px;
+  box-shadow: none !important;
+  color: rgba(255,255,255,1);
+  background-color: rgba(0,0,0,1);
+  margin: 1px 1px 1px 1px;
+}
+
+.btn:hover, .btn:focus, .btn.focus {
+  color: #ff5277;
 }
 
 .center{
@@ -335,7 +307,7 @@ svg.close-btn {
 .neon:after,
 .neon:before {
   top: 23%;
- /* content: 'PE\A CK';*/
+  content: 'PE\A CK';
   position: absolute;
   left: 29%;
   white-space: pre;
@@ -542,12 +514,12 @@ textarea.form-control:focus {
 }
 
 a {
-  color: #61C7B3;
+  color: #ff5277;
   text-decoration: none;
   transition-duration: .3s;
 }
 a:hover {
-  color: #338f7d;
+  color: #000;
   transition-duration: .05s;
   text-decoration: none;
 }
@@ -641,8 +613,8 @@ a:hover {
 
 #sidebar, #sidebar a, #sidebar-footer a {
     color:#ffffff;
-    background-color:transparent;
-  text-shadow:0 0 2px #000000;
+    background-color: rgba(0,0,0,1);
+    text-shadow:0 0 2px #000000;
     padding-left:5px;
 }
 #sidebar .nav li>a:hover {
@@ -667,7 +639,7 @@ a:hover {
   border-radius:2px;
 }
 #sidebar-footer {
-  background-color:#444;
+  background-color:#000;
   position:absolute;
   bottom:5px;
   padding:5px;
@@ -738,27 +710,6 @@ a:hover {
     width: 100%;
 }
 
-.modal-header, .modal-footer {
-  background-color:#f2f2f2;
-    font-weight:800;
-    font-size:12px;
-}
-
-.modal-footer i, .well i {
-    font-size:20px;
-    color:#c0c0c0;
-}
-
-.modal-body {
-  padding:0px;
-}
-
-.modal-body textarea.form-control
-{
-   resize: none;
-   border:0;
-   box-shadow:0 0 0;
-}
 
 small.text-muted {
   font-family:courier,courier-new,monospace;
@@ -798,14 +749,14 @@ small.text-muted {
   }
 
   .row-offcanvas-left.active {
-    left: 33%;
+    left: 20%;
   }
 
   .row-offcanvas-left.active .sidebar-offcanvas {
-    left: -33%;
+    left: -20%;
     position: absolute;
     top: 0;
-    width: 33%;
+    width: 20%;
     margin-left: 5px;
   }
 
@@ -813,3 +764,18 @@ small.text-muted {
     padding-left:3px;
   }
 }
+
+#profile {
+  margin-top: 50px;
+  margin-left: 1px;
+}
+
+@media screen and (min-width: 0px) and (max-width: 400px) {
+  #profile { display: block; }  /* show it on small screens */
+}
+
+@media screen and (min-width: 0px) and (max-width: 1024px) {
+  #profile { display: none; }   /* hide it elsewhere */
+  #search {display: none;}
+}
+
