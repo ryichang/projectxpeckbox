@@ -95,7 +95,7 @@
             <div class="column col-sm-10 col-xs-11" id="main">
                 
                 <!-- top nav -->
-                <!-- <div class="navbar navbar-blue navbar-static-top">  
+               <!--  <div class="navbar navbar-black navbar-static-top">  
                     <div class="navbar-header">
                       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle</span>
@@ -149,11 +149,7 @@
                           
                         <!--  <div class="container"> -->
 
-                         <div class='clock'>
-                           <div class='hour'></div>
-                           <div class='minutes'></div>
-                           <div class='seconds'></div>
-                         </div>
+                         
                           
                            <div class="row">
                              <div class="col-sm-3">
@@ -188,16 +184,17 @@
                                    </div>
                                 </form>
                           
-                                <div ng-repeat="note in user.notes">
-                                  <div class="col-sm-3 card fade" ng-class="none">
-                                      <svg width="10" height="10" class="close-btn" ng-click="deleteNote(note)">
-                                        <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
-                                         <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
-                                      </svg>    
-                                      <div class="card-date">{{note.date | date: 'EEE MMMM d @ hh:mma'}}</div>
-                                      <h3>{{note.body}}</h3>
-                                  <!--     <p>{{event.description}}</p>
-                                      <p>{{event.location.formatted_address}}</p> -->
+                                  <div ng-repeat="note in user.notes">
+                                    <div class="col-sm-3 card fade" ng-class="none">
+                                          <svg width="10" height="10" class="close-btn" ng-click="deleteNote(note)">
+                                              <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
+                                              <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
+                                          </svg>  
+                                 
+                                        <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
+
+                                        <p>{{note.body}}</p>
+
                                   </div>
                                 </div>
      

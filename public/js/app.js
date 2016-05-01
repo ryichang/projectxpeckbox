@@ -39,6 +39,11 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'NotesCtrl'
       });
 
+      $routeProvider.when('/notes', {
+        templateUrl: 'templates/note',
+        controller: 'NotesCtrl'
+      });
+
       $routeProvider.when('/profile', {
         templateUrl: 'templates/profile',
         controller: 'EventsCtrl'

@@ -6,7 +6,7 @@
     <ul class="nav navbar-nav navbar-right">
     <!-- MODAL POPUP BUTTON-->
           <button data-toggle="modal" data-target="#myModal" class="btn"><span class="fa fa-info"></span></button>
-     <!--  <li ng-show="!currentUser" class="dropdown">
+      <li ng-show="!currentUser" class="dropdown">
         <a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown">
           Login
         </a>
@@ -46,7 +46,7 @@
             <button type="submit" ng-click="signup()" class="btn btn-info">Sign Up</button>
           </form>
         </div>
-      </li> -->
+      </li>
 
       <div ng-show="currentUser" class='week'>
   <div ng-show="currentUser" class='day'></div>
@@ -60,6 +60,7 @@
         <a data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><span class="status">Me</span><span class="caret"></span></a>
         <ul class="dropdown-menu">
           <li><a href="/profile">Profile</a></li>
+          <li><a href="/notes">Create Notes</a></li>
           <li><a href="/posts">Create Posts</a></li>
           <li><a href="/events">Create Events</a></li>
           <li><a href="/settings">Settings</a></li>
@@ -73,6 +74,7 @@
   </div>
   
 </nav>
+
 <div id="login-modal" tabindex="-1" role="dialog" class="modal fade">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
@@ -114,11 +116,11 @@
             <h4 id="myModalLabel" class="modal-title"><span class="fa fa-clone"></span>  About Peckbox</h4>
           </div>
           <div class="modal-body">
-            <p class="modal-text">Create tasks, notes, and events all in one place. Marie Kondo your digital life fam, oh the joy. 
+            <p class="modal-text">Write notes, create tasks & manage events all in one place. Spark some joy by Marie Kondo-ing your digital life fam. 
 
             </p>
           </div>
-          <div class="modal-footer"><a href="https://goo.gl/PaAZYh" target="_blank" class="btn btn-social twitter"><span class="fa fa-twitter"></span>  Share</a><a href="https://github.com/ryichang" target="_blank" class="btn btn-social github"><span class="fa fa-github"></span>  View Repo</a><a href="https://linkedin.com/in/NarulaKeshav" target="_blank" class="btn btn-social linkedin"><span class="fa fa-linkedin"></span>  LinkedIn</a></div>
+          <div class="modal-footer"><a href="" target="_blank" class="btn btn-social twitter"><span class="fa fa-twitter"></span>  Share</a><a href="https://github.com/ryichang" target="_blank" class="btn btn-social github"><span class="fa fa-github"></span>  View Repo</a><a href="https://www.linkedin.com/in/yrchang" target="_blank" class="btn btn-social linkedin"><span class="fa fa-linkedin"></span>  LinkedIn</a></div>
         </div>
       </div>
     </div>
