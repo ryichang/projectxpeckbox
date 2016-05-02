@@ -687,6 +687,7 @@ a:hover {
 .badge{
    color:#fff;
    background-color: transparent;
+   float: right;
 }
 /*.badge:hover, .badge-inverse{
    background-color:#3B5999;

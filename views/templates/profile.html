@@ -174,15 +174,21 @@
                                    <img src="{{user.picture}}" alt="">
                                    <h4 >{{user.displayName}}</h4>
                                  </div> -->
-                                  
+                            
                           
                                   <div ng-repeat="note in user.notes | filter:search">
                                     <div class="col-sm-3 card fade" ng-class="none">
                                  
                                         <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
-
-                                        <p>{{note.body}}</p>
-
+                                        <div ng-init="limit = 140; moreShown = false">
+                                        <p>{{note.body | limitTo: limit}}
+                                        <a ng-show="note.body.length > limit"
+                                         href ng-click="limit=note.body.length; moreShown = true">  More
+                                        </a>
+                                       <!--  <a ng-show="moreShown = true" href ng-click="limit = 140; moreShown = false"> Less 
+                                        </a> -->
+                                        </p>
+                                        </div>
                                      </div>
                                   </div>
      
