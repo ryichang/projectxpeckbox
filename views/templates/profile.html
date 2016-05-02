@@ -67,9 +67,9 @@
                  </div>
                 <ul class="nav hidden-xs" id="lg-menu">
                     <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
-                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i> Stories</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i> Saved</a></li>
-                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i> Refresh</a></li>
+                    <li><a href="#stories"><i class="glyphicon glyphicon-list"></i>Notes<span class="badge">{{user.notes.length}}</span></a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-paperclip"></i>Posts<span class="badge">{{user.posts.length}}</span></a></li>
+                    <li><a href="#"><i class="glyphicon glyphicon-refresh"></i>Events<span class="badge">{{user.events.length}}</span></a></li>
                 </ul>
                 <ul id="sidebar-footer">
                    <!--  <div class='clock'>
@@ -161,6 +161,7 @@
                                <div ng-repeat="post in user.posts | filter:search">
                                    <div class="card fade">
                                        <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
+
                                        <h3>{{post.title}}</h3>
                                        <p>{{post.body}}</p>
                                    </div>
@@ -173,30 +174,17 @@
                                    <img src="{{user.picture}}" alt="">
                                    <h4 >{{user.displayName}}</h4>
                                  </div> -->
-
-                                 <div class="card">
-                                 <form ng-submit="createNote(user)">
-                                    <div class="form-group">
-                                      <input class="form-control" type="text" ng-model="note.body" required="true">
-                                    </div>            
-                                     <button type="submit">Save</button>
-                                     <!--  <pre class='code' contenteditable='true' spellcheck='false'><span></span></pre> -->
-                                   </div>
-                                </form>
+                                  
                           
-                                  <div ng-repeat="note in user.notes">
+                                  <div ng-repeat="note in user.notes | filter:search">
                                     <div class="col-sm-3 card fade" ng-class="none">
-                                          <svg width="10" height="10" class="close-btn" ng-click="deleteNote(note)">
-                                              <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
-                                              <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
-                                          </svg>  
                                  
                                         <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
 
                                         <p>{{note.body}}</p>
 
+                                     </div>
                                   </div>
-                                </div>
      
 
 

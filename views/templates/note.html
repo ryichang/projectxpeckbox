@@ -9,9 +9,11 @@
         
       <form ng-submit="createNote(user)">
         <div class="form-group">
-          <label for="Body">Note</label>
-          <input class="form-control" type="text" ng-model="note.body" required="true">
+          <label for="note">Note</label>
+          <textarea class="form-control" ng-model="note.body"></textarea>
         </div>
+
+        
 
         <button type="submit">Save</button>
       </form>

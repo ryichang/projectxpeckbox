@@ -115,6 +115,7 @@ a {
   margin: 0;
   -webkit-text-shadow: none;
   text-shadow: none;
+  box-shadow: none;
 }
 
 .container {
@@ -684,13 +685,13 @@ a:hover {
 }
   
 .badge{
-   color:#3B5999;
-   background-color:#fff;
+   color:#fff;
+   background-color: transparent;
 }
-.badge:hover, .badge-inverse{
+/*.badge:hover, .badge-inverse{
    background-color:#3B5999;
    color:#fff;
-}
+}*/
     
 .jumbotron {
   background-color:transparent;
