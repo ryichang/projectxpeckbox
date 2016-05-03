@@ -2,6 +2,12 @@
     <div class="col-sm-3">
     <h1>TOTAL EVENTS</h1>
     <h1>{{user.events.length}}</h1>
+      <ng-map center="current-location" zoom="11">
+         <transit-layer></transit-layer>
+         <traffic-layer></traffic-layer>
+         <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
+         </marker>
+      </ng-map>
     </div>
     <div class="col-sm-9">
      <!--  <div class="page-header">
@@ -38,7 +44,7 @@
   
         <button type="submit">Save</button>
       </form>
-
+        
 
      <!-- 
       <div ng-repeat="post in posts | orderBy:'-created_at'"> -->

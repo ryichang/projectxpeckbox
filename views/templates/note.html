@@ -26,11 +26,15 @@
               </svg>  
      
             <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
-
-            <p>{{note.body}}</p>
-
+            <div ng-init="limit = 140; moreShown = false">
+            <p>{{note.body | limitTo: limit}}
+            <a ng-show="note.body.length > limit" href ng-click="limit = note.body.length; moreShown = true">More</a>
+            <a ng-hide="note.body.length > limit" href ng-click="limit = 140; moreShown = false"> Less </a>
+            </p>
       </div>
     </div>
   </div>
 <a href="#" class="scrollup" style="outline: none; display: inline;"><i class="fa fa-chevron-up scrollup"></i></a>
 </div>
+
+
