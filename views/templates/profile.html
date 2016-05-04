@@ -51,15 +51,15 @@
 
   <div class="row">
     <div class="col-sm-3">
-       <div class="card">
+       <div class="card hidden-xs">
           <img src="{{user.picture}}" alt="">
-          <h4>{{user.displayName}}</h4>
+          <div class="card-name"><h4>{{user.displayName}}</h4></div>
        </div>
        <div sticky sticky-class="imSoSticky" class="heightAuto">
      <!--  
         <label for="Search">Search</label>
         <input type="text" ng-model="search" class="form-control"> -->
-        <ul class="nav hidden-xs" id="lg-menu">
+        <ul class="nav" id="lg-menu">
             <li class="active"><a href="#featured"><i class="glyphicon glyphicon-list-alt"></i> Featured</a></li>
             <li><a href="/notes"><i class="ion-document-text"></i> Notes<span class="badge">{{user.notes.length}}</span></a></li>
             <li><a href="/posts"><i class="ion-clipboard"></i> Tasks<span class="badge">{{user.posts.length}}</span></a></li>
@@ -82,7 +82,7 @@
                          
     <div class="col-sm-6" ng-controller="NotesCtrl">
       <div class="col-sm-12">
-         <div id="note-form" class="row">
+         <div id="note-form" class="row hidden-xs">
            <form ng-submit="createNote(user)">
              <div class="form-group">
                <label for="note">Note</label>
@@ -95,7 +95,7 @@
     
 
      <div ng-repeat="note in user.notes | filter:search">
-       <div class="col-sm-5 card fade" ng-class="none">
+       <div class="col-sm-5 card fade">
      
            <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
            <div ng-init="limit = 140; moreShown = false">
@@ -113,7 +113,7 @@
     </div>
 
     <div class="col-sm-3">
-      <ng-map center="current-location" zoom="13">
+      <ng-map center="current-location" zoom="13" class="hidden-xs">
          <transit-layer></transit-layer>
          <traffic-layer></traffic-layer>
          <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">

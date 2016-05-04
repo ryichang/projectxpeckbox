@@ -55,6 +55,7 @@ h1, h2, h3, h4, h5 {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   word-wrap: break-word;
+  color: #fff;
 }
 h1 { font-size: 72px; }
 h2 { font-size: 36px; font-weight: 400; }
@@ -182,9 +183,9 @@ svg.close-btn {
     padding: 4px 8px;
     background: #000;
     color: #fff;
-/*    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);*/
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 .card-date:after {
     content: '';
@@ -193,6 +194,30 @@ svg.close-btn {
     width: 8px;
     position: absolute;
     top: 31px;
+    left: 0px;
+    background: transparent;
+    z-index: 1;
+    border-top: 10px solid #000;
+    border-left: 10px solid transparent;
+}
+.card-name {
+    position: absolute;
+    bottom: 13px;
+    left: -10px;
+    padding: 4px 8px;
+    background: #000;
+    color: #fff;
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+.card-name:after {
+    content: '';
+    display: block;
+    height: 20px;
+    width: 8px;
+    position: absolute;
+    top: 34px;
     left: 0px;
     background: transparent;
     z-index: 1;
@@ -451,6 +476,7 @@ html, body {
 
 #search {
   max-width: 250px;
+  color: #ff5277;
 }
 
 .clock {
@@ -671,6 +697,7 @@ small.text-muted {
  /* max-width: 290px;*/
   max-width: 223px;
   margin-left: 20px;
+  padding-bottom: 20px;
 }
 
 @media screen and (min-width: 0px) and (max-width: 400px) {
