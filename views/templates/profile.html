@@ -50,7 +50,7 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-3">
+    <div class="col-sm-3" >
        <div class="card hidden-xs">
           <img src="{{user.picture}}" alt="">
           <div class="card-name"><h4>{{user.displayName}}</h4></div>
@@ -76,6 +76,7 @@
 
               <h3>{{post.title}}</h3>
               <p>{{post.body}}</p>
+              <i class="ion-edit" style="float: right" data-toggle="modal" data-target="#postModal" ng-click="editPost(post)"></i>
           </div>
       </div>
     </div>    
@@ -94,6 +95,7 @@
      </div>                     
     
 
+
      <div ng-repeat="note in user.notes | filter:search">
        <div class="col-sm-5 card fade">
      
@@ -103,9 +105,10 @@
            <a ng-show="note.body.length > limit"
             href ng-click="limit=note.body.length; moreShown = true">  More
            </a>
-     
-           <a ng-show="note.body.length = limit" href ng-click="limit = 140; moreShown = false"> Less 
-           </a>
+           <!-- <a ng-show="moreShown = true" href ng-click="limit = 140; moreShown = false"> Less 
+           </a> -->
+           <!-- <a class="btn pull-right" ng-show="note.body.length > limit" ng-class="{true: 'btn-primary', false: 'btn-danger'}[!show.more]" ng-click="show.more = !show.more" ; ng-click="limit=note.body.length">{{!show.more && 'More' || 'Less'}} </a> -->
+
            </p>
            </div>
         </div>
@@ -113,7 +116,7 @@
     </div>
 
     <div class="col-sm-3">
-      <ng-map center="current-location" zoom="13" class="hidden-xs">
+      <ng-map center="current-location" zoom="13" class="map hidden-xs">
          <transit-layer></transit-layer>
          <traffic-layer></traffic-layer>
          <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
@@ -140,4 +143,34 @@
  <hr>   
 </div>
 
+<!-- <div id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" class="modal fade" ng-controller="PostsCtrl">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span class="modal-close">×</span></button>
+            <h3 id="postModalLabel" class="modal-title">Post {{post.title}} {{post.body}}</h3>
+          </div>
+          <div class="modal-body">
+            <div id="post-form" class="row">
+              
+            <form ng-submit="updatePost(post)">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-control" type="text" ng-model="post.title" required="true">
+              </div>
 
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" ng-model="post.body" required="true"></textarea>
+              </div>
+
+            
+              <button type="submit">Save</button>
+            </form>
+            </div>
+          
+          </div>
+      </div>
+    </div>
+
+ -->

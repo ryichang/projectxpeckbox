@@ -8,22 +8,34 @@
        <!--  <h4>Posts</h4><p>User ID: {{user._id}}</p> <p>Total Posts: {{user.posts.length}}</p> -->
     <!--   </div> -->
       <!-- FORM TO CREATE POSTS -->
-      <div id="post-form" class="row">
-        
-      <form ng-submit="createPost(user)">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input class="form-control" type="text" ng-model="post.title" required="true">
-        </div>
+      <div class="post-form">
+        <div ng-hide="post.editForm">
+          <form ng-submit="createPost(user)">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input class="form-control" type="text" ng-model="post.title" required="true">
+            </div>
 
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea class="form-control" ng-model="post.body" required="true"></textarea>
-        </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" ng-model="post.body" required="true"></textarea>
+            </div>
+            
+      
+            <button type="submit">Save</button>
+          </form>
 
-  
-        <button type="submit">Save</button>
-      </form>
+          <form  ng-show="post.editForm" ng-submit="updatePost(post)">
+            <div class="form-group">
+              <input type="text" ng-model="post.title" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" ng-model="post.body" class="form-control">
+            </div>
+            <input type="submit" value="Save Post" class="btn btn-default">
+          </form>
+
+        </div>
       
      <!-- 
       <div ng-repeat="post in posts | orderBy:'-created_at'"> -->
@@ -38,6 +50,20 @@
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
             <h3>{{post.title}}</h3>
             <p>{{post.body}}</p>
+            <a href="#" class="pull-right" ng-click="editPost(post)">
+              <i class="ion-edit" style="float: right" ng-click="post.editForm = true"></i>
+            </a>
+            <form  ng-show="post.editForm" ng-submit="updatePost(post)">
+              <div class="form-group">
+                <input type="text" ng-model="post.title" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" ng-model="post.body" class="form-control">
+              </div>
+              <input type="submit" value="Save Post" class="btn btn-default">
+            </form>
+          <!--   <i class="ion-edit" style="float: right" ng-click="post.editForm = true" ng-click="editPost(post)"></i> -->
+           <!--  data-toggle="modal" data-target="#postModal" -->
             <!-- <p>POST ID: {{post._id}}</p>
             <p>User: {{post.userId}}</p>
             <p>Start: {{post.start}}</p>
@@ -55,3 +81,64 @@
   </div>
 <a href="#" class="scrollup" style="outline: none; display: inline;"><i class="fa fa-chevron-up scrollup"></i></a>
 </div>
+
+<!-- POST MODAL --> 
+<!-- 
+    <div id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" class="modal fade">
+      <div role="document" class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span class="modal-close">×</span></button>
+            <h3 id="postModalLabel" class="modal-title">Post {{post.id}} {{post.title}} {{post.body}}</h3>
+          </div>
+          <div class="modal-body">
+            <div id="post-form" class="row">
+              
+            <form ng-submit="updatePost(post)">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-control" type="text" ng-model="post.title" required="true">
+              </div>
+
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" ng-model="post.body" required="true"></textarea>
+              </div>
+
+            
+              <button type="submit">Save</button>
+            </form>
+            </div>
+          
+          </div>
+      </div>
+    </div> -->
+    
+<!-- <div class="container">
+<ul class='list-group'>
+        <div class='row'>
+          <div ng-animate="'animate'" class='col-sm-4 col-md-3 col-lg-2' ng-repeat="post in user.posts | filter: search">
+          <div ng-hide="post.editForm">
+          <h3>{{post.title}}</h3>
+          <p>{{post.body}}</p>
+          <p>Created Date: {{post.created_at | date:'yyyy-MM-dd'}}</p>
+          <a href="#" class="pull-right" ng-click="editPost(post)">
+            <ng-md-icon icon="edit" style="fill: black" size="20" ng-click="post.editForm = true"></ng-md-icon>
+          </a>
+          <a href="#" class='pull-right' ng-click="deletePost(post)">
+            <i class='icon ion-close-circled'></i>
+          </a>
+          </div>
+          <form  ng-show="post.editForm" ng-submit="updatePost(post)">
+            <div class="form-group">
+              <input type="text" ng-model="post.title" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" ng-model="post.body" class="form-control">
+            </div>
+            <input type="submit" value="Save Post" class="btn btn-default">
+          </form>
+          </div>
+        </div>
+      </ul>
+</div> -->

@@ -43,6 +43,7 @@ body {
   background: linear-gradient(120deg, #17bebb, #f0a6ca); */
 /*  background-color: rgba(253,100,103,1);*/
   /*background-image: url(/img/pattern.gif);*/
+/*  background-color: rgba(255,255,255,1);*/
   background-color: rgba(238,237,233,1); 
   color: rgba(29,29,27,1);
   }
@@ -162,7 +163,9 @@ svg.close-btn {
     position: relative;
     padding: 10px 10px 30px;
     margin: 20px;
-    background: rgba(255,255,255, 1); 
+/*    background: rgba(255,255,255, 1); */
+    background: rgba(199,183,168,1);
+/*    background-color: rgba(238,237,233,1); */
 /*    border: 2px solid rgba(0,0,0,0.9);*/
    /* box-shadow: 0 0 0 1px #efefec;*/
     font-family: Helvetica, sans-serif;
@@ -690,6 +693,10 @@ small.text-muted {
   margin-left: 1px;*/
 }
 
+.map {
+  margin-left: 20px;
+  max-width: 220px;
+}
 .imSoSticky, .heightAuto{
   height: auto !important;
   background-color: rgba(255,255,255,1);

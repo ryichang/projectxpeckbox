@@ -20,6 +20,89 @@ module.exports = function(app) {
 	});
 
 
+	// app.get('/api/posts/:post_id', auth.ensureAuthenticated, function(req, res){
+	// 	User.findById(req.userId).exec(function(err, user){
+	// 		Post.findById(req.params.post._id, function(err, post){
+	// 			if (err) {res.status(404).send(err);}
+	// 			res.send(post);
+	// 		});
+	// 	});
+	// });
+	app.get('api/posts/:post_id', auth.ensureAuthenticated, function (req,res) {
+	        User.findById(req.userId).exec(function (err, user) {
+	            Post.findById({ _id: req.params.post_id}, function(err, post) {
+	                if (err) { return res.status(404).send(err); }
+	                res.send(post); 
+	            });
+	        });
+	    });
+	//  app.get('/api/posts/:id',function(req,res){   
+	//   Post.findById(req.params.post._id)
+	//     .populate('user')
+	//     .exec(function(err, post) {
+	//     if (err) { return res.status(404).send(err); }
+	//     res.send(post); 
+	//   });
+	// });
+
+	 // UPDATE
+	// app.put('/api/posts/:id', function(req,res){ 
+	//   console.log('hitting api/posts/:id path');
+	//   Post.findOneAndUpdate({ _id: req.params.id}, req.body, { new: true }, function (err, post) {
+	//     if (err) { return res.send(err); }
+	//     res.send(post);
+	//   });
+	// });
+
+	// app.put('/api/posts/:post_id', auth.ensureAuthenticated, function(req,res){ 
+	//         Post.findOneAndUpdate({ _id: req.params.post_id}, req.query.post , {new: true}, function (err, post) {
+	//             // console.log("editRoute", post);
+	//             if (err) { return res.send(err); }
+	//             console.log('backend',post);
+	//             res.send(post);
+	//         });
+	//     });
+    app.put('/api/posts/:post_id', auth.ensureAuthenticated, function(req,res){ 
+            console.log('putroute', req.body);
+            console.log('postId', req.params.post_id);
+            Post.findOneAndUpdate({ _id: req.params.post_id}, req.body , function (err, post) {
+                // console.log("editRoute", post);
+                if (err) { return res.send(err); }
+                // console.log('backend',post);
+                res.send(post);
+            });
+        });
+
+  	// app.put('/api/posts/:id', auth.ensureAuthenticated, function(req,res){ 
+  	//     Post.findOneAndUpdate({ _id: req.params.post_id}, req.query.post, function (err, post) {
+  	//         console.log("editRoute", post);
+  	//         if (err) { return res.send(err); }
+  	//         res.send(post);
+   //      });
+   //  });
+
+    // app.put('/api/posts/:post_id', function(req, res) {
+    // 	Post.findByIdAndRemove({
+    // 		_id : req.params.post_id
+    // 	 }, function(err, post) {
+    // 		if (err)
+    // 			res.send(err);
+
+    // 		// get and return all the posts after you create another
+    // 		User.findOneAndUpdate(
+    // 			{ posts: req.params.post_id},
+    // 			// { "new": true},
+    // 			function (err, post){
+    // 				if(err) {
+    // 					res.send(err);
+    // 				} else {
+    // 					console.log("OBjectID", post);
+    // 					res.status(200).send('Find user and deleted');
+    // 				}
+    				
+    // 			});
+    // 		});
+    // });
 
 	// create post and send back all posts after creation
 	// app.post('/api/posts', auth.ensureAuthenticated, function(req, res) {

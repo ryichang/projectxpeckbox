@@ -20,4 +20,31 @@ angular.module('peckbox.services', [])
         return currentUser;
       }
     };
-  }]);
+  }])
+
+
+  // .factory('Post', function ($window, $resource){ 
+  //     return $resource('/api/posts/:id', {
+  //       update: { method: 'PUT'}
+  //     });
+  // });
+
+  .factory('Post', function ($window, $resource) {
+     return $resource($window.location.origin + '/api/posts/:id', { id: '@id' }, {
+       update: { method: 'PUT'} 
+     });
+   });
+  
+//    .factory('Post', function($resource, $window) {
+//   return $resource('/api/posts/:id', { id: '@_id'}, {
+//     update: {
+//       method: 'PUT' // this method issues a PUT request
+//     },
+//     delete: {
+//       method: 'DELETE'
+//     }
+//   });
+// });
+
+
+  

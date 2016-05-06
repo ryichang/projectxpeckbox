@@ -1,0 +1,62 @@
+<!-- <div id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" class="modal fade">
+    <div role="document" class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span class="modal-close">×</span></button>
+            <h3 id="postModalLabel" class="modal-title">Post {{post.id}} {{post.title}} {{post.body}}</h3>
+          </div>
+          <div class="modal-body">
+            <div id="post-form" class="row">
+              
+            <form ng-submit="updatePost(post)">
+              <div class="form-group">
+                <label for="title">Title</label>
+                <input class="form-control" type="text" ng-model="post.title" required="true">
+              </div>
+
+              <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" ng-model="post.body" required="true"></textarea>
+              </div>
+
+               <button type="submit">Save</button>
+            </form>
+            </div>
+          
+          </div>
+      </div>
+    </div>
+</div>
+ -->
+<div class="container">
+    <div class="col-sm-3" ng-class="PostsCtrl">
+    <h1>TOTAL TASKS</h1>
+    <h1>{{user.posts.length}}</h1>
+    </div>
+    <div class="col-sm-9">
+   
+      <!-- FORM TO CREATE POSTS -->
+      <div id="post-form" class="row">
+        
+      <form ng-submit="updatePost(post)">
+        <div class="form-group">
+          <label for="title">Title</label>
+          <input class="form-control" type="text" ng-model="post.title" required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea class="form-control" ng-model="post.body" required="true"></textarea>
+        </div>
+
+  
+        <button type="submit">Save</button>
+      </form>
+      
+   
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

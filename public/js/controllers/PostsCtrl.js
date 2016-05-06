@@ -3,7 +3,7 @@
 /* POST Controllers */
 
 angular.module('peckbox')
-  .controller('PostsCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
+  .controller('PostsCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', function($scope, $http, $auth, Auth, $location, $routeParams) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
@@ -50,6 +50,73 @@ angular.module('peckbox')
         });
 
     };
+
+//go to edit page
+  //   $scope.editPost = function(post) {
+  //       $scope.post = {
+  //           _id: post._id,
+  //           title: post.title,
+  //           body: post.body
+  //       };
+  //   $location.path('/posts/' + $scope.post._id);
+  //   $scope.post = {
+  //           _id: post._id,
+  //           title: post.title,
+  //           body: post.body
+  //       };
+  //   console.log('edit scope post', $scope.post);
+
+  // };
+
+    $scope.editPost = function(post){
+        $scope.post = {
+            userId: post.userId[0],
+            _id: post._id,
+            title: post.title,
+            body: post.body
+        };
+        console.log('edit', $scope.post);
+    };
+
+
+    // $scope.updatePost = function(post) {
+    //   console.log('post in form function is: ', post);
+    //   Post.get({ id: $routeParams.id }, function() {
+    //     console.log('post is: ', post);
+    //     $scope.post = post;
+    //     $scope.post.$update(function(post) {
+    //       console.log('scope.post.update worked');
+    //     });
+
+    //     $location.path('/posts/' + post._id);
+    //   });
+    // };
+    $scope.updatePost = function(post){
+       console.log('update', post)
+       $http.put('/api/posts/'+ post._id, post)
+       .success(function(response){
+         console.log(response)
+         post.editForm = false;
+       });
+       // console.log('edit', post);
+     };
+
+    // $scope.updatePost = function(post){
+    //     $scope.post = {
+    //         _id: post._id,
+    //         title: post.title,
+    //         body: post.body
+    //     };
+    //     $http.put('/api/posts/' + $scope.post._id)
+    //     .success(function(data) {
+    //       var index = $scope.user.posts.indexOf(post);
+    //       $scope.user.posts.splice(index,1);
+
+    //     })
+    //     .error(function(data) {
+    //       console.log('Error: ' + data);
+    //     });
+    // };
 
 
     // $scope.createPost = function() {

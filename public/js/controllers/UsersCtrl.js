@@ -1,13 +1,14 @@
 'use strict';
 
-/* USER Controllers */
+/* USERS Controllers */
 
 angular.module('peckbox')
-  .controller('ProfileCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
+  .controller('UsersCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
 
+    
     
 
     // $scope.createPost = function() {

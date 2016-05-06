@@ -18,16 +18,16 @@ angular.module('peckbox', ['peckbox.services',
 
       $routeProvider.when('/profile', {
         templateUrl: 'templates/profile',
-        controller: 'ProfileCtrl'
+        controller: 'UsersCtrl'
       });
 
       $routeProvider.when('/navbar', {
         templateUrl: 'templates/navbar',
-        controller: 'ProfileCtrl'
+        controller: 'PostsCtrl'
       });
 
-      $routeProvider.when('/profile', {
-        templateUrl: 'templates/profile',
+      $routeProvider.when('/posts/:id', {
+        templateUrl: 'templates/editpost',
         controller: 'PostsCtrl'
       });
 
