@@ -1,40 +1,85 @@
 <div class="container">
+
     <div class="col-sm-3">
     <h1>TOTAL NOTES</h1>
     <h1>{{user.notes.length}}</h1>
     </div>
+
     <div class="col-sm-9">
   
       <div id="note-form" class="row">
-        
-      <form ng-submit="createNote(user)">
-        <div class="form-group">
-          <label for="note">Note</label>
-          <textarea class="form-control" ng-model="note.body"></textarea>
-        </div>
-
-        
-
-        <button type="submit">Save</button>
-      </form>
+        <form ng-submit="createNote(user)">
+          <div class="form-group">
+            <label for="note">Note</label>
+            <textarea class="form-control" ng-model="note.body"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Save</button>
+        </form>
+      </div>
    
       <div ng-repeat="note in user.notes">
         <div class="col-sm-3 card fade" ng-class="none">
+         <div ng-hide="note.editForm">
               <svg width="10" height="10" class="close-btn" ng-click="deleteNote(note)">
                   <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
                   <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
               </svg>  
-     
+              <!--  <i class="fa fa-close pull-right" ng-click="deleteNote(note)"></i> -->
             <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
             <div ng-init="limit = 140; moreShown = false">
             <p>{{note.body | limitTo: limit}}
             <a ng-show="note.body.length > limit" href ng-click="limit = note.body.length; moreShown = true">More</a>
-            <a ng-hide="note.body.length > limit" href ng-click="limit = 140; moreShown = false"> Less </a>
+            <a href="#" class="pull-right">
+              <i class="ion-edit" style="float: right" ng-click="note.editForm = true"></i>
+            </a>
+         <!--    <a ng-hide="note.body.length > limit" href ng-click="limit = 140; moreShown = false"> Less </a> -->
             </p>
+
+
+        <form ng-show="note.editForm" ng-submit="updateNote(note)">
+              <div class="form-group">
+                <textarea class="form-control" ng-model="note.body" class="form-control">
+              </div>
+              <input type="submit" value="Update" class="btn btn-default">
+        </form>
+        </div>
       </div>
+
     </div>
-  </div>
+
+
 <a href="#" class="scrollup" style="outline: none; display: inline;"><i class="fa fa-chevron-up scrollup"></i></a>
 </div>
 
 
+<!-- <div ng-repeat="note in user.notes">
+        <div class="col-sm-3 card fade" ng-class="none">
+          <div ng-hide="note.editForm">
+              <svg width="10" height="10" class="close-btn" ng-click="deleteNote(note)">
+                  <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
+                  <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
+              </svg>   -->
+            <!-- <i class="fa fa-close pull-right" ng-click="deletePost(post)"></i> -->
+           <!--  <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
+            <div ng-init="limit = 140; moreShown = false">
+            <p>{{note.body}}</p>
+            <a ng-show="note.body.length > limit" href ng-click="limit = note.body.length; moreShown = true">More</a>
+            </div>
+            <a href="#" class="pull-right">
+              <i class="ion-edit" style="float: right" ng-click="note.editForm = true"></i>
+            </a>
+          </div>
+
+            <form ng-show="note.editForm" ng-submit="updateNote(note)">
+              <div class="form-group">
+                <input type="text" ng-model="note.title" class="form-control">
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" ng-model="note.body" class="form-control">
+              </div>
+              <input type="submit" value="Update" class="btn btn-default">
+            </form>
+        </div>
+      </div>
+</div>
+ -->

@@ -30,6 +30,24 @@ angular.module('peckbox')
 
     };
 
+    $scope.editNote = function(note){
+        $scope.note = {
+            userId: note.userId[0],
+            _id: note._id,
+            body: note.body
+        };
+        console.log('edit', $scope.note);
+    };
+
+    $scope.updateNote = function(note){
+       console.log('update', note)
+       $http.put('/api/notes/'+ note._id, note)
+       .success(function(response){
+         console.log(response)
+         note.editForm = false;
+       });
+     };
+
     $scope.deleteNote = function(note) {
       $http.delete('/api/notes/' + note._id)
         .success(function(data) {

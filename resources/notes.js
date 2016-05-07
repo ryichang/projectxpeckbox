@@ -19,7 +19,25 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('api/notes/:note_id', auth.ensureAuthenticated, function (req,res) {
+	        User.findById(req.userId).exec(function (err, user) {
+	            Note.findById({ _id: req.params.note_id}, function(err, note) {
+	                if (err) { return res.status(404).send(err); }
+	                res.send(note); 
+	            });
+	        });
+	    });
 
+	app.put('/api/notes/:note_id', auth.ensureAuthenticated, function(req,res){ 
+            console.log('putroute', req.body);
+            console.log('noteId', req.params.note_id);
+            Note.findOneAndUpdate({ _id: req.params.note_id}, req.body , function (err, note) {
+                // console.log("editRoute", note);
+                if (err) { return res.send(err); }
+                // console.log('backend', note);
+                res.send(note);
+            });
+        });
 
 	app.post('/api/notes', auth.ensureAuthenticated, function (req,res) {
 		User.findById(req.userId).exec(function(err, user) {

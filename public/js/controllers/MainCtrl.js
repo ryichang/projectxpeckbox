@@ -33,7 +33,7 @@ angular.module('peckbox')
           $scope.isAuthenticated();
           $scope.user = {};
           $('#login-modal').modal('hide');
-          $location.path('/profile');
+          $location.path('/dashboard');
         })
         .catch(function(response) {
           console.log(response)
@@ -47,7 +47,7 @@ angular.module('peckbox')
           $scope.isAuthenticated();
           $scope.user = {};
           $('#login-modal').modal('hide');
-          $location.path('/profile');
+          $location.path('/dashboard');
         })
         .catch(function(response) {
           console.log(response)
@@ -93,8 +93,8 @@ angular.module('peckbox')
         $('#login-modal').modal('hide');
         //check if on splash page
         if($route.current.loadedTemplateUrl === 'templates/splash') {
-          //redirect to profile page
-          $location.path('/profile');
+          //redirect to dashboard page
+          $location.path('/dashboard');
         } else {
           //reload current page
           $route.reload(); 

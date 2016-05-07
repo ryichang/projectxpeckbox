@@ -16,8 +16,12 @@ angular.module('peckbox', ['peckbox.services',
         templateUrl: 'templates/splash'
       });
 
-      $routeProvider.when('/profile', {
-        templateUrl: 'templates/profile',
+      $routeProvider.when('/dashboard', {
+        templateUrl: 'templates/dashboard',
+        controller: 'UsersCtrl'
+      });
+      $routeProvider.when('/navbar', {
+        templateUrl: 'templates/navbar',
         controller: 'UsersCtrl'
       });
 
@@ -36,8 +40,8 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'PostsCtrl'
       });
 
-      $routeProvider.when('/profile', {
-        templateUrl: 'templates/profile',
+      $routeProvider.when('/dashboard', {
+        templateUrl: 'templates/dashboard',
         controller: 'NotesCtrl'
       });
 
@@ -46,8 +50,8 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'NotesCtrl'
       });
 
-      $routeProvider.when('/profile', {
-        templateUrl: 'templates/profile',
+      $routeProvider.when('/dashboard', {
+        templateUrl: 'templates/dashboard',
         controller: 'EventsCtrl'
       });
 
