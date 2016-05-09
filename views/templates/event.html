@@ -2,12 +2,12 @@
     <div class="col-sm-3">
     <h1>TOTAL EVENTS</h1>
     <h1>{{user.events.length}}</h1>
-      <ng-map center="current-location" zoom="11" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#7dcdcd'}]}]">
+      <ng-map center="current-location" zoom="11" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'},{saturation: '0'},{gamma: '0.5'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#dedede'}]}]">
          <transit-layer></transit-layer>
          <traffic-layer></traffic-layer>
          <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
          <marker>
-     <!--     <custom-marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
+  <!--        <custom-marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
          <div><b>{{event.title}}</b></div>
          </custom-marker> -->
         
@@ -54,7 +54,7 @@
       <div ng-repeat="post in posts | orderBy:'-created_at'"> -->
       <div ng-repeat="event in user.events">
         <div class="col-sm-3 card fade" ng-class="none">
-            <svg width="10" height="10" class="close-btn" ng-click="deleteEvent(event)">
+            <svg width="6" height="6" class="close-btn" ng-click="deleteEvent(event)">
                 <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
                 <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
             </svg>    

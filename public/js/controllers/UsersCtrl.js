@@ -8,7 +8,26 @@ angular.module('peckbox')
       $scope.user = data;
     });
 
-    
+    $scope.tabs = [{
+                title: 'Note',
+                url: 'one.tpl.html'
+            }, {
+                title: 'Task',
+                url: 'two.tpl.html'
+            }, {
+                title: 'Event',
+                url: 'three.tpl.html'
+        }];
+
+        $scope.currentTab = 'one.tpl.html';
+
+        $scope.onClickTab = function (tab) {
+            $scope.currentTab = tab.url;
+        }
+        
+        $scope.isActiveTab = function(tabUrl) {
+            return tabUrl == $scope.currentTab;
+        }
     
 
     // $scope.createPost = function() {

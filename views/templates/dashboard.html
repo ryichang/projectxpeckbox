@@ -55,7 +55,7 @@
           <img src="{{user.picture}}" alt="">
           <div class="card-name"><h4>{{user.displayName}}</h4></div>
        </div>
-       <div sticky sticky-class="imSoSticky" class="heightAuto">
+       <div class="dashboard">
      <!--  
         <label for="Search">Search</label>
         <input type="text" ng-model="search" class="form-control"> -->
@@ -100,7 +100,86 @@
                          
     <div class="col-sm-6" ng-controller="NotesCtrl">
       <div class="col-sm-12">
-         <div id="note-form" class="row hidden-xs">
+<!--         <div class="card"> -->
+        <div id="tabs" ng-controller="UsersCtrl">
+                <ul class="tabs">
+                    <li ng-repeat="tab in tabs" 
+                        ng-class="{active:isActiveTab(tab.url)}" 
+                        ng-click="onClickTab(tab)">{{tab.title}}</li>
+                </ul>
+                <div id="mainView">
+                    <div ng-include="currentTab"></div>
+                </div>
+            </div>
+            <script type="text/ng-template" id="one.tpl.html">
+            <div id="viewOne">
+              <div id="note-form">
+                <form ng-submit="createNote(user)">
+                  <div class="form-group">
+                    <label for="note">Note</label>
+                    <textarea class="form-control" ng-model="note.body" contenteditable='true' spellcheck='false'></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-default">Save</button>
+                </form>
+              </div>
+            </script>
+          
+            <script type="text/ng-template" id="two.tpl.html">
+              <div id="viewTwo">
+                <div class="post-form" ng-controller="PostsCtrl">
+                    <form ng-submit="createPost(user)">
+                      <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" type="text" ng-model="post.title" required="true">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea class="form-control" ng-model="post.body" required="true"></textarea>
+                      </div>
+                      
+                
+                      <button type="submit" class="btn btn-default">Save</button>
+                    </form>
+                </div>
+              </div>
+             </script>
+          
+            <script type="text/ng-template" id="three.tpl.html">
+              <div id="viewThree">
+                <div id="event-form">
+                  
+                <form ng-submit="createEvent(user)">
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control" type="text" ng-model="event.title" required="true">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" ng-model="event.description"></textarea>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="title">Location</label>
+                    <input type="text" g-places-autocomplete options="autocompleteOptions" ng-model="event.location" class='form-control'>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="title">Date</label>
+                
+                    <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+                    <input ng-model="event.date" type="text" class="form-control"/>
+                    </datepicker>
+                    <!-- <input type="text" datetimepicker class="form-control" ng-model="event.date"></textarea> -->
+                  </div>
+                  <button type="submit" class="btn btn-default">Save</button>
+                </form>
+              </div>
+            </script>
+        <!--   </div> -->
+
+         <!-- <div id="note-form" class="row hidden-xs">
            <form ng-submit="createNote(user)">
              <div class="form-group">
                <label for="note">Note</label>
@@ -108,7 +187,7 @@
              </div>
              <button type="submit" class="btn btn-default">Save</button>
            </form>
-         </div>
+         </div> -->
      </div>                     
     
 

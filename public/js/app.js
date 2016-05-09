@@ -8,7 +8,7 @@ angular.module('peckbox', ['peckbox.services',
                               'google.places',
                               '720kb.datepicker',
                               'ngMap',
-                              'sticky'
+                              'sticky',
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -25,8 +25,8 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'UsersCtrl'
       });
 
-      $routeProvider.when('/navbar', {
-        templateUrl: 'templates/navbar',
+      $routeProvider.when('/dashboard', {
+        templateUrl: 'templates/dashboard',
         controller: 'PostsCtrl'
       });
 
