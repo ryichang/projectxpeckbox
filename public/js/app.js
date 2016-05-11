@@ -20,6 +20,12 @@ angular.module('peckbox', ['peckbox.services',
         templateUrl: 'templates/dashboard',
         controller: 'UsersCtrl'
       });
+
+      $routeProvider.when('/profile', {
+        templateUrl: 'templates/profile',
+        controller: 'UsersCtrl'
+      });
+
       $routeProvider.when('/navbar', {
         templateUrl: 'templates/navbar',
         controller: 'UsersCtrl'

@@ -164,24 +164,34 @@
  
 </div>
 
-  <nav class="nav">
+<div ng-show="currentUser">
+<nav class="menu-nav">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
   <label class="menu-open-button" for="menu-open">
     <span class="hamburger hamburger-1"></span>
     <span class="hamburger hamburger-2"></span>
     <span class="hamburger hamburger-3"></span>
   </label>
-  <a href="#" class="menu-item">
-    <span class="glyphicon glyphicon-home"></i>
+  <a ng-click="logout()" class="menu-item">
+    <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
   </a>
-  <a href="#" class="menu-item">
-    <span class="glyphicon glyphicon-envelope"></i>
+  <a href="/events" class="menu-item">
+    <i class="fa fa-map-o" aria-hidden="true"></i>
   </a>
-  <a class="menu-item">
-  <label for="chat-toggle" class="toggle"><span class="glyphicon glyphicon-comment"></i></label>
+  <a href="/posts" class="menu-item">
+    <i class="fa fa-list" aria-hidden="true"></i>
   </a>
-  <a href="#" class="menu-item">
+  <a href="/notes" class="menu-item">
+    <i class="fa fa-file-o" aria-hidden="true"></i>
+  </a>
+  <a href="/profile" class="menu-item">
     <span class="glyphicon glyphicon-user"></i>
   </a>
+  <a href="/dashboard" class="menu-item">
+    <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+  </a>
 </nav>
-
+</div>
+ <!--   <li><a href="/notes"><i class="ion-document-text"></i> Notes<span class="badge">{{user.notes.length}}</span></a></li>
+            <li><a href="/posts"><i class="ion-clipboard"></i> Tasks<span class="badge">{{user.posts.length}}</span></a></li>
+            <li><a href="/events"><i class="ion-calendar"></i> Events<span class="badge">{{user.events.length}}</span></a></li>

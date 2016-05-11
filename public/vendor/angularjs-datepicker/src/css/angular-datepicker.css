@@ -39,7 +39,7 @@ datepicker, .datepicker, [datepicker],
   background: rgba(255,255,255,1);
   color: #333;
   position: absolute;
-  z-index: 999;
+  z-index: 9999;
   min-width: 220px;
   margin: 0 auto;
   width: 101%;

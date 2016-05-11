@@ -35,6 +35,27 @@ angular.module('peckbox')
 
     };
 
+    $scope.editEvent = function(event){
+        $scope.event = {
+            title : $scope.event.title,
+            description  : $scope.event.description,
+            location : $scope.event.location,
+            date : $scope.event.date,
+            userId: user._id,
+        };
+        console.log('edit', $scope.event);
+    };
+
+    $scope.updateEvent = function(event){
+       console.log('update', event)
+       $http.put('/api/events/'+ event._id, event)
+       .success(function(response){
+         console.log(response)
+         event.editForm = false;
+       });
+       // console.log('edit', event);
+     };
+
    // $scope.createEvent = function() {
    //    console.log('scope.event is ', $scope.event);
    //    $scope.event.owner = $scope.currentUser;

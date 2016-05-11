@@ -23,11 +23,11 @@ angular.module('peckbox')
 
         $scope.onClickTab = function (tab) {
             $scope.currentTab = tab.url;
-        }
+        };
         
         $scope.isActiveTab = function(tabUrl) {
             return tabUrl == $scope.currentTab;
-        }
+        };
     
 
     // $scope.createPost = function() {

@@ -21,6 +21,26 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('api/events/:event_id', auth.ensureAuthenticated, function (req,res) {
+		User.findById(req.userId).exec(function (err, user) {
+		    Event.findById({ _id: req.params.event_id}, function(err, event) {
+		        if (err) { return res.status(404).send(err); }
+		        res.send(event); 
+		    });
+		});
+	});
+
+	app.put('/api/events/:event_id', auth.ensureAuthenticated, function(req,res){ 
+	    console.log('putroute', req.body);
+	    console.log('eventId', req.params.event_id);
+	        Event.findOneAndUpdate({ _id: req.params.event_id}, req.body , function (err, event) {
+	            // console.log("editRoute", event);
+	            if (err) { return res.send(err); }
+	            // console.log('backend', event);
+	            res.send(event);
+	        });
+	});
+
 	app.post('/api/events', auth.ensureAuthenticated, function (req,res) {
 		User.findById(req.userId).exec(function(err, user) {
 			if (err)
