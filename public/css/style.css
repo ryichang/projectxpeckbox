@@ -23,10 +23,6 @@
 }
 
 @font-face {
-    font-family: Paralines;
-    src: url("/font/Paralines-Regular.otf");
-}
-@font-face {
     font-family: YeezyB;
     src: url("/font/yeezy_tstar-bold-webfont.ttf");
 }
@@ -51,8 +47,8 @@ body {
 /*  background-color: rgba(253,100,103,1);*/
   /*background-image: url(/img/pattern.gif);*/
 /*  background-color: rgba(255,255,255,1);*/
-
-  background-color: rgba(76,78,77,1);
+  background-color: rgba(233,233,233,1);
+ /* background-color: rgba(76,78,77,1);*/
 /*  background-color: rgba(238,237,233,1); */
   color: rgba(29,29,27,1);
   }
@@ -67,7 +63,7 @@ h1, h2, h3, h4, h5 {
   word-wrap: break-word;
   /*color: #fff;*/
 }
-h1 { font-size: 72px; }
+h1 { font-size: 72px; color: #fff;}
 h2 { font-size: 36px; font-weight: 400; }
 h3 { 
   color: #000;
@@ -78,6 +74,7 @@ h4 {
 }
 
 p {
+  font-family: Helvetica,sans-serif;
   word-wrap: break-word;
   color: #000;
 }
@@ -187,7 +184,7 @@ svg.close-btn {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
    /* border-radius: 1px;*/
-   /* box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12) , 1px 0 2px 0 rgba(0,0,0,0.12) , 0 1px 1px 0 rgba(0,0,0,0.24);*/
+    /*box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12) , 1px 0 2px 0 rgba(0,0,0,0.12) , 0 1px 1px 0 rgba(0,0,0,0.24);*/
    /* cursor: pointer;*/
     -webkit-transition: all 0.3s 0.2s ease-out;
     transition: all 0.3s 0.2s ease-out;
@@ -362,7 +359,7 @@ svg.close-btn {
 .neon:after,
 .neon:before {
   top: 23%;
-  content: 'PE\A CK';
+  /*content: 'PE\A CK';*/
   position: absolute;
   left: 29%;
   white-space: pre;

@@ -16,50 +16,80 @@ angular.module('peckbox', ['peckbox.services',
         templateUrl: 'templates/splash'
       });
 
-      $routeProvider.when('/dashboard', {
-        templateUrl: 'templates/dashboard',
-        controller: 'UsersCtrl'
-      });
-
       $routeProvider.when('/profile', {
         templateUrl: 'templates/profile',
         controller: 'UsersCtrl'
       });
 
-      $routeProvider.when('/navbar', {
-        templateUrl: 'templates/navbar',
+      $routeProvider.when('/profile', {
+        templateUrl: 'templates/profile',
+        controller: 'PostsCtrl'
+      });
+
+      $routeProvider.when('/profile', {
+        templateUrl: 'templates/profile',
+        controller: 'NotesCtrl'
+      });
+
+      $routeProvider.when('/profile', {
+        templateUrl: 'templates/profile',
+        controller: 'EventsCtrl'
+      });
+
+
+      $routeProvider.when('/dashboard', {
+        templateUrl: 'templates/dashboard',
         controller: 'UsersCtrl'
       });
 
       $routeProvider.when('/dashboard', {
         templateUrl: 'templates/dashboard',
-        controller: 'PostsCtrl'
-      });
-
-      $routeProvider.when('/posts/:id', {
-        templateUrl: 'templates/editpost',
-        controller: 'PostsCtrl'
-      });
-
-      $routeProvider.when('/posts', {
-        templateUrl: 'templates/post',
-        controller: 'PostsCtrl'
+        controller: 'NotesCtrl'
       });
 
       $routeProvider.when('/dashboard', {
         templateUrl: 'templates/dashboard',
-        controller: 'NotesCtrl'
-      });
-
-      $routeProvider.when('/notes', {
-        templateUrl: 'templates/note',
-        controller: 'NotesCtrl'
+        controller: 'PostsCtrl'
       });
 
       $routeProvider.when('/dashboard', {
         templateUrl: 'templates/dashboard',
         controller: 'EventsCtrl'
       });
+
+    
+      
+
+      $routeProvider.when('/navbar', {
+        templateUrl: 'templates/navbar',
+        controller: 'UsersCtrl'
+      });
+
+      // $routeProvider.when('/dashboard', {
+      //   templateUrl: 'templates/dashboard',
+      //   controller: 'PostsCtrl'
+      // });
+
+
+      $routeProvider.when('/posts', {
+        templateUrl: 'templates/post',
+        controller: 'PostsCtrl'
+      });
+
+      // $routeProvider.when('/dashboard', {
+      //   templateUrl: 'templates/dashboard',
+      //   controller: 'NotesCtrl'
+      // });
+
+      $routeProvider.when('/notes', {
+        templateUrl: 'templates/note',
+        controller: 'NotesCtrl'
+      });
+
+      // $routeProvider.when('/dashboard', {
+      //   templateUrl: 'templates/dashboard',
+      //   controller: 'EventsCtrl'
+      // });
 
       $routeProvider.when('/events', {
         templateUrl: 'templates/event',
