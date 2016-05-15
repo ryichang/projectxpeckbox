@@ -3,7 +3,7 @@
 /* MAIN Controller */
 
 angular.module('peckbox')
-  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', 'Auth', '$route', function ($scope, $rootScope, $location, $auth, $http, Auth, $route) {
+  .controller('MainCtrl', ['$scope', '$rootScope', '$location', '$auth', '$http', 'Auth', '$route', 'toastr', function ($scope, $rootScope, $location, $auth, $http, Auth, $route, toastr) {
 
   
 
@@ -83,7 +83,7 @@ angular.module('peckbox')
     $scope.authenticate = function(provider) {
       $auth.authenticate(provider).then(function() {
         //notify user they have succesfully logged in with facebook
-        // toastr.success('You have successfully signed in with ' + provider + '!');
+        toastr.success('You have successfully signed in with ' + provider + '!');
         //set current user
         $scope.currentUser = Auth.currentUser();
         //set user
@@ -106,7 +106,7 @@ angular.module('peckbox')
             // toastr.error(error.error);
           } else if (error.data) {
             // HTTP response error from server
-            // toastr.error(error.data.message, error.status);
+            toastr.error(error.data.message, error.status);
           } else {
             // toastr.error(error);
           }
