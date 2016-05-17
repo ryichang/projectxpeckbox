@@ -77,6 +77,8 @@ p {
   font-family: Helvetica,sans-serif;
   word-wrap: break-word;
   color: #000;
+  max-height: 100px;
+  overflow: auto;
 }
 html, body {
     overflow-x: hidden;
@@ -117,8 +119,22 @@ a {
   cursor: pointer;
 } 
 
-a:visited {
+/*a:visited {
   color: #fff !important;
+}*/
+
+.default {
+/*  background-color: rgba(252, 238, 48, 1);*/
+ /* background-color: rgba(237,73,86,1) !important;*/
+  background: rgba(255,255,255,1);
+}
+
+.red {
+  background: rgba(237,73,86,1);
+}
+
+.blue {
+  background: rgba(169,216,200,1);
 }
 
 .navbar {
@@ -800,6 +816,10 @@ li {
           transform: translate3d(0, 0, 0);
   -webkit-transition: -webkit-transform ease-out 300ms;
           transition: transform ease-out 300ms;
+}
+
+.menu-item:visited {
+  color: rgba(255,255,255,1);
 }
 
 .menu-open {

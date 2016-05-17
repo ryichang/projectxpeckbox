@@ -3,7 +3,7 @@
 /* Event Controller */
 
 angular.module('peckbox')
-  .controller('EventsCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
+  .controller('EventsCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', function($scope, $http, $auth, Auth, toastr) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
@@ -25,6 +25,7 @@ angular.module('peckbox')
         console.log("front is", body);
         $http.post('/api/events', body)
         .success(function(response){
+            toastr.success('You have successfully created an event!');
             console.log('response', response);
              $scope.user.events.unshift(response);
         })
@@ -49,6 +50,7 @@ angular.module('peckbox')
        console.log('update', event)
        $http.put('/api/events/'+ event._id, event)
        .success(function(response){
+         toastr.success('You have successfully updated an event!');
          console.log(response)
          event.editForm = false;
        });
@@ -69,6 +71,7 @@ angular.module('peckbox')
     $scope.deleteEvent = function(event) {
       $http.delete('/api/events/' + event._id)
         .success(function(data) {
+          toastr.success('You have successfully deleted an event!');
           var index = $scope.user.events.indexOf(event);
           $scope.user.events.splice(index,1);
 

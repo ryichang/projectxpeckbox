@@ -3,7 +3,7 @@
 /* NOTE Controllers */
 
 angular.module('peckbox')
-  .controller('NotesCtrl', ['$scope', '$http', '$auth', 'Auth', function($scope, $http, $auth, Auth) {
+  .controller('NotesCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', function($scope, $http, $auth, Auth, toastr) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
@@ -21,8 +21,9 @@ angular.module('peckbox')
         console.log(config);
         $http.post('/api/notes', config)
         .success(function(response){
+            toastr.success('You have successfully created a note!');
             console.log('response', response);
-             $scope.user.notes.unshift(response);
+            $scope.user.notes.unshift(response);
         })
         .error(function(response){
             console.log('err', response);
@@ -43,6 +44,7 @@ angular.module('peckbox')
        console.log('update', note)
        $http.put('/api/notes/'+ note._id, note)
        .success(function(response){
+         toastr.success('You have successfully edited a note!');
          console.log(response)
          note.editForm = false;
        });
@@ -51,6 +53,7 @@ angular.module('peckbox')
     $scope.deleteNote = function(note) {
       $http.delete('/api/notes/' + note._id)
         .success(function(data) {
+          toastr.success('You have successfully deleted a note!');
           var index = $scope.user.notes.indexOf(note);
           $scope.user.notes.splice(index,1);
 

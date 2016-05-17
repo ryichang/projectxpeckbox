@@ -15,7 +15,7 @@
       </div>
       <div ng-repeat="post in user.posts | filter:search">
       
-         <div class="col-sm-11 card fade" ng-class="none">
+         <div class="col-sm-11 card fade">
            <div ng-hide="post.editForm">
                <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
                 <h3>{{post.title}}</h3>

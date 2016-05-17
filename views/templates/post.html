@@ -23,7 +23,7 @@
       <div ng-repeat="post in posts | orderBy:'-created_at'"> -->
     
       <div ng-repeat="post in user.posts">
-        <div class="col-sm-2 card fade" ng-class="none">
+        <div class="col-sm-3 card fade">
           <div ng-hide="post.editForm">
               <svg width="6" height="6" class="close-btn" ng-click="deletePost(post)">
                   <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
@@ -32,8 +32,13 @@
             <!-- <i class="fa fa-close pull-right" ng-click="deletePost(post)"></i> -->
             <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
-            <h3>{{post.title}}</h3>
+            <h3 class="{{post.color}}">{{post.title}}</h3>
             <p>{{post.body}}</p>
+              <input type="button" value="default" ng-model="post.color" ng-click="test(post)">
+              <input type="button" value="red" ng-model="post.color" ng-click="test(post)">
+              <input type="text" ng-model="post.color" ng-click="test(post)">
+            <!--   <input type="button" value="Red" ng-click="color={background:'rgba(237,73,86,1)'}">
+              <input type="button" value="Blue" ng-click="color={background:'rgba(169,216,200,1)'}"> -->
             <a href="#" class="pull-right">
               <i class="ion-edit" style="float: right" ng-click="post.editForm = true"></i>
             </a>
@@ -47,6 +52,8 @@
                 <input type="text" ng-model="post.body" class="form-control">
              <!--    <textarea class="textarea form-control" ng-model="post.body" > -->
               </div>
+
+         
               <input type="submit" value="Update" class="btn btn-default">
             </form>
           </div>

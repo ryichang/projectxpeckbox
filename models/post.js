@@ -7,8 +7,7 @@ var PostSchema = Schema({
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
   userId : [{type: Schema.Types.ObjectId, ref: 'User'}],
-  start : Boolean,
-  done  : Boolean
+  color  : {type: String, default: "default"},
 });
 
 
