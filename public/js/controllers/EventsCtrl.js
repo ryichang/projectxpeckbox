@@ -11,7 +11,7 @@ angular.module('peckbox')
 
     $scope.event = {};
 
-  
+    
 
     $scope.createEvent = function(user) {
      

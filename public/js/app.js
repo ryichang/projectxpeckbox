@@ -9,7 +9,7 @@ angular.module('peckbox', ['peckbox.services',
                               '720kb.datepicker',
                               'ngMap',
                               'sticky',
-                              'toastr'
+                              'toastr',
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {

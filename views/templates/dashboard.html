@@ -1,18 +1,19 @@
 
-<div class="container" ng-controller="PostsCtrl">
-
+<div class="container">
+  <div class="dashboard">
+  <div sticky class="search">
+          <label for="Search">Search</label>
+          <input type="text" ng-model="search" placeholder="Search" class="form-control">
+        </div>
+  </div>
   <div class="row">
+  <div class="none" ng-controller="PostsCtrl">
     <div class="col-sm-3">
       <div class="card hidden-xs">
           <img src="{{user.picture}}" alt="">
           <div class="card-name"><h4>{{user.displayName}}</h4></div>
       </div>
-      <div class="dashboard">
-        <div class="search">
-          <label for="Search">Search</label>
-          <input type="text" ng-model="search" class="form-control">
-        </div>
-      </div>
+    
       <div ng-repeat="post in user.posts | filter:search">
       
          <div class="col-sm-11 card fade">
@@ -117,7 +118,7 @@
           
             <script type="text/ng-template" id="three.tpl.html">
               <div id="viewThree">
-                <div id="event-form" ng-controller="EventsCtrl">
+                <div id="event-form">
                   
                 <form ng-submit="createEvent(user)">
                   <div class="form-group">
@@ -204,7 +205,8 @@
         </div>
      </div>                          
     </div>
-
+  </div>
+       
     <div class="col-sm-3">
       <ng-map center="current-location" zoom="10" class="map hidden-xs" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#7dcdcd'}]}]">
          <transit-layer></transit-layer>

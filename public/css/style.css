@@ -17,6 +17,19 @@
     color: #000;
 }
 
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #606060;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #2d2d2d;
+    border-left: 1px solid #2d2d2d;
+}
+
 @font-face {
     font-family: VCR;
     src: url("/font/VCR_OSD_MONO.ttf");
@@ -38,6 +51,8 @@
     font-family: BaltoThin;
     src: url("/font/BaltoThin.otf");
 }
+
+
 
 body {
   margin:0px; 
@@ -78,8 +93,8 @@ p {
   word-wrap: break-word;
   color: #000;
   max-height: 100px;
-  overflow: auto;
-}
+  /*overflow: auto;
+*/}
 html, body {
     overflow-x: hidden;
     overflow-y: auto;
@@ -126,7 +141,7 @@ a {
 .default {
 /*  background-color: rgba(252, 238, 48, 1);*/
  /* background-color: rgba(237,73,86,1) !important;*/
-  background: rgba(255,255,255,1);
+  background: transparent;
 }
 
 .red {
@@ -176,8 +191,8 @@ a {
 
 svg.close-btn {
     position: absolute;
-    margin-top: 5px;
-    margin-right: 5px;
+ /*   margin-top: 5px;
+    margin-right: 5px;*/
     top: 0;
     right: 0;
     z-index: 2;
@@ -189,6 +204,7 @@ svg.close-btn {
 
 .card {
    /* max-width: 30rem;*/
+    min-width: 230px;
     position: relative;
     padding: 10px 10px 30px;
     margin: 20px;
@@ -204,7 +220,7 @@ svg.close-btn {
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
    /* border-radius: 1px;*/
-    /*box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12) , 1px 0 2px 0 rgba(0,0,0,0.12) , 0 1px 1px 0 rgba(0,0,0,0.24);*/
+   /* box-shadow: -1px 0 2px 0 rgba(0,0,0,0.12) , 1px 0 2px 0 rgba(0,0,0,0.12) , 0 1px 1px 0 rgba(0,0,0,0.24);*/
    /* cursor: pointer;*/
     -webkit-transition: all 0.3s 0.2s ease-out;
     transition: all 0.3s 0.2s ease-out;
@@ -730,16 +746,18 @@ small.text-muted {
 .map {
   margin-top: 20px;
   margin-left: 20px;
-  max-width: 220px;
+  max-width: 230px;
 }
 
 .dashboard {
+  min-width: 230px;
+  margin-top: -90px;
   height: auto !important;
   background-color: rgba(255,255,255,1);
   padding-top: 20px;
  /* max-width: 290px;*/
-  max-width: 223px;
-  margin-left: 20px;
+  max-width: 230px;
+  margin-left: 895px;
   padding-bottom: 20px;
   border-bottom: 3px solid #000;
 }
