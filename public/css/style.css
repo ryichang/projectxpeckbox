@@ -57,7 +57,7 @@
 body {
   margin:0px; 
   padding:0px;
-/*  background: -webkit-linear-gradient(330deg, #17bebb, #f0a6ca);
+ /* background: -webkit-linear-gradient(330deg, #17bebb, #f0a6ca);
   background: linear-gradient(120deg, #17bebb, #f0a6ca); */
 /*  background-color: rgba(253,100,103,1);*/
   /*background-image: url(/img/pattern.gif);*/
@@ -92,9 +92,23 @@ p {
   font-family: Helvetica,sans-serif;
   word-wrap: break-word;
   color: #000;
-/*  max-height: 100px;*/
+  max-height: 100px;
   /*overflow: auto;
-*/}
+*/
+  overflow: auto;
+/*    line-height: 2em;*/
+/*    font-family: "Exo";*/
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjAuMCIgeDI9IjAuNSIgeTI9IjEuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwLjUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA='), url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHJhZGlhbEdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgY3g9IjUwJSIgY3k9IjAlIiByPSI3MCUiPjxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiLz48c3RvcCBvZmZzZXQ9IjcwJSIgc3RvcC1jb2xvcj0iIzAwMDAwMCIgc3RvcC1vcGFjaXR5PSIwLjAiLz48L3JhZGlhbEdyYWRpZW50PjwvZGVmcz48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQpIiAvPjwvc3ZnPiA=');
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #ffffff), color-stop(100%, rgba(255, 255, 255, 0.5))), radial-gradient(top, #000000, rgba(0, 0, 0, 0) 70%);
+    background: -moz-linear-gradient(#ffffff, rgba(255, 255, 255, 0.5)), -moz-radial-gradient(top, #000000, rgba(0, 0, 0, 0) 70%);
+    background: -webkit-linear-gradient(#ffffff, rgba(255, 255, 255, 0.5)), -webkit-radial-gradient(top, #000000, rgba(0, 0, 0, 0) 70%);
+    background: linear-gradient(#ffffff, rgba(255, 255, 255, 0.5)), radial-gradient(top, #000000, rgba(0, 0, 0, 0) 70%);
+    background-size: 100% 60px, 100% 15px;
+    background-repeat: no-repeat;
+    /* using 'local' causes the LINEAR-GRADIENT to scroll out of view while 'scroll' keeps the shadow
+     * with the paragraph as it scrolls (they correspond to thier placements in the +background property above) */
+    background-attachment: local, scroll;
+}
 html, body {
     overflow-x: hidden;
     overflow-y: auto;
@@ -117,9 +131,75 @@ html, body {
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(0,0,0,1);
+   /*  background: linear-gradient(to right, #D24335 55%, #6E4CD2);
+        opacity: .5;*/
+    background: linear-gradient(135deg, #34a4ca 0%, #59d7dd 28%, #a8f2f0 59%, #d0f8ef 84%, #d6f6e1 100%);
     z-index: 10;
   }
+
+.back{
+height:100%;
+pointer-events:none;
+}
+.back *{
+@include transition(all 1.0s ease);
+}
+
+@-webkit-keyframes STAR-MOVE {
+  from {
+    background-position: 5% 5%
+  }
+  to { 
+    background-position: -1300% 0%
+  }
+}
+
+.background {
+  background: transparent url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/21555/background.png) repeat 5% 5%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: -100;
+  -webkit-animation: STAR-MOVE 200s linear infinite;
+}
+.fast .background{
+  -webkit-animation: STAR-MOVE 10s linear infinite;
+}
+
+.midground {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/21555/midground.png) repeat 20% 20%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 200; 
+  -webkit-animation: STAR-MOVE 150s linear infinite;
+}
+.fast .midground{
+  -webkit-animation: STAR-MOVE 7.5s linear infinite;
+}
+.foreground {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/21555/foreground.png) repeat 35% 35%;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 300;
+    -webkit-animation: STAR-MOVE 100s linear infinite;
+}
+.fast .foreground{
+  -webkit-animation: STAR-MOVE 5.0s linear infinite;
+}
+
+.shadow{
+display: block;
+position: relative;
+width: 80px;
+height: 8px;
+background: rgba(87, 168, 184, 0.57);
+top: 60px;
+border-radius: 10px;
+left: 5%;
+  @include transition(all 1.0s ease);
+opacity: 0.75;
+  -webkit-filter:blur(0px);
+  
+}
 
 
 .navbar-right {
@@ -218,6 +298,7 @@ svg.close-btn {
     position: relative;
     padding: 10px 10px 30px;
     margin: 20px;
+ /*   background: #efe7e0;*/
     background: rgba(255,255,255, 1); 
    /* max-height: 300px;
     overflow:scroll;*/
@@ -388,15 +469,16 @@ svg.close-btn {
   letter-spacing: 4px;
   font-size: 1.8em;
   display: inline-block;
-  /*color: #ff5277 !important;*/
+ /* color: #ff5277 !important;*/
   color: #fff !important;
   text-align: center;
   padding: .75em 1em;
-  border: 3px solid #ff5277;
+  border: 3px solid #fff;
+/*  border: 3px solid #ff5277;*/
   border-radius: 3px;
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.3), inset 0 0 4px 2px rgba(0, 0, 0, 0.3);
+  /*box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.3), inset 0 0 4px 2px rgba(0, 0, 0, 0.3);*/
   line-height: .9;
   opacity: .9;
   -webkit-animation: blinker 1s infinite;
@@ -406,7 +488,7 @@ svg.close-btn {
 .neon:after,
 .neon:before {
   top: 23%;
-  content: 'PE\A CK';
+ /* content: 'PE\A CK';*/
   position: absolute;
   left: 29%;
   white-space: pre;
@@ -447,7 +529,7 @@ svg.close-btn {
 .navbar-brand:after,
 .navbar-brand:before {
   top: 18%;
-  content: 'PECK\A BOX';
+  /*content: 'PECK\A BOX';*/
   position: absolute;
   left: 23%;
   white-space: pre;
