@@ -6,25 +6,27 @@
   </div>
 
   <div class="col-sm-9">
-  
-    <div id="note-form" class="row">
+    <div class="card">
+    <div id="note-form">
       <form ng-submit="createNote(user)">
         <div class="form-group">
           <label for="note">Note</label>
           <textarea class="form-control" ng-model="note.body"></textarea>
         </div>
-          <button type="submit" class="btn btn-default">Save</button>
+          <button type="submit" class="btn btn-social">Save</button>
       </form>
     </div>
+    </div>
+    
    
     <div ng-repeat="note in user.notes">
-      <div class="col-sm-5 card fade" ng-class="none">
+      <div class="col-sm-3 card fade" ng-class="none">
         <div ng-hide="note.editForm">
-            <svg width="6" height="6" class="close-btn" ng-click="deleteNote(note)">
+            <i class="fa fa-close pull-right" ng-click="deleteNote(note)"></i>
+           <!--  <svg width="6" height="6" class="close-btn" ng-click="deleteNote(note)">
                 <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
                 <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
-            </svg>  
-              <!--  <i class="fa fa-close pull-right" ng-click="deleteNote(note)"></i> -->
+            </svg>   -->
             <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
            <!--  <div ng-init="limit = 140; moreShown = false"> -->
             <p>{{note.body}}

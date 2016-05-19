@@ -10,6 +10,7 @@ angular.module('peckbox', ['peckbox.services',
                               'ngMap',
                               'sticky',
                               'toastr',
+                              'angular-loading-bar',
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -21,22 +22,6 @@ angular.module('peckbox', ['peckbox.services',
         templateUrl: 'templates/profile',
         controller: 'UsersCtrl'
       });
-
-      $routeProvider.when('/profile', {
-        templateUrl: 'templates/profile',
-        controller: 'PostsCtrl'
-      });
-
-      $routeProvider.when('/profile', {
-        templateUrl: 'templates/profile',
-        controller: 'NotesCtrl'
-      });
-
-      $routeProvider.when('/profile', {
-        templateUrl: 'templates/profile',
-        controller: 'EventsCtrl'
-      });
-
 
       $routeProvider.when('/dashboard', {
         templateUrl: 'templates/dashboard',
@@ -66,31 +51,15 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'UsersCtrl'
       });
 
-      // $routeProvider.when('/dashboard', {
-      //   templateUrl: 'templates/dashboard',
-      //   controller: 'PostsCtrl'
-      // });
-
-
       $routeProvider.when('/posts', {
         templateUrl: 'templates/post',
         controller: 'PostsCtrl'
       });
 
-      // $routeProvider.when('/dashboard', {
-      //   templateUrl: 'templates/dashboard',
-      //   controller: 'NotesCtrl'
-      // });
-
       $routeProvider.when('/notes', {
         templateUrl: 'templates/note',
         controller: 'NotesCtrl'
       });
-
-      // $routeProvider.when('/dashboard', {
-      //   templateUrl: 'templates/dashboard',
-      //   controller: 'EventsCtrl'
-      // });
 
       $routeProvider.when('/events', {
         templateUrl: 'templates/event',
@@ -103,7 +72,8 @@ angular.module('peckbox', ['peckbox.services',
       $locationProvider.html5Mode(true);
     }])
 
- 
+  
+
      .config(function($authProvider, $windowProvider) {
       var $window = $windowProvider.$get();
       if ($window.location.host == 'localhost:1337') {

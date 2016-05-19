@@ -55,7 +55,8 @@ module.exports = function(app) {
       
       var user = new User({
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        displayName: req.body.displayName,
       });
 
       user.save(function(err) {

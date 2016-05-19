@@ -1,7 +1,13 @@
 $(document).ready(function(){
 	
-// console.log("SANITY CHECK!!!!!!!");
-
+console.log("SANITY CHECK!!!!!!!");
+$(window).scroll(function() {
+  if ($(document).scrollTop() > 50) {
+    $('navbar').addClass('shrink');
+  } else {
+    $('navbar').removeClass('shrink');
+  }
+});
 
 
 $('.text-1').children('p').each(function(index){

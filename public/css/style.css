@@ -18,7 +18,7 @@
 }
 
 ::-webkit-scrollbar {
-    width: 15px;
+    width: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -92,7 +92,7 @@ p {
   font-family: Helvetica,sans-serif;
   word-wrap: break-word;
   color: #000;
-  max-height: 100px;
+/*  max-height: 100px;*/
   /*overflow: auto;
 */}
 html, body {
@@ -152,7 +152,7 @@ a {
   background: rgba(169,216,200,1);
 }
 
-.navbar {
+nav.navbar {
   top: 0;
   border-width: 0 0 1px;
   position: fixed;
@@ -165,7 +165,15 @@ a {
   -webkit-text-shadow: none;
   text-shadow: none;
   box-shadow: none;
+   -webkit-transition: all 0.4s ease;
+   transition: all 0.4s ease;
 }
+
+nav.navbar.shrink {
+  min-height: 10px;
+}
+
+
 
 .container {
   margin-top: 100px;
@@ -204,7 +212,9 @@ svg.close-btn {
 
 .card {
    /* max-width: 30rem;*/
+    border-radius: 20px;
     min-width: 230px;
+    max-width: 770px;
     position: relative;
     padding: 10px 10px 30px;
     margin: 20px;
@@ -378,7 +388,8 @@ svg.close-btn {
   letter-spacing: 4px;
   font-size: 1.8em;
   display: inline-block;
-  color: #ff5277 !important;
+  /*color: #ff5277 !important;*/
+  color: #fff !important;
   text-align: center;
   padding: .75em 1em;
   border: 3px solid #ff5277;
@@ -417,7 +428,7 @@ svg.close-btn {
   font-family: 'YeezyB', sans-serif;
   font-size: 1.2em;
   display: inline-block;
-  color: #ff5277 !important;
+  color: #fff !important;
   text-align: center;
   padding: .75em 1em;
 /*  border: 3px solid #ff5277;
@@ -436,7 +447,7 @@ svg.close-btn {
 .navbar-brand:after,
 .navbar-brand:before {
   top: 18%;
-/*  content: 'PECK\A BOX';*/
+  content: 'PECK\A BOX';
   position: absolute;
   left: 23%;
   white-space: pre;
@@ -746,6 +757,12 @@ small.text-muted {
 .map {
   margin-top: 20px;
   margin-left: 20px;
+  max-width: 770px;
+}
+
+.dashboardmap {
+  margin-top: 20px;
+  margin-left: 20px;
   max-width: 230px;
 }
 
@@ -757,7 +774,7 @@ small.text-muted {
   padding-top: 20px;
  /* max-width: 290px;*/
   max-width: 230px;
-  margin-left: 895px;
+  margin-left: 896px;
   padding-bottom: 20px;
   border-bottom: 3px solid #000;
 }
@@ -899,8 +916,9 @@ li {
 }
 
 .menu-item:hover {
-  background: linear-gradient(135deg, #000, #000);
-  color: rgba(245, 245, 245, 0.80);
+/*  background: linear-gradient(135deg, #000, #000);*/
+  color: #ff5277;
+/*  color: rgba(245, 245, 245, 0.80);*/
 }
 .menu-item:nth-child(3) {
   -webkit-transition-duration: 180ms;

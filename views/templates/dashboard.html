@@ -1,7 +1,7 @@
 
 <div class="container">
   <div class="dashboard">
-  <div sticky class="search">
+  <div class="search">
           <label for="Search">Search</label>
           <input type="text" ng-model="search" placeholder="Search" class="form-control">
         </div>
@@ -208,7 +208,7 @@
   </div>
        
     <div class="col-sm-3">
-      <ng-map center="current-location" zoom="10" class="map hidden-xs" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#7dcdcd'}]}]">
+      <ng-map center="current-location" zoom="10" class="dashboardmap hidden-xs" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#000000'},{lightness:'30'}]}]">
          <transit-layer></transit-layer>
          <traffic-layer></traffic-layer>
          <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">

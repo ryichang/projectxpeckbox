@@ -1,49 +1,56 @@
 <div class="container">
     <div class="col-sm-3">
+   
     <h1>TOTAL EVENTS</h1>
-    <h1>{{user.events.length}}</h1>
-      <ng-map center="current-location" zoom="10" class="map hidden-xs" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#7dcdcd'}]}]">
-         <transit-layer></transit-layer>
-         <traffic-layer></traffic-layer>
-         <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
-         </marker>
-      </ng-map>
+    <h1>{{user.events.length}}</h1> 
     </div>
+
     <div class="col-sm-9">
+     <ng-map center="current-location" zoom="9" class="map hidden-xs" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#000000'},{lightness:'30'}]}]">
+        <transit-layer></transit-layer>
+        <traffic-layer></traffic-layer>
+        <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
+        </marker>
+     </ng-map>
+
+     <!-- FORM TO CREATE EVENTS -->
+     <div class="col-sm-12 card fade">
+     <div id="event-form">
+       
+     <form ng-submit="createEvent(user)">
+       <div class="form-group">
+         <label for="title">Title</label>
+         <input class="form-control" type="text" ng-model="event.title" required="true">
+       </div>
+
+       <div class="form-group">
+         <label for="description">Description</label>
+         <textarea class="form-control" ng-model="event.description"></textarea>
+       </div>
+
+       <div class="form-group">
+         <label for="title">Location</label>
+         <input type="text" g-places-autocomplete options="autocompleteOptions" ng-model="event.location" class='form-control'>
+       </div>
+
+       <div class="form-group">
+         <label for="title">Date</label>
+     
+         <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+         <input ng-model="event.date" type="text" class="form-control"/>
+         </datepicker>
+         <!-- <input type="text" datetimepicker class="form-control" ng-model="event.date"></textarea> -->
+       </div>
+       
+       <button class="btn btn-default" type="submit">Save</button>
+      
+     </form>
+     </div>
+     </div>
      <!--  <div class="page-header">
         <h4>Events</h4><p>User ID: {{user._id}}</p> <p>Total Events: {{user.events.length}}</p> 
       </div> -->
-      <!-- FORM TO CREATE EVENTS -->
-      <div id="event-form" class="row">
-        
-      <form ng-submit="createEvent(user)">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input class="form-control" type="text" ng-model="event.title" required="true">
-        </div>
-
-        <div class="form-group">
-          <label for="description">Description</label>
-          <textarea class="form-control" ng-model="event.description"></textarea>
-        </div>
-
-        <div class="form-group">
-          <label for="title">Location</label>
-          <input type="text" g-places-autocomplete options="autocompleteOptions" ng-model="event.location" class='form-control'>
-        </div>
-
-        <div class="form-group">
-          <label for="title">Date</label>
-  
-          <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
-          <input ng-model="event.date" type="text" class="form-control"/>
-          </datepicker>
-          <!-- <input type="text" datetimepicker class="form-control" ng-model="event.date"></textarea> -->
-        </div>
       
-  
-        <button type="submit">Save</button>
-      </form>
         
 
      <!-- 
