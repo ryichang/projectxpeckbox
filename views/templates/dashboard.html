@@ -16,10 +16,10 @@
     
       <div ng-repeat="post in user.posts | filter:search">
       
-         <div class="col-sm-11 card fade">
+         <div class="col-sm-11 card fade" id="{{post.color}}">
            <div ng-hide="post.editForm">
                <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
-                <h3 class="{{post.color}}">{{post.title}}</h3>
+                <h3>{{post.title}}</h3>
                 <p>{{post.body}}</p>
                 <a href="#" class="pull-right">
                   <i class="ion-more" style="float: right" ng-click="post.editForm = true"></i>

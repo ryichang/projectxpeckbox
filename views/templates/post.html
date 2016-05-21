@@ -25,7 +25,7 @@
       <div ng-repeat="post in posts | orderBy:'-created_at'"> -->
     
       <div ng-repeat="post in user.posts">
-        <div class="col-sm-3 card fade" ng-style="myStyle">
+        <div class="col-sm-3 card fade" id="{{post.color}}">
           <div ng-hide="post.editForm">
               <svg width="8" height="8" class="close-btn" ng-click="deletePost(post)">
                   <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
@@ -34,13 +34,9 @@
           <!--   <i class="fa fa-close pull-right" ng-click="deletePost(post)"></i> -->
             <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
-            <h3 class="{{post.color}}">{{post.title}}</h3>
-            <p class="{{post.color}}">{{post.body}}</p>
-              <input type="button" value="Red" ng-click="myStyle={background:'rgba(237,73,86,1)'}">
-              <input type="button" value="Green" ng-click="myStyle={background: 'rgba(169,216,200,1)'}">
-
-              <!-- <input type="button" ng-model="post.color" value="default" ng-click="updatePost(post)"> -->
-           <!--    <input type="button" ng-model="post.color" value="red" ng-click="updatePost(post)"> -->
+            <h3>{{post.title}}</h3>
+            <p>{{post.body}}</p>
+             
               <input type="button" value="default" ng-model="post.color" ng-click="test(post, 'default')">
               <input type="button"  value="blue" ng-model="post.color" ng-click="test(post, 'blue')">
               <input type="button"  value="red" ng-model="post.color" ng-click="test(post, 'red')">

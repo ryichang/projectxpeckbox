@@ -1,19 +1,19 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var PostSchema = Schema({
-  title  : String,
+var CommentSchema = Schema({
   body   : String,
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
   userId : [{type: Schema.Types.ObjectId, ref: 'User'}],
-  comments         : [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-  color  : {type: String, default: "default"},
+  posts         : [{ type: Schema.Types.ObjectId, ref: 'Post' }],
+  notes         : [{ type: Schema.Types.ObjectId, ref: 'Note' }],
+  events        : [{ type: Schema.Types.ObjectId, ref: 'Event' }],
 });
 
 
 // MIDDLEWARE
-PostSchema.pre('save', function(next){
+CommentSchema.pre('save', function(next){
   // set a created_at and update updated_at
   now = new Date();
   this.updated_at = now;
@@ -25,6 +25,6 @@ PostSchema.pre('save', function(next){
 
 
 
-var Post = mongoose.model('Post', PostSchema);
+var Comment = mongoose.model('Comment', CommentSchema);
 
-module.exports = Post;
+module.exports = Comment;

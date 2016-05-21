@@ -14,6 +14,7 @@ module.exports = function(app) {
         .populate('posts')
         .populate('events')
         .populate('notes')
+        .populate('comments')
         .exec(function(err, user) {
           console.log(user);
           res.send(user);
