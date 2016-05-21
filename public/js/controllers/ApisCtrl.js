@@ -16,23 +16,28 @@ angular.module('peckbox')
         $scope.location = response
         console.log('ApisCtrl', $scope.location)
 
-        var url="http:"
+        var url = "http://api.openweathermap.org/data/2.5/";
+    	var unit = "&units=imperial";
+    	var key = "&appid=c55ec823be46f88fbcf55db70cc8e772";
+
+    	
+
     });
 }]);
 
 
 
 
-  var url = "http://api.openweathermap.org/data/2.5/";
-    var unit = "&units=imperial";
-    var key = "&appid=c55ec823be46f88fbcf55db70cc8e772";
-    var cityName;
-    $.getJSON('http://ipinfo.io', function(data) {
+  // var url = "http://api.openweathermap.org/data/2.5/";
+  //   var unit = "&units=imperial";
+  //   var key = "&appid=c55ec823be46f88fbcf55db70cc8e772";
+  //   var cityName;
+  //   $.getJSON('http://ipinfo.io', function(data) {
 
-        var lat = data.loc.split(",")[0];
-        var lon = data.loc.split(",")[1];
-        var query = "lat=" + lat + "&lon=" + lon;
-        $.get(url + "weather?" + query + unit + key, function(response){
-            console.log(response)
-        });
-    });
+  //       var lat = data.loc.split(",")[0];
+  //       var lon = data.loc.split(",")[1];
+  //       var query = "lat=" + lat + "&lon=" + lon;
+  //       $.get(url + "weather?" + query + unit + key, function(response){
+  //           console.log(response)
+  //       });
+  //   });

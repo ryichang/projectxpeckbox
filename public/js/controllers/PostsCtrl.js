@@ -116,7 +116,7 @@ angular.module('peckbox')
        // console.log('update', post)
        $http.put('/api/posts/'+ post._id, post)
        .success(function(response){
-         toastr.success('You have successfully updated a task!');
+         toastr.warning('You have successfully updated a task!');
          console.log(response)
          post.editForm = false;
        });
@@ -169,7 +169,7 @@ angular.module('peckbox')
     $scope.deletePost = function(post) {
       $http.delete('/api/posts/' + post._id)
         .success(function(data) {
-          toastr.success('You have successfully deleted a task!');
+          toastr.error('You have successfully deleted a task!');
           var index = $scope.user.posts.indexOf(post);
           $scope.user.posts.splice(index,1);
 

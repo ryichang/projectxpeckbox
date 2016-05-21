@@ -44,7 +44,7 @@ angular.module('peckbox')
        console.log('update', note)
        $http.put('/api/notes/'+ note._id, note)
        .success(function(response){
-         toastr.success('You have successfully edited a note!');
+         toastr.warning('You have successfully edited a note!');
          console.log(response)
          note.editForm = false;
        });
@@ -53,7 +53,7 @@ angular.module('peckbox')
     $scope.deleteNote = function(note) {
       $http.delete('/api/notes/' + note._id)
         .success(function(data) {
-          toastr.success('You have successfully deleted a note!');
+          toastr.error('You have successfully deleted a note!');
           var index = $scope.user.notes.indexOf(note);
           $scope.user.notes.splice(index,1);
 
