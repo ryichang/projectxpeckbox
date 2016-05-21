@@ -30,8 +30,18 @@ angular.module('peckbox')
     //       console.log(response);
     //     });
     // };
-    $scope.test = function(post) {
+    $scope.test = function(post, color) {
+
         console.log(post);
+        // overriding post model with color (String)
+        if (color === "red") {
+          post.color = "red";
+        } else if (color === "blue"){
+          post.color = "blue";
+        } else {
+          post.color = "default";
+        }
+        
         $http.put('/api/posts/'+ post._id, post)
         .success(function(response){
          console.log(response);
@@ -102,7 +112,8 @@ angular.module('peckbox')
     //   });
     // };
     $scope.updatePost = function(post){
-       console.log('update', post)
+      console.log("Color: "+post.color)
+       // console.log('update', post)
        $http.put('/api/posts/'+ post._id, post)
        .success(function(response){
          toastr.success('You have successfully updated a task!');

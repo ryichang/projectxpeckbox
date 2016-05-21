@@ -11,7 +11,23 @@ angular.module('peckbox')
 
     $scope.event = {};
 
-    
+    $scope.tabs = [{
+                title: 'Event',
+                url: 'event.tpl.html'
+            },{
+                title: 'Map',
+                url: 'map.tpl.html'
+        }];
+
+        $scope.currentTab = 'event.tpl.html';
+
+        $scope.onClickTab = function (tab) {
+            $scope.currentTab = tab.url;
+        };
+        
+        $scope.isActiveTab = function(tabUrl) {
+            return tabUrl == $scope.currentTab;
+        };
 
     $scope.createEvent = function(user) {
      

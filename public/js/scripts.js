@@ -1,13 +1,13 @@
 $(document).ready(function(){
 	
 console.log("SANITY CHECK!!!!!!!");
-$(window).scroll(function() {
-  if ($(document).scrollTop() > 50) {
-    $('navbar').addClass('shrink');
-  } else {
-    $('navbar').removeClass('shrink');
-  }
-});
+// $(window).scroll(function() {
+//   if ($(document).scrollTop() > 50) {
+//     $('navbar').addClass('shrink');
+//   } else {
+//     $('navbar').removeClass('shrink');
+//   }
+// });
 
 
 $('.text-1').children('p').each(function(index){
@@ -66,20 +66,7 @@ $('.text-1').children('p').each(function(index){
 		$(".year").html(yr);
 	},1000);
 
-// $(window).scroll(function () {
-//         if ($(this).scrollTop() > 100) {
-//             $('.scrollup').fadeIn();
-//         } else {
-//             $('.scrollup').fadeOut();
-//         }
-//     });
 
-//     $('.scrollup').click(function () {
-//         $("html, body").animate({
-//             scrollTop: 0
-//         }, 600);
-//         return false;
-//     });
 
 $('[data-toggle=offcanvas]').click(function() {
   	$(this).toggleClass('visible-xs text-center');
@@ -90,10 +77,6 @@ $('[data-toggle=offcanvas]').click(function() {
     $('#btnShow').toggle();
 });
 
-// $('.nav').on("click", function(e){
-// 	e.preventDefault();
-// 	console.log("clicked");
-// });
 
 });
 

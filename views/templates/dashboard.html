@@ -10,7 +10,7 @@
   <div class="none" ng-controller="PostsCtrl">
     <div class="col-sm-3">
       <div class="card hidden-xs">
-          <img src="{{user.picture}}" alt="">
+          <img src="{{user.picture}}" alt="" class="profilePicture">
           <div class="card-name"><h4>{{user.displayName}}</h4></div>
       </div>
     
@@ -19,10 +19,10 @@
          <div class="col-sm-11 card fade">
            <div ng-hide="post.editForm">
                <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
-                <h3>{{post.title}}</h3>
-                <p>{{post.body}}</p>
+                <h3 class="{{post.color}}">{{post.title}}</h3>
+                <p class="{{post.color}}">{{post.body}}</p>
                 <a href="#" class="pull-right">
-                  <i class="ion-edit" style="float: right" ng-click="post.editForm = true"></i>
+                  <i class="ion-more" style="float: right" ng-click="post.editForm = true"></i>
                 </a>
            </div>
 
@@ -186,11 +186,14 @@
              <!--  <div ng-init="limit = 140; moreShown = false"> -->
               <p>{{note.body}}
              <!--  <a ng-show="note.body.length > limit" href ng-click="limit = note.body.length; moreShown = true">More</a> -->
-              <a href="#" class="pull-right">
-                <i class="ion-edit" style="float: right" ng-click="note.editForm = true"></i>
-              </a>
+          <!--     <a href="#" class="pull-right">
+                <i class="ion-more" style="float: right" ng-click="note.editForm = true"></i>
+              </a> -->
              <!--  <a ng-hide="note.body.length > limit" href ng-click="limit = 140; moreShown = false"> Less </a> -->
               </p>
+              <a href="#" class="pull-right">
+                <i class="ion-more" style="float: right" ng-click="note.editForm = true"></i>
+              </a>
           </div>
 
 
@@ -222,7 +225,7 @@
             <p>{{event.description}}</p>
             <p>{{event.location.formatted_address}}</p>
             <a href="#" class="pull-right">
-                <i class="ion-edit" style="float: right" ng-click="event.editForm = true"></i>
+                <i class="ion-more" style="float: right" ng-click="event.editForm = true"></i>
             </a>
           </div>
 

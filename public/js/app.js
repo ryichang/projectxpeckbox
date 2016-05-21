@@ -15,7 +15,8 @@ angular.module('peckbox', ['peckbox.services',
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
       $routeProvider.when('/', {
-        templateUrl: 'templates/splash'
+        templateUrl: 'templates/splash',
+        controller: 'ApisCtrl'
       });
 
       $routeProvider.when('/profile', {
@@ -72,7 +73,7 @@ angular.module('peckbox', ['peckbox.services',
       $locationProvider.html5Mode(true);
     }])
 
-  
+    
 
      .config(function($authProvider, $windowProvider) {
       var $window = $windowProvider.$get();
