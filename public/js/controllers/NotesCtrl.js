@@ -11,12 +11,33 @@ angular.module('peckbox')
 
     $scope.note = {};
 
+    $scope.test = function(note, color) {
+
+        console.log(note);
+        // overriding post model with color (String)
+        if (color === "red") {
+          note.color = "red";
+        } else if (color === "blue"){
+          note.color = "blue";
+        } else if (color === "yellow"){
+          note.color = "yellow";
+        } else {
+          note.color = "default";
+        }
+        
+        $http.put('/api/notes/'+ note._id, note)
+        .success(function(response){
+         console.log(response);
+       });
+    };
+
 
     $scope.createNote = function(user) {
      
         var config = {
             userId: user._id,
-            body  : $scope.note.body
+            body  : $scope.note.body,
+            color:  $scope.note.color,
         };
         console.log(config);
         $http.post('/api/notes', config)

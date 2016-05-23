@@ -38,6 +38,8 @@ angular.module('peckbox')
           post.color = "red";
         } else if (color === "blue"){
           post.color = "blue";
+        } else if (color === "yellow"){
+          post.color = "yellow";
         } else {
           post.color = "default";
         }

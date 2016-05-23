@@ -1,7 +1,7 @@
 <div class="overlay">
 
- <!-- 
-
+ 
+<!-- 
   <div class='back'>
   <div class='background'></div> -->
   <!-- <div class='midground'></div>
@@ -11,11 +11,11 @@
         <div class="center">
           
           <div class="content">
-            
-            <div class="neon" data-toggle="modal" data-target="#login-modal">
+            <h1 ng-show="currentUser">Hi, {{user.displayName}}</h1>
+            <div class="neon" data-toggle="modal" data-target="#login-modal" ng-show="!currentUser">
              PE<br/>CK<br/>
             </div>
-            <h1>{{location.city}}</h1>
+            <h1 ng-show="currentUser">{{location.city}}</h1>
             
 <!--        
             <div class='shadow'></div> -->

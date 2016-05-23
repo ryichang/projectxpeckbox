@@ -37,6 +37,7 @@ angular.module('peckbox')
             location : $scope.event.location,
             date : $scope.event.date,
             userId: user._id,
+            color: $scope.event.color,
         };
         console.log("front is", body);
         $http.post('/api/events', body)
@@ -57,6 +58,7 @@ angular.module('peckbox')
             description  : $scope.event.description,
             location : $scope.event.location,
             date : $scope.event.date,
+            color: $scope.event.color,
             userId: user._id,
         };
         console.log('edit', $scope.event);

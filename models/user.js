@@ -17,6 +17,7 @@ var UserSchema = new Schema({
   posts         : [{ type: Schema.Types.ObjectId, ref: 'Post' }],
   notes         : [{ type: Schema.Types.ObjectId, ref: 'Note' }],
   events        : [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+  comments      : [{ type: Schema.Types.ObjectId, ref: 'Comment'}],
   displayName: String,
   picture: String,
   facebook: String,
