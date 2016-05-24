@@ -28,11 +28,12 @@ module.exports = function(app) {
 	// 		});
 	// 	});
 	// });
-	app.get('api/posts/:post_id', auth.ensureAuthenticated, function (req,res) {
+	app.get('/api/posts/:post_id', auth.ensureAuthenticated, function (req,res) {
 	        User.findById(req.userId).exec(function (err, user) {
 	            Post.findById({ _id: req.params.post_id}, function(err, post) {
 	                if (err) { return res.status(404).send(err); }
 	                res.send(post); 
+	                console.log('post is', post)
 	            });
 	        });
 	    });

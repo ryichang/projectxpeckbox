@@ -11,6 +11,26 @@ angular.module('peckbox')
 
     $scope.event = {};
 
+    $scope.test = function(event, color) {
+
+        console.log(event);
+        // overriding event model with color (String)
+        if (color === "red") {
+          event.color = "red";
+        } else if (color === "blue"){
+          event.color = "blue";
+        } else if (color === "yellow"){
+          event.color = "yellow";
+        } else {
+          event.color = "default";
+        }
+        
+        $http.put('/api/events/'+ event._id, event)
+        .success(function(response){
+         console.log(response);
+       });
+    };
+
     $scope.tabs = [{
                 title: 'Event',
                 url: 'event.tpl.html'

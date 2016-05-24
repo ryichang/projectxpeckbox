@@ -121,7 +121,7 @@
       <div ng-repeat="post in posts | orderBy:'-created_at'"> -->
 
       <div ng-repeat="event in user.events | orderBy:'-created_at'">
-        <div class="col-sm-3 card fade">
+        <div class="col-sm-3 card fade" id="{{event.color}}">
          <div ng-hide="event.editForm">
             <svg width="8" height="8" class="close-btn" ng-click="deleteEvent(event)">
                 <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
@@ -133,9 +133,27 @@
             <h3>{{event.title}}</h3>
             <p>{{event.description}}</p>
             <p>{{event.location.formatted_address}}</p>
-            <a href="#" class="pull-right">
-                <i class="ion-more" style="float: right" ng-click="event.editForm = true"></i>
-            </a>
+
+             <div style="float:right">
+             <svg height="14" width="14" value="default" ng-model="event.color" ng-click="test(event, 'default')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+             <svg height="14" width="14" value="blue" ng-model="event.color" ng-click="test(event, 'blue')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+             <svg height="14" width="14" value="yellow" ng-model="event.color" ng-click="test(event, 'yellow')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+             <svg height="14" width="14" value="red" ng-model="event.color" ng-click="test(event, 'red')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(237,73,86,1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+
+             <svg height="14" width="14" ng-click="event.editForm = true">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
+            <!--  <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line> -->
+             </svg>
+             </div>
+
          </div>
        
 

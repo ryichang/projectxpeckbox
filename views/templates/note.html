@@ -33,14 +33,25 @@
            <!--  <a ng-show="note.body.length > limit" href ng-click="limit = note.body.length; moreShown = true">More</a> -->
               
 
-              <input type="button" value="default" ng-model="note.color" ng-click="test(note, 'default')">
-              <input type="button"  value="blue" ng-model="note.color" ng-click="test(note, 'blue')">
-              <input type="button"  value="yellow" ng-model="note.color" ng-click="test(note, 'yellow')">
-              <input type="button"  value="red" ng-model="note.color" ng-click="test(note, 'red')">
-              
-            <a href="#" class="pull-right">
-              <i class="ion-more" ng-click="note.editForm = true"></i>
-            </a>
+             <div style="float:right">
+             <svg height="14" width="14" value="default" ng-model="note.color" ng-click="test(note, 'default')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+             <svg height="14" width="14" value="blue" ng-model="note.color" ng-click="test(note, 'blue')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+             <svg height="14" width="14" value="yellow" ng-model="note.color" ng-click="test(note, 'yellow')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+             <svg height="14" width="14" value="red" ng-model="note.color" ng-click="test(note, 'red')">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(237,73,86,1)" stroke="#000" stroke-width="2"></rect>
+             </svg>
+
+             <svg height="14" width="14" ng-click="note.editForm = true">
+             <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
+            <!--  <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line> -->
+             </svg>
+             </div>
            <!--  <a ng-hide="note.body.length > limit" href ng-click="limit = 140; moreShown = false"> Less </a> -->
          
         </div>
@@ -50,6 +61,10 @@
             <div class="form-group">
               <input type="text" ng-model="note.body" class="form-control">
             </div>
+            
+            <button class="btn btn-social"><svg width="8" height="8" type="submit">
+                <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
+            </svg>  </button>
             <input type="submit" value="Update" class="btn btn-default">
           </form>
 

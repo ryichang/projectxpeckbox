@@ -14,7 +14,7 @@ angular.module('peckbox')
     $scope.test = function(note, color) {
 
         console.log(note);
-        // overriding post model with color (String)
+        // overriding note model with color (String)
         if (color === "red") {
           note.color = "red";
         } else if (color === "blue"){

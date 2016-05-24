@@ -44,9 +44,6 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'EventsCtrl'
       });
 
-    
-      
-
       $routeProvider.when('/navbar', {
         templateUrl: 'templates/navbar',
         controller: 'UsersCtrl'
@@ -65,6 +62,11 @@ angular.module('peckbox', ['peckbox.services',
       $routeProvider.when('/events', {
         templateUrl: 'templates/event',
         controller: 'EventsCtrl'
+      });
+
+      $routeProvider.when('/posts/:id/comments', {
+        templateUrl: 'templates/postShow',
+        controller: 'PostsCtrl'
       });
 
 

@@ -101,18 +101,6 @@ angular.module('peckbox')
     };
 
 
-    // $scope.updatePost = function(post) {
-    //   console.log('post in form function is: ', post);
-    //   Post.get({ id: $routeParams.id }, function() {
-    //     console.log('post is: ', post);
-    //     $scope.post = post;
-    //     $scope.post.$update(function(post) {
-    //       console.log('scope.post.update worked');
-    //     });
-
-    //     $location.path('/posts/' + post._id);
-    //   });
-    // };
     $scope.updatePost = function(post){
       console.log("Color: "+post.color)
        // console.log('update', post)
@@ -125,48 +113,7 @@ angular.module('peckbox')
        // console.log('edit', post);
      };
 
-    // $scope.updatePost = function(post){
-    //     $scope.post = {
-    //         _id: post._id,
-    //         title: post.title,
-    //         body: post.body
-    //     };
-    //     $http.put('/api/posts/' + $scope.post._id)
-    //     .success(function(data) {
-    //       var index = $scope.user.posts.indexOf(post);
-    //       $scope.user.posts.splice(index,1);
-
-    //     })
-    //     .error(function(data) {
-    //       console.log('Error: ' + data);
-    //     });
-    // };
-
-
-    // $scope.createPost = function() {
-    //   $http.post('/api/posts', $scope.formData)
-    //     .success(function(data) {
-    //       $scope.formData = {}; 
-    //       $scope.posts = data;
-    //       console.log(data);
-    //     })
-    //     .error(function(data) {
-    //       console.log('Error: ' + data);
-    //     });
-    // };
-
- 
-    // $scope.deletePost = function(post) {
-    //   $http.delete('/api/posts/' + post._id)
-    //     .success(function(data) {
-    //       $scope.posts = {};
-    //       var index = $scope.posts.indexOf(post)
-    //       $scope.posts.splice(index, 1);
-    //     })
-    //     .error(function(data) {
-    //       console.log('Error: ' + data);
-    //     });
-    // };
+  
 
     $scope.deletePost = function(post) {
       $http.delete('/api/posts/' + post._id)
@@ -181,35 +128,21 @@ angular.module('peckbox')
         });
     };
 
-    // $scope.start = function() {
-    //   if ($scope.class === "start")
-    //       $scope.class = "none";
-    //    else
-    //       $scope.class = "start";
-    // } ;   
+    
+    $scope.showPost = function(post) {
+        $http.get('/api/posts/'+ post._id, post)
+        .success(function(response){
+          toastr.success('In post details page');
+          console.log(response)
+          $scope.post = [response];
+        });
 
-    // $scope.done = function() {
-    //   if($scope.class === "done")
-    //      $scope.class = "none";
-    //    else 
-    //      $scope.class = "done";
-    // };
+       
 
-        // $scope.class = "none";
-        
-        // $scope.start = function(){
-        //     if ($scope.class === "start")
-        //         $scope.class = "none";
-        //      else
-        //         $scope.class = "start";
-        // };
-        
-        // $scope.done = function(){
-        //     if ($scope.class === "done")
-        //         $scope.class = "none";
-        //      else
-        //         $scope.class = "done";
-        // };
+        $scope.post = post;
+        $location.path('/posts/' + post._id + '/comments');
+    };
+
 
   }]);
 
