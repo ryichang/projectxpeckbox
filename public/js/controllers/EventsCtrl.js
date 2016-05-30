@@ -3,7 +3,7 @@
 /* Event Controller */
 
 angular.module('peckbox')
-  .controller('EventsCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', function($scope, $http, $auth, Auth, toastr) {
+  .controller('EventsCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', '$location', function($scope, $http, $auth, Auth, toastr, $location) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
@@ -119,6 +119,26 @@ angular.module('peckbox')
         });
     };
 
+    $scope.eventShow = function(event) {
+      $location.path('/events/' + event._id + '/comments');
+    
+    };
+
+
+  }])
+
+  .controller('EventShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Event', '$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Event, $q) {
+    $http.get('/api/me').success(function(data) {
+      $scope.user = data;
+    });
+
+    Event.get({ id: $routeParams.id }, function(event) {
+
+      $scope.event = event;
+      console.log('outside', event);
+    });
+
+    
 
   }]);
 

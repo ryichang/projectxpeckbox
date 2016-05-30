@@ -37,6 +37,10 @@ module.exports = function(app) {
 	            });
 	        });
 	    });
+
+
+	
+
 	//  app.get('/api/posts/:id',function(req,res){   
 	//   Post.findById(req.params.post._id)
 	//     .populate('user')

@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="col-sm-3">
+	<h1>{{event.title}}</h1>
+  </div>
+  <div class="col-sm-6">
+  </div>
+<script type="text/ng-template" id="map.tpl.html">
+  <div id="viewTwo">
+  <div class="eventMap">
+    <ng-map center="current-location" zoom="9" class="map" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#000000'},{lightness:'30'}]}]">
+       <transit-layer></transit-layer>
+       <traffic-layer></traffic-layer>
+       <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
+       </marker>
+    </ng-map>
+  </div>
+  </div>
+ </script>
+
+</div>

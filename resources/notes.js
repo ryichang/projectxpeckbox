@@ -19,7 +19,7 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('api/notes/:note_id', auth.ensureAuthenticated, function (req,res) {
+	app.get('api/notes/:note_id', function (req,res) {
 	        User.findById(req.userId).exec(function (err, user) {
 	            Note.findById({ _id: req.params.note_id}, function(err, note) {
 	                if (err) { return res.status(404).send(err); }

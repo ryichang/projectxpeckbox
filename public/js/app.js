@@ -69,6 +69,30 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'PostsCtrl'
       });
 
+      $routeProvider.when('/posts/:id/comments', {
+        templateUrl: 'templates/postShow',
+        controller: 'PostShowCtrl'
+      });
+
+      $routeProvider.when('/notes/:id/comments', {
+        templateUrl: 'templates/noteShow',
+        controller: 'NotesCtrl'
+      });
+
+      $routeProvider.when('/notes/:id/comments', {
+        templateUrl: 'templates/noteShow',
+        controller: 'NoteShowCtrl'
+      });
+
+      $routeProvider.when('/events/:id/comments', {
+        templateUrl: 'templates/eventShow',
+        controller: 'EventsCtrl'
+      });
+
+      $routeProvider.when('/events/:id/comments', {
+        templateUrl: 'templates/eventShow',
+        controller: 'EventShowCtrl'
+      });
 
       $routeProvider.otherwise({redirectTo: '/'});
 

@@ -15,8 +15,9 @@
             <div class="neon" data-toggle="modal" data-target="#login-modal" ng-show="!currentUser">
              PE<br/>CK<br/>
             </div>
+            <h1 ng-show="currentUser"> <time>TICK, TOCK.</time></h1>
             <h1 ng-show="currentUser">{{weather.name}}</h1>
-            <h1 ng-show="currentUser">{{weather.weather[0].description}}</h1>
+            <h1 ng-show="currentUser">{{weather.weather[0].description}} </h1>
             <h1 ng-show="currentUser">{{weather.main.temp}}</h1>
 <!--        
             <div class='shadow'></div> -->

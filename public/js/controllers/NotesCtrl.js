@@ -3,7 +3,7 @@
 /* NOTE Controllers */
 
 angular.module('peckbox')
-  .controller('NotesCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', function($scope, $http, $auth, Auth, toastr) {
+  .controller('NotesCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', '$location', '$routeParams', 'Note', function($scope, $http, $auth, Auth, toastr, $location, $routeParams, Note) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
@@ -84,7 +84,32 @@ angular.module('peckbox')
         });
     };
 
+
+    $scope.noteShow = function(note) {
+      $location.path('/notes/' + note._id + '/comments');
+    };
+
+
  
- }]);
+ }])
+
+   .controller('NoteShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Note', '$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Note, $q) {
+     $http.get('/api/me').success(function(data) {
+       $scope.user = data;
+     });
+
+     Note.get({ id: $routeParams.id }, function(note) {
+
+       $scope.note = note;
+       console.log(note)
+     });
+
+     
+
+   }]);
+
+
+
+
 
 

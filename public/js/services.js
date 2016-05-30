@@ -23,11 +23,7 @@ angular.module('peckbox.services', [])
   }])
 
 
-  // .factory('Post', function ($window, $resource){ 
-  //     return $resource('/api/posts/:id', {
-  //       update: { method: 'PUT'}
-  //     });
-  // });
+  
 
   .factory('Post', function ($window, $resource) {
      return $resource($window.location.origin + '/api/posts/:id', { id: '@id' }, {
@@ -37,6 +33,12 @@ angular.module('peckbox.services', [])
 
   .factory('Note', function ($window, $resource) {
      return $resource($window.location.origin + '/api/notes/:id', { id: '@id' }, {
+       update: { method: 'PUT'} 
+     });
+   })
+
+  .factory('Event', function ($window, $resource) {
+     return $resource($window.location.origin + '/api/events/:id', { id: '@id' }, {
        update: { method: 'PUT'} 
      });
    });

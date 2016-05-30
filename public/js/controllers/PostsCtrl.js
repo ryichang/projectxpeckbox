@@ -3,7 +3,7 @@
 /* POST Controllers */
 
 angular.module('peckbox')
-  .controller('PostsCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', function($scope, $http, $auth, Auth, $location, $routeParams, toastr) {
+  .controller('PostsCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Post', '$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Post, $q) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
@@ -128,21 +128,106 @@ angular.module('peckbox')
         });
     };
 
+
     
-    $scope.showPost = function(post) {
-        $http.get('/api/posts/'+ post._id, post)
+
+    // $scope.postShow= function(post) {
+    //   var promise = fetchPostWithId(post._id)
+    //   promise.then(function(post){
+    //     console.log('post is', post)
+    //     $scope.singlePost = post
+    //     console.log('$scope post is', $scope.post)
+    //     return post
+    //   }).then(function(post){
+    //     $location.path('/posts/' + $scope.post._id + '/comments');
+    //   })
+
+    
+    // };
+
+    // $scope.post = Post.get({ id: $routeParams.id }, function(post) {
+    //   console.log('outside', $scope.post);
+    //   $scope.post = post;
+    // });
+    
+    // function fetchPostWithId(postId){
+    //   return $q(function(resolve, reject){
+    //     Post.get({ id:postId}, function(post){
+    //       if(post){
+    //          resolve(post);
+    //       } else {
+    //          reject();
+    //       }
+    //     }) 
+    //   })
+    // }
+
+    $scope.postShow = function(post) {
+      $location.path('/posts/' + post._id + '/comments');
+  
+    }
+
+
+
+//     app.controller('ticketController', ['$scope', '$routeParams',
+//    function ($scope, $routeParams) {
+//       //Get ID out of current URL
+//       var currentId = $routeParams.id;
+// }]);
+
+  }])
+  .controller('PostShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Post', '$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Post, $q) {
+    $http.get('/api/me').success(function(data) {
+      $scope.user = data;
+    });
+
+    Post.get({ id: $routeParams.id }, function(post) {
+
+      $scope.post = post;
+      console.log('outside', post);
+    });
+
+    $scope.test = function(post, color) {
+
+        console.log(post);
+        // overriding post model with color (String)
+        if (color === "red") {
+          post.color = "red";
+        } else if (color === "blue"){
+          post.color = "blue";
+        } else if (color === "yellow"){
+          post.color = "yellow";
+        } else {
+          post.color = "default";
+        }
+        
+        $http.put('/api/posts/'+ post._id, post)
         .success(function(response){
-          toastr.success('In post details page');
-          console.log(response)
-          $scope.post = [response];
-        });
-
-       
-
-        $scope.post = post;
-        $location.path('/posts/' + post._id + '/comments');
+         console.log(response);
+       });
     };
 
+    $scope.editPost = function(post){
+        $scope.post = {
+            userId: post.userId[0],
+            _id: post._id,
+            title: post.title,
+            body: post.body
+        };
+        console.log('edit', $scope.post);
+    };
+
+    $scope.updatePost = function(post){
+      console.log("Color: "+post.color)
+       // console.log('update', post)
+       $http.put('/api/posts/'+ post._id, post)
+       .success(function(response){
+         toastr.warning('You have successfully updated a task!');
+         console.log(response)
+         post.editForm = false;
+       });
+       // console.log('edit', post);
+     };
 
   }]);
 
