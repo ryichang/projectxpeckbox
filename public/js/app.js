@@ -19,7 +19,10 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'ApisCtrl'
       });
 
-   
+      // $routeProvider.when('/', {
+      //         templateUrl: 'templates/navbar',
+      //         controller: 'ApisCtrl'
+      //       });
 
       $routeProvider.when('/profile', {
         templateUrl: 'templates/profile',

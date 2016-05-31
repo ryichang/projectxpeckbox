@@ -29,4 +29,28 @@ module.exports = function(app) {
 			});
 		});
 
+	app.delete('/api/posts/:post_id/comments/:comment_id', function(req, res) {
+		Comment.findByIdAndRemove({
+			_id : req.params.comment_id
+		 }, function(err, post) {
+			if (err)
+				res.send(err);
+
+			// Delete Post in User
+			Post.findOneAndUpdate(
+				{ comments: req.params.comment_id},
+				{ "$pull": {"comments": req.params.comment_id}},
+	
+				function (err, comment){
+					if(err) {
+						res.send(err);
+					} else {
+						res.status(200).send("comment is deleted", comment);
+						
+					}
+					
+				});
+			});
+	});
+
 };

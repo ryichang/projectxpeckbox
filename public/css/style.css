@@ -116,6 +116,25 @@ p {
    * with the paragraph as it scrolls (they correspond to thier placements in the +background property above) */
 /*  background-attachment: local, scroll;*/
 }
+
+p2 {
+  font-family: "Vcr";
+  color: #fff;
+}
+
+.weather {
+  font-family: "Helvetica";
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  background: transparent;
+  font-weight: 400;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+
 html, body {
     overflow-x: hidden;
     overflow-y: auto;
@@ -715,7 +734,6 @@ html, body {
   letter-spacing: 2px;
 /*  margin-left: 50px;*/
 }
-
 
 .week {
   font-family: "VCR";

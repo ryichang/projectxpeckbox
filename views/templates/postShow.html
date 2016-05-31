@@ -44,7 +44,12 @@
     </div>
 
     <div ng-repeat="comment in post.comments | filter:search">
-      <div class="card">
+      <div class="col-sm-3 card">
+      <svg width="8" height="8" class="close-btn" ng-click="deleteComment(comment)">
+          <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
+          <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
+      </svg>  
+      <div class="card-date">{{comment.created_at | date: 'MMMM d @ h:mma'}}</div>
       <p>{{comment.body}}</p>
       <p>{{comment.userId.displayName}}</p>
       </div>
