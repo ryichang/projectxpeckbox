@@ -1,6 +1,16 @@
 <nav class="navbar navbar-default" ng-show="currentUser">
   <div class="navbar-header">
     <button type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a href="/splash" ng-show="currentUser" class="navbar-brand">PECK<br/>BOX</a>
+
+  <div ng-show="currentUser" class='week hidden-xs'>
+  <div ng-show="currentUser" class='day hidden-xs'></div>
+  <div ng-show="currentUser" class='month hidden-xs'></div>
+  <div ng-show="currentUser" class='year hidden-xs'></div>
+  <div class='clock hidden-xs'>
+  <div class='hour hidden-xs'></div>
+  <div class='minutes hidden-xs'></div>
+  <div class='seconds hidden-xs'></div>
+
   </div>
   <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
     <ul class="nav navbar-nav navbar-right">
@@ -48,14 +58,7 @@
         </div>
       </li> -->
 
-      <div ng-show="currentUser" class='week'>
-  <div ng-show="currentUser" class='day'></div>
-  <div ng-show="currentUser" class='month'></div>
-  <div ng-show="currentUser" class='year'></div>
-  <div class='clock'>
-  <div class='hour'></div>
-  <div class='minutes'></div>
-  <div class='seconds'></div>
+      
 </div>
   
 

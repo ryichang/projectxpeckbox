@@ -13,7 +13,7 @@ angular.module('peckbox')
 
     $scope.test = function(event, color) {
 
-        console.log(event);
+        // console.log(event);
         // overriding event model with color (String)
         if (color === "red") {
           event.color = "red";
@@ -27,7 +27,7 @@ angular.module('peckbox')
         
         $http.put('/api/events/'+ event._id, event)
         .success(function(response){
-         console.log(response);
+         // console.log(response);
        });
     };
 

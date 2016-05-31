@@ -87,6 +87,7 @@ angular.module('peckbox')
 
     $scope.noteShow = function(note) {
       $location.path('/notes/' + note._id + '/comments');
+      console.log(note);
     };
 
 
@@ -97,6 +98,8 @@ angular.module('peckbox')
      $http.get('/api/me').success(function(data) {
        $scope.user = data;
      });
+
+     $scope.note = {};
 
      Note.get({ id: $routeParams.id }, function(note) {
 

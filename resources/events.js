@@ -21,14 +21,15 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('api/events/:event_id', auth.ensureAuthenticated, function (req,res) {
-		User.findById(req.userId).exec(function (err, user) {
-		    Event.findById({ _id: req.params.event_id}, function(err, event) {
-		        if (err) { return res.status(404).send(err); }
-		        res.send(event); 
-		    });
-		});
-	});
+	app.get('/api/events/:event_id', auth.ensureAuthenticated, function (req,res) {
+	        User.findById(req.userId).exec(function (err, user) {
+	            Event.findById({ _id: req.params.event_id}, function(err, event) {
+	                if (err) { return res.status(404).send(err); }
+	                res.send(event); 
+	                console.log('event is', event);
+	            });
+	        });
+	    });
 
 	app.put('/api/events/:event_id', auth.ensureAuthenticated, function(req,res){ 
 	    console.log('putroute', req.body);

@@ -121,6 +121,7 @@ angular.module('peckbox')
           toastr.error('You have successfully deleted a task!');
           var index = $scope.user.posts.indexOf(post);
           $scope.user.posts.splice(index,1);
+          
 
         })
         .error(function(data) {
@@ -182,8 +183,8 @@ angular.module('peckbox')
     });
 
     Post.get({ id: $routeParams.id }, function(post) {
-
       $scope.post = post;
+      $scope.comment = post.comments;
       console.log('outside', post);
     });
 
@@ -228,6 +229,25 @@ angular.module('peckbox')
        });
        // console.log('edit', post);
      };
+
+     $scope.createComment = function(post, user){
+       var config = {
+         body: $scope.comment.body,
+         userId: user._id,
+         post: post._id
+       }
+
+       console.log('config', config)
+       $http.post('/api/post/' + post._id + '/comments', config)
+       .success(function(response){
+         console.log('response is', response)
+         $scope.post.comments.unshift(response);
+         console.log('post comment is', post.comments)
+       })
+       .error(function(response){
+         console.log('err', response)
+       })
+     }
 
   }]);
 

@@ -5,7 +5,7 @@ var NoteSchema = Schema({
   body   : String,
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
-  userId : [{type: Schema.Types.ObjectId, ref: 'User'}],
+  userId : {type: Schema.Types.ObjectId, ref: 'User'},
   comments         : [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   color  : {type: String, default: "default"},
 });

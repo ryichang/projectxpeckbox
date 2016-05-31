@@ -5,10 +5,10 @@ var CommentSchema = Schema({
   body   : String,
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
-  userId : [{type: Schema.Types.ObjectId, ref: 'User'}],
-  posts         : [{ type: Schema.Types.ObjectId, ref: 'Post' }],
-  notes         : [{ type: Schema.Types.ObjectId, ref: 'Note' }],
-  events        : [{ type: Schema.Types.ObjectId, ref: 'Event' }],
+  userId : {type: Schema.Types.ObjectId, ref: 'User'},
+  post         : { type: Schema.Types.ObjectId, ref: 'Post' },
+  note         : { type: Schema.Types.ObjectId, ref: 'Note' },
+  events        : { type: Schema.Types.ObjectId, ref: 'Event' },
 });
 
 

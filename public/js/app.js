@@ -19,6 +19,8 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'ApisCtrl'
       });
 
+   
+
       $routeProvider.when('/profile', {
         templateUrl: 'templates/profile',
         controller: 'UsersCtrl'

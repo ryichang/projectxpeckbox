@@ -1,48 +1,39 @@
 <div class="container">
-  <div class="col-sm-3 card fade" id="{{post.color}}">
-    <div ng-hide="post.editForm">
+  <div class="col-sm-3">
+    <div class="card" id={{post.color}}>
       <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
         <h3>{{post.title}}</h3>
         <p>{{post.body}}</p>
+        <p>{{post.userId.displayName}}</p>
         <div style="float:right">
-          <svg height="14" width="14" value="default" ng-model="post.color" ng-click="test(post, 'default')">
-          <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
-          </svg>
-          <svg height="14" width="14" value="blue" ng-model="post.color" ng-click="test(post, 'blue')">
-          <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
-          </svg>
-          <svg height="14" width="14" value="yellow" ng-model="post.color" ng-click="test(post, 'yellow')">
-          <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="#000" stroke-width="2"></rect>
-          </svg>
-          <svg height="14" width="14" value="red" ng-model="post.color" ng-click="test(post, 'red')">
-          <rect x="2" y="2" height="10" width="10" fill="rgba(237,73,86,1)" stroke="#000" stroke-width="2"></rect>
-          </svg>
-
-          <svg height="14" width="14" ng-click="post.editForm = true">
-          <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
-          </svg>
+        <svg height="14" width="14" value="default" ng-model="post.color" ng-click="test(post, 'default')">
+        <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
+        </svg>
+        <svg height="14" width="14" value="blue" ng-model="post.color" ng-click="test(post, 'blue')">
+        <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
+        </svg>
+        <svg height="14" width="14" value="yellow" ng-model="post.color" ng-click="test(post, 'yellow')">
+        <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="#000" stroke-width="2"></rect>
+        </svg>
+        <svg height="14" width="14" value="red" ng-model="post.color" ng-click="test(post, 'red')">
+        <rect x="2" y="2" height="10" width="10" fill="rgba(237,73,86,1)" stroke="#000" stroke-width="2"></rect>
+        </svg>
+        <svg height="14" width="14" ng-click="post.editForm = true">
+        <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
+        <line y2="2" x2="12" y1="12" x1="2" stroke-width="1.2" stroke="#fff"></line>
+        </svg>
         </div>
-      </div>
-        <form ng-show="post.editForm" ng-submit="updatePost(post)">
-          <div class="form-group">
-            <input type="text" ng-model="post.title" class="form-control">
-          </div>
-          <div class="form-group">
-            <input type="text" ng-model="post.body" class="form-control">
-          </div>
-          <input type="submit" value="Update" class="btn btn-default">
-        </form>
-      </div>
+    </div>
+        
   </div>
   
   
    
 
-  <div class="col-sm-9" ng-controller="CommentsCtrl">
+  <div class="col-sm-9">
     <div class="card">
     <div id="comment-form">
-      <form ng-submit="createComment(user)">
-
+      <form ng-submit="createComment(post, user)">
         <div class="form-group">
           <label for="comment">Comment</label>
           <textarea class="form-control" ng-model="comment.body"></textarea>
@@ -51,6 +42,12 @@
       </form>
     </div>
     </div>
+
+    <div ng-repeat="comment in post.comments | filter:search">
+      <div class="card">
+      <p>{{comment.body}}</p>
+      <p>{{comment.userId.displayName}}</p>
+      </div>
   </div>
       
  

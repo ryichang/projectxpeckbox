@@ -1,5 +1,6 @@
 var Post = require('../models/post.js'),
 	User = require('../models/user.js'),
+	Comment = require('../models/comment.js'),
     auth = require('./auth');
 
 module.exports = function(app) {
@@ -30,16 +31,23 @@ module.exports = function(app) {
 	// });
 	app.get('/api/posts/:post_id', auth.ensureAuthenticated, function (req,res) {
 	        User.findById(req.userId).exec(function (err, user) {
-	            Post.findById({ _id: req.params.post_id}, function(err, post) {
-	                if (err) { return res.status(404).send(err); }
-	                res.send(post); 
-	                console.log('post is', post)
-	            });
-	        });
-	    });
+	            Post.findById(req.params.post_id)
+	            	.populate({
+	            		path: 'comments', 
+	            		populate: {
+	            			path:'userId', 
+	            			model: 'User'
+	            		}
+	            	}) 
+	            	.populate('userId')
+	            	    .exec(function(err, post) {
+	            	        if (err) { return res.status(404).send(err); }
+	            	        res.send(post);
+	            	       
+	            	    });
+	            	});
 
-
-	
+	});
 
 	//  app.get('/api/posts/:id',function(req,res){   
 	//   Post.findById(req.params.post._id)
@@ -212,7 +220,7 @@ module.exports = function(app) {
 			if (err)
 				res.send(err);
 
-			// get and return all the posts after you create another
+			// Delete Post in User
 			User.findOneAndUpdate(
 				{ posts: req.params.post_id},
 				{ "$pull": {"posts": req.params.post_id}},
@@ -222,6 +230,14 @@ module.exports = function(app) {
 						res.send(err);
 					} else {
 						console.log("OBjectID", post);
+						Comment.remove({ post: req.params.post_id},
+							function(err, comment){
+								if(err){
+									console.log(err);
+									return res.send(err);
+								}
+							console.log('comment delete', comment);
+							});
 						res.status(200).send('Find user and deleted');
 					}
 					
