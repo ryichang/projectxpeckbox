@@ -41,6 +41,12 @@ angular.module('peckbox.services', [])
      return $resource($window.location.origin + '/api/events/:id', { id: '@id' }, {
        update: { method: 'PUT'} 
      });
+   })
+
+  .factory('Comment', function ($window, $resource) {
+     return $resource($window.location.origin + '/api/comments/:id', { id: '@id' }, {
+       update: { method: 'PUT'} 
+     });
    });
   
 //    .factory('Post', function($resource, $window) {

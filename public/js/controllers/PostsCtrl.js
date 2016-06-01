@@ -235,19 +235,20 @@ angular.module('peckbox')
          body: $scope.comment.body,
          userId: user._id,
          post: post._id
-       }
+       };
 
        console.log('config', config)
        $http.post('/api/post/' + post._id + '/comments', config)
        .success(function(response){
+         toastr.success('You have successfully created a comment!');
          console.log('response is', response)
          $scope.post.comments.unshift(response);
          console.log('post comment is', post.comments)
        })
        .error(function(response){
          console.log('err', response)
-       })
-     }
+       });
+     };
 
      $scope.deleteComment = function(comment) {
        $http.delete('/api/posts/' + comment.post + '/comments/' + comment._id)
@@ -263,12 +264,32 @@ angular.module('peckbox')
      };
 
      $scope.updateComment = function(comment) {
-      $http.put('/api/posts/' + comment.post + '/comments' + comment._id)
+      $http.put('/api/posts/' + comment.post + '/comments/' + comment._id)
       .success(function(response){
         toastr.warning('You have successfully updated a comment!');
         console.log(response);
         comment.editForm = false;
       });
+     };
+
+     $scope.commentColor = function(comment, color) {
+
+         console.log(comment);
+         // overriding post model with color (String)
+         if (color === "red") {
+           comment.color = "red";
+         } else if (color === "blue"){
+           comment.color = "blue";
+         } else if (color === "yellow"){
+           comment.color = "yellow";
+         } else {
+           comment.color = "default";
+         }
+         
+         $http.put('/api/posts/'+ comment.post + '/comments/' + comment._id, comment)
+         .success(function(response){
+          console.log(response);
+        });
      };
 
   }]);

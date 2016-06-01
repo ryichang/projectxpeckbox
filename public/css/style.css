@@ -69,6 +69,7 @@ body {
 /*  background-color: rgba(253,100,103,1);*/
 /*  background-image: url(/img/pattern.gif);*/
 /*  background-color: rgba(255,255,255,1);*/
+ /* background-color: rgba(189,197,201,1);*/
   background-color: rgba(150,150,150,1);
  /* background-color: rgba(76,78,77,1);*/
 /*  background-color: rgba(238,237,233,1); */
@@ -88,6 +89,8 @@ h1, h2, h3, h4, h5 {
 h1 { font-size: 72px; color: #fff;}
 h2 { font-size: 36px; font-weight: 400; }
 h3 { 
+  /*background-color: #000;
+  color: #fff;*/
   color: #000;
   font-family: "OSWALD";
 }
@@ -96,7 +99,7 @@ h4 {
 }
 
 p {
-  font-family: "stag";
+  font-family: 'Stag';
 /*  font-weight: 500;*/
 /*  font-family: "Hevetica", Sans-Serif;*/
   word-wrap: break-word;
@@ -118,7 +121,7 @@ p {
 }
 
 p2 {
-  font-family: "Vcr";
+  font-family: "YeezyB";
   color: #fff;
 }
 
@@ -299,7 +302,7 @@ a {
 
 #red {
   background: rgba(237,73,86,1);
-/*   animation: pulsate 3s infinite;*/
+   /*animation: pulsate 3s infinite;*/
  /* -webkit-animation: blinker 1s infinite;
           animation: blinker 1s infinite;*/
 }
@@ -619,11 +622,15 @@ svg.close-btn {
 @keyframes pulsate {
   0% {
     transform: scale(1);
-    opacity:0.8;
+    opacity:1;
   }
-  45% {
-    transform: scale(1.1);
-    opacity:0.8;
+  50% {
+    transform: scale(1.02);
+    opacity:1;
+  }
+  100% {
+    transform: scale(1);
+    opacity:1;
   }
 }
 

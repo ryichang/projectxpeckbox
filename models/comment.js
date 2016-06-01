@@ -8,7 +8,8 @@ var CommentSchema = Schema({
   userId : {type: Schema.Types.ObjectId, ref: 'User'},
   post         : { type: Schema.Types.ObjectId, ref: 'Post' },
   note         : { type: Schema.Types.ObjectId, ref: 'Note' },
-  events        : { type: Schema.Types.ObjectId, ref: 'Event' },
+  event        : { type: Schema.Types.ObjectId, ref: 'Event' },
+  color  : {type: String, default: "default"},
 });
 
 

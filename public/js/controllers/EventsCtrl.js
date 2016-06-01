@@ -133,12 +133,115 @@ angular.module('peckbox')
     });
 
     Event.get({ id: $routeParams.id }, function(event) {
-
       $scope.event = event;
+      $scope.comment = event.comments;
       console.log('outside', event);
     });
 
+    $scope.eventColor = function(event, color) {
+
+        console.log(event);
+        // overriding event model with color (String)
+        if (color === "red") {
+          event.color = "red";
+        } else if (color === "blue"){
+          event.color = "blue";
+        } else if (color === "yellow"){
+          event.color = "yellow";
+        } else {
+          event.color = "default";
+        }
+        
+        $http.put('/api/events/'+ event._id, event)
+        .success(function(response){
+         console.log(response);
+       });
+    };
+
+    $scope.editEvent = function(event){
+            $scope.event = {
+                title : $scope.event.title,
+                description  : $scope.event.description,
+                location : $scope.event.location,
+                date : $scope.event.date,
+                color: $scope.event.color,
+                userId: user._id,
+            };
+            console.log('edit', $scope.event);
+        };
+
+    $scope.updateEvent = function(event){
+       console.log('update', event)
+       $http.put('/api/events/'+ event._id, event)
+       .success(function(response){
+         toastr.warning('You have successfully updated an event!');
+         console.log(response)
+         event.editForm = false;
+       });
+       // console.log('edit', event);
+     };
     
+    $scope.createComment = function(event, user){
+      var config = {
+        body: $scope.comment.body,
+        userId: user._id,
+        event: event._id
+      }
+
+      console.log('config', config)
+      $http.post('/api/event/' + event._id + '/comments', config)
+      .success(function(response){
+        toastr.success('You have successfully created a comment!');
+        console.log('response is', response)
+        $scope.event.comments.unshift(response);
+        console.log('event comment is', event.comments)
+      })
+      .error(function(response){
+        console.log('err', response)
+      })
+    }
+
+    $scope.deleteComment = function(comment) {
+      $http.delete('/api/events/' + comment.event + '/comments/' + comment._id)
+        .success(function(data) {
+          toastr.error('You have successfully deleted a comment!');
+          var index = $scope.event.comments.indexOf(comment);
+          $scope.event.comments.splice(index,1);
+
+        })
+        .error(function(data) {
+          console.log('Error: ' + data);
+        });
+    };
+
+    $scope.updateComment = function(comment) {
+     $http.put('/api/events/' + comment.event + '/comments/' + comment._id)
+     .success(function(response){
+       toastr.warning('You have successfully updated a comment!');
+       console.log(response);
+       comment.editForm = false;
+     });
+    };
+
+    $scope.commentColor = function(comment, color) {
+
+        console.log(comment);
+        // overriding post model with color (String)
+        if (color === "red") {
+          comment.color = "red";
+        } else if (color === "blue"){
+          comment.color = "blue";
+        } else if (color === "yellow"){
+          comment.color = "yellow";
+        } else {
+          comment.color = "default";
+        }
+        
+        $http.put('/api/events/'+ comment.event + '/comments/' + comment._id, comment)
+        .success(function(response){
+         console.log(response);
+       });
+    };
 
   }]);
 

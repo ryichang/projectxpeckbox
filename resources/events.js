@@ -1,5 +1,6 @@
 var Event = require('../models/event.js'),
 	User = require('../models/user.js'),
+	Comment = require('../models/comment.js'),
     auth = require('./auth');
 
 module.exports = function(app) {
@@ -21,15 +22,35 @@ module.exports = function(app) {
 		});
 	});
 
+	// app.get('/api/events/:event_id', auth.ensureAuthenticated, function (req,res) {
+	//         User.findById(req.userId).exec(function (err, user) {
+	//             Event.findById({ _id: req.params.event_id}, function(err, event) {
+	//                 if (err) { return res.status(404).send(err); }
+	//                 res.send(event); 
+	//                 console.log('event is', event);
+	//             });
+	//         });
+	//     });
+
 	app.get('/api/events/:event_id', auth.ensureAuthenticated, function (req,res) {
 	        User.findById(req.userId).exec(function (err, user) {
-	            Event.findById({ _id: req.params.event_id}, function(err, event) {
-	                if (err) { return res.status(404).send(err); }
-	                res.send(event); 
-	                console.log('event is', event);
-	            });
-	        });
-	    });
+	            Event.findById(req.params.event_id)
+	            	.populate({
+	            		path: 'comments', 
+	            		populate: {
+	            			path:'userId', 
+	            			model: 'User'
+	            		}
+	            	}) 
+	            	.populate('userId')
+	            	    .exec(function(err, event) {
+	            	        if (err) { return res.status(404).send(err); }
+	            	        res.send(event);
+	 
+	            	    });
+	            	});
+
+	});
 
 	app.put('/api/events/:event_id', auth.ensureAuthenticated, function(req,res){ 
 	    console.log('putroute', req.body);
@@ -59,6 +80,31 @@ module.exports = function(app) {
 
 	
 
+	// app.delete('/api/events/:event_id', function(req, res) {
+	// 	Event.findByIdAndRemove({
+	// 		_id : req.params.event_id
+	// 	 }, function(err, event) {
+	// 		if (err)
+	// 			res.send(err);
+
+	// 		// find User and pull event from events array in User
+	// 		User.findOneAndUpdate(
+	// 			{ events: req.params.event_id},
+	// 			{ "$pull": {"events": req.params.event_id}},
+	// 			function (err, event){
+	// 				if(err) {
+	// 					res.send(err);
+	// 				} else {
+	// 					console.log("OBjectID", event);
+
+	// 					// get and return all the events after you create another
+	// 					res.status(200).send('Find user and deleted');
+	// 				}
+					
+	// 			});
+	// 		});
+	// });
+
 	app.delete('/api/events/:event_id', function(req, res) {
 		Event.findByIdAndRemove({
 			_id : req.params.event_id
@@ -66,23 +112,29 @@ module.exports = function(app) {
 			if (err)
 				res.send(err);
 
-			// find User and pull event from events array in User
+			// Delete Event in User
 			User.findOneAndUpdate(
 				{ events: req.params.event_id},
 				{ "$pull": {"events": req.params.event_id}},
+				
 				function (err, event){
 					if(err) {
 						res.send(err);
 					} else {
 						console.log("OBjectID", event);
-
-						// get and return all the events after you create another
+						Comment.remove({ event: req.params.event_id},
+							function(err, comment){
+								if(err){
+									console.log(err);
+									return res.send(err);
+								}
+							console.log('comment delete', comment);
+							});
 						res.status(200).send('Find user and deleted');
 					}
 					
 				});
 			});
 	});
-
 
 };
