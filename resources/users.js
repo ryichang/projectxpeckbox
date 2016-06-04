@@ -15,6 +15,7 @@ module.exports = function(app) {
         .populate('events')
         .populate('notes')
         .populate('comments')
+        .populate('groups')
         .exec(function(err, user) {
           console.log(user);
           res.send(user);

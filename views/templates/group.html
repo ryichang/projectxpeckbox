@@ -1,0 +1,78 @@
+<div class="container">
+    <div class="col-sm-3">
+      <h1>TOTAL GROUPS</h1>
+      <h1>{{user.groups.length}}</h1>
+    </div>
+
+    <div class="col-sm-9">
+      <div class="card fade">
+      <!-- FORM TO CREATE GROUPS -->
+      <div class="group-form">
+          <form ng-submit="createGroup(user)">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input class="form-control" type="text" ng-model="group.title" required="true">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" ng-model="group.description" required="true"></textarea>
+            </div>
+            <button class="btn btn-social"><i class="ion-plus" type="submit"></i></button>
+          </form>
+      </div>
+      </div>
+  
+    
+      <div ng-repeat="group in user.groups">
+        <div class="col-sm-3 card" id="{{group.color}}">
+          <div ng-hide="group.editForm">
+              <svg width="10" height="10" class="close-btn" ng-click="deleteGroup(group)">
+                  <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="1" stroke="#fff"></line>
+                  <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="1" stroke="#fff"></line>
+              </svg>  
+            <div class="card-date">{{group.created_at | date: 'MMMM d @ h:mma'}}</div>
+            <div id="ribbon">
+                   <div ng-show="group.comments.length>0" ng-click="groupShow(group)">{{group.comments.length}}</div>
+            </div>
+            <i class="ion-plus" style="float:right" ng-click="groupShow(group)"></i>
+            <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
+            <h3>{{group.title}}</h3>
+            <p>{{group.description}}</p>
+              <div style="float:right">
+              <svg height="14" width="14" value="default" ng-model="group.color" ng-click="test(group, 'default')">
+              <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
+              </svg>
+              <svg height="14" width="14" value="blue" ng-model="group.color" ng-click="test(group, 'blue')">
+              <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
+              </svg>
+              <svg height="14" width="14" value="yellow" ng-model="group.color" ng-click="test(group, 'yellow')">
+              <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="#000" stroke-width="2"></rect>
+              </svg>
+              <svg height="14" width="14" value="red" ng-model="group.color" ng-click="test(group, 'red')">
+              <rect x="2" y="2" height="10" width="10" fill="rgba(247,73,86,1)" stroke="#000" stroke-width="2"></rect>
+              </svg>
+
+              <svg height="14" width="14" ng-click="group.editForm = true">
+              <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
+              <line y2="2" x2="12" y1="12" x1="2" stroke-width="1.2" stroke="#fff"></line>
+              </svg>
+              </div>
+  
+            </div>
+
+            <form ng-show="group.editForm" ng-submit="updateGroup(group)">
+              <div class="form-group">
+                <input type="text" ng-model="group.title" class="form-control">
+              </div>
+              <div class="form-group">
+                <input type="text" ng-model="group.description" class="form-control">
+              </div>
+
+         
+              <input type="submit" value="Update" class="btn btn-default">
+            </form>
+          </div>
+        </div>
+      </div>
+ 
+</div>

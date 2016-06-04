@@ -107,7 +107,7 @@ p {
  /* font-family: 'Stag';*/
 /*  font-weight: 500;*/
   
-  font: "Roboto",Helvetica,sans-serif;
+  font: "Roboto Mono",Helvetica,sans-serif;
   word-wrap: break-word;
 /*  color: #000;*/
   font-weight: 350;
@@ -183,7 +183,8 @@ html, body {
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(0,0,0,1);
+    /*background: rgba(0,0,0,1);*/
+    background: linear-gradient(to right, #5D4157 , #A8CABA);
    /* background-image: radial-gradient(circle, #34a4ca 0%, #d0f8ef 70%, #d6f6e1 100%);*/
 /*     background: linear-gradient(to right, #D24335 55%, #6E4CD2);
         opacity: .5;*/
@@ -353,7 +354,7 @@ nav.navbar.shrink {
 }
 
 svg.close-btn {
-    position: absolute;
+    /*position: absolute;*/
  /*   margin-top: 5px;
     margin-right: 5px;*/
     top: 0;
@@ -390,6 +391,11 @@ svg.close-btn {
     -webkit-transition: all 0.3s 0.2s ease-out;
     transition: all 0.3s 0.2s ease-out;
 
+     -webkit-transform: scale(1);
+          transform: scale(1);
+     -webkit-animation: bounceOut 0.4s;
+          animation: bounceOut 0.4s;
+
 }
 
 
@@ -397,7 +403,91 @@ svg.close-btn {
   /*background: rgba(200,200,200,0.7);*/
   cursor: pointer;
   box-shadow: 0 5px 20px rgba(0,0,0,.8);
+/*  -webkit-animation: bounceIn 0.5s;
+          animation: bounceIn 0.5s;*/
  /*   transform: translateY(-10px) scale(1.02);*/
+}
+
+@-webkit-keyframes bounceIn {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  65% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  80% {
+    -webkit-transform: scale(1.025);
+            transform: scale(1.025);
+  }
+  90% {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  65% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  80% {
+    -webkit-transform: scale(1.025);
+            transform: scale(1.025);
+  }
+  90% {
+    -webkit-transform: scale(1.01);
+            transform: scale(1.01);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-webkit-keyframes bounceOut {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1.025);
+            transform: scale(1.025);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes bounceOut {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  30% {
+    -webkit-transform: scale(1.025);
+            transform: scale(1.025);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 
 
@@ -408,7 +498,7 @@ svg.close-btn {
     padding: 4px 8px;
     background: #000;
     color: #fff;
-    font-family: YeezyB;
+    font-family: 'YeezyB';
    /* -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     -moz-box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
     box-shadow: 1px 1px 2px rgba(0,0,0,0.3);*/
@@ -453,7 +543,7 @@ svg.close-btn {
 }
 
 #ribbon {
-  font-family: "YeezyB";
+  font-family: "Oswald";
   padding: 0 0 10px 0;
   position: absolute;
   right: 0.25em;
@@ -470,8 +560,8 @@ svg.close-btn {
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.5);
 }
 #ribbon div:after {
-  border-left: 10px solid #000;
-  border-right: 10px solid #000;
+/*  border-left: 10px solid #000;
+  border-right: 10px solid #000;*/
  /* border-right: 20px solid #000;*/
  /* border-left: 20px solid #bb3a34;
   border-right: 20px solid #bb3a34;*/
@@ -573,6 +663,10 @@ svg.close-btn {
   position: absolute;
   top: 50%;
   left: 50%;
+}
+
+.ion-plus:hover {
+  color: #ff5277; 
 }
 
 .neon {

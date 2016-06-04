@@ -9,14 +9,14 @@
   <div class="row">
   <div class="none" ng-controller="PostsCtrl">
     <div class="col-sm-3">
-      <div class="card profile hidden-xs">
+      <div class="card fade profile hidden-xs">
           <img src="{{user.picture}}" alt="" class="profilePicture">
           <div class="card-name"><h4>{{user.displayName}}</h4></div>
       </div>
     
       <div ng-repeat="post in user.posts | filter:search">
       
-         <div class="col-sm-11 card fade" id="{{post.color}}">
+         <div class="col-sm-11 card " id="{{post.color}}">
            <div ng-hide="post.editForm">
                <div id="ribbon">
                    <div ng-show="post.comments.length>0" ng-click="postShow(post)">{{post.comments.length}}</div>
@@ -25,12 +25,12 @@
                   <i class="ion-plus" style="float:right" ng-click="postShow(post)"></i>
                 <h3>{{post.title}}</h3>
                 <p>{{post.body}}</p>
-
+            
                   
 
                  <div style="float:right">
                  <svg height="14" width="14" value="default" ng-model="post.color" ng-click="test(post, 'default')">
-                 <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
+                 <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235,1)" stroke="#000" stroke-width="2"></rect>
                  </svg>
                  <svg height="14" width="14" value="blue" ng-model="post.color" ng-click="test(post, 'blue')">
                  <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
@@ -101,7 +101,7 @@
                          
     <div class="col-sm-6" ng-controller="NotesCtrl">
      
-        <div class="card">
+        <div class="card fade">
         <div id="tabs" ng-controller="UsersCtrl">
                 <ul class="tabs">
                     <li ng-repeat="tab in tabs" 
@@ -209,7 +209,7 @@
           <!--  </p>
            </div>
         </div> -->
-        <div class="col-sm-11 card fade" id="{{note.color}}">
+        <div class="col-sm-11 card " id="{{note.color}}">
           <div ng-hide="note.editForm">
                 <!--  <i class="fa fa-close pull-right" ng-click="deleteNote(note)"></i> -->
               <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
@@ -224,7 +224,7 @@
               </p>
                <div style="float:right">
                <svg height="14" width="14" value="default" ng-model="note.color" ng-click="test(note, 'default')">
-               <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
+               <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235,1)" stroke="#000" stroke-width="2"></rect>
                </svg>
                <svg height="14" width="14" value="blue" ng-model="note.color" ng-click="test(note, 'blue')">
                <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
@@ -251,7 +251,7 @@
               </div>
               <input type="submit" value="Update" class="btn btn-social">
             </form>
-
+              
           
         </div>
      </div>                          
@@ -266,7 +266,7 @@
          </marker>
       </ng-map>
       <div ng-repeat="event in user.events | filter:search">
-        <div class="card fade" id="{{event.color}}">
+        <div class="card " id="{{event.color}}">
           <div ng-hide="event.editForm">
             <div class="card-date">{{event.date | date: 'EEE MMMM d @ hh:mma'}}</div>
             <div id="ribbon">
@@ -278,16 +278,16 @@
             <p>{{event.location.formatted_address}}</p>
              <div style="float:right">
              <svg height="14" width="14" value="default" ng-model="event.color" ng-click="test(event, 'default')">
-             <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="rgba(242,239,235, 1)" stroke-width="2"></rect>
+             <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
              </svg>
              <svg height="14" width="14" value="blue" ng-model="event.color" ng-click="test(event, 'blue')">
-             <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="rgba(169,216,200,1)" stroke-width="2"></rect>
+             <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
              </svg>
              <svg height="14" width="14" value="yellow" ng-model="event.color" ng-click="test(event, 'yellow')">
-             <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="rgba(250,215,123,1)" stroke-width="2"></rect>
+             <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="#000" stroke-width="2"></rect>
              </svg>
              <svg height="14" width="14" value="red" ng-model="event.color" ng-click="test(event, 'red')">
-             <rect x="2" y="2" height="10" width="10" fill="rgba(247,73,86,1)" stroke="rgba(237,73,86,1)" stroke-width="2"></rect>
+             <rect x="2" y="2" height="10" width="10" fill="rgba(247,73,86,1)" stroke="#000" stroke-width="2"></rect>
              </svg>
 
              <svg height="14" width="14" ng-click="event.editForm = true">

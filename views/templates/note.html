@@ -6,7 +6,7 @@
   </div>
 
   <div class="col-sm-9">
-    <div class="card">
+    <div class="card fade">
     <div id="note-form">
       <form ng-submit="createNote(user)">
 
@@ -20,12 +20,12 @@
     </div>
     
     <div ng-repeat="note in user.notes">
-      <div class="col-sm-3 card fade" id="{{note.color}}">
+      <div class="col-sm-3 card " id="{{note.color}}">
         <div ng-hide="note.editForm">
            <!--  <i class="fa fa-close pull-right" ng-click="deleteNote(note)"></i> -->
-            <svg width="8" height="8" class="close-btn" ng-click="deleteNote(note)">
-                <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
-                <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
+            <svg width="10" height="10" class="close-btn" ng-click="deleteNote(note)">
+                <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="1" stroke="#fff"></line>
+                <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="1" stroke="#fff"></line>
             </svg>  
             <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
           <!--   <div ng-init="limit = 140; moreShown = false"> -->
@@ -49,7 +49,7 @@
 
              <svg height="14" width="14" ng-click="note.editForm = true">
              <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
-            <!--  <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line> -->
+             <line y2="2" x2="12" y1="12" x1="2" stroke-width="1.2" stroke="#fff"></line>
              </svg>
              </div>
            <!--  <a ng-hide="note.body.length > limit" href ng-click="limit = 140; moreShown = false"> Less </a> -->

@@ -177,10 +177,17 @@ angular.module('peckbox')
 // }]);
 
   }])
-  .controller('PostShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Post', '$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Post, $q) {
+  .controller('PostShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Post', '$window','$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Post, $window, $q) {
     $http.get('/api/me').success(function(data) {
-      $scope.user = data;
+      $scope.user = data
+      // $scope.post = data.post
+      // $scope.comment = data.post.comments
     });
+
+    //go back button
+      $scope.backButton = function() {
+         $window.history.back();
+      };
 
     Post.get({ id: $routeParams.id }, function(post) {
       $scope.post = post;

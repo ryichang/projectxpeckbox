@@ -6,7 +6,7 @@
     
 
     <div class="col-sm-9">
-      <div class="card">
+      <div class="card fade">
         <div id="tabs">
               <ul class="tabs">
                   <li ng-repeat="tab in tabs" 
@@ -121,14 +121,18 @@
       <div ng-repeat="post in posts | orderBy:'-created_at'"> -->
 
       <div ng-repeat="event in user.events | orderBy:'-created_at'">
-        <div class="col-sm-3 card fade" id="{{event.color}}">
+        <div class="col-sm-3 card" id="{{event.color}}">
          <div ng-hide="event.editForm">
-            <svg width="8" height="8" class="close-btn" ng-click="deleteEvent(event)">
-                <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
-                <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
+            <svg width="10" height="10" class="close-btn" ng-click="deleteEvent(event)">
+                <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="1" stroke="#fff"></line>
+                <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="1" stroke="#fff"></line>
             </svg>    
            <!--  <i class="fa fa-close pull-right" ng-click="deleteEvent(event)"></i> -->
             <div class="card-date">{{event.date | date: 'EEE MMMM d @ hh:mma'}}</div>
+            <div id="ribbon">
+                <div ng-show="event.comments.length>0" ng-click="eventShow(event)">{{event.comments.length}}</div>
+             </div>
+             <i class="ion-plus" style="float:right;" ng-click="eventShow(event)"></i>
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
             <h3>{{event.title}}</h3>
             <p>{{event.description}}</p>
@@ -150,8 +154,9 @@
 
              <svg height="14" width="14" ng-click="event.editForm = true">
              <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
-            <!--  <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line> -->
+             <line y2="2" x2="12" y1="12" x1="2" stroke-width="1.2" stroke="#fff"></line>
              </svg>
+
              </div>
 
          </div>
@@ -176,7 +181,7 @@
               <label for="title">Location</label>
               <input type="text" g-places-autocomplete options="autocompleteOptions" ng-model="event.location" class='form-control'>
             </div>
-            <input type="submit" value="Update" class="btn btn-default">
+            <input type="submit" value="Update" class="btn btn-social">
           </form>
         </div>
       </div>

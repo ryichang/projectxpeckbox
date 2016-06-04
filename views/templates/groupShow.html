@@ -1,40 +1,42 @@
 <div class="container">
   <div class="col-sm-3">
-    <div class="card" id={{post.color}}>
-      <div ng-hide="post.editForm">
-        <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
-        <button type="button" class="close" ng-click="backButton()" aria-label="Close">
+    <div class="card" id={{group.color}}>
+      <div ng-hide="group.editForm">
+        <div class="card-date">{{group.created_at | date: 'MMMM d @ h:mma'}}</div>
+        <button type="button" class="close" ng-click="backButton()" aria-label="Back">
         <i class='icon ion-arrow-return-left custom-icon'></i>
         </button>
-          <h3>{{post.title}}</h3>
-          <p>{{post.body}}</p>
-          <p>{{post.userId.displayName}}</p>
+          <h3>{{group.title}}</h3>
+          <p>{{group.description}}</p>
+          <p>{{group.users}}</p>
+          <button type="button" class="btn btn-social" ng-click="joinGroup(group, user)">Join
+          </button>
           <div style="float:right">
-          <svg height="14" width="14" value="default" ng-model="post.color" ng-click="test(post, 'default')">
+          <svg height="14" width="14" value="default" ng-model="group.color" ng-click="test(group, 'default')">
           <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
           </svg>
-          <svg height="14" width="14" value="blue" ng-model="post.color" ng-click="test(post, 'blue')">
+          <svg height="14" width="14" value="blue" ng-model="group.color" ng-click="test(group, 'blue')">
           <rect x="2" y="2" height="10" width="10" fill="rgba(169,216,200,1)" stroke="#000" stroke-width="2"></rect>
           </svg>
-          <svg height="14" width="14" value="yellow" ng-model="post.color" ng-click="test(post, 'yellow')">
+          <svg height="14" width="14" value="yellow" ng-model="group.color" ng-click="test(group, 'yellow')">
           <rect x="2" y="2" height="10" width="10" fill="rgba(250,215,123,1)" stroke="#000" stroke-width="2"></rect>
           </svg>
-          <svg height="14" width="14" value="red" ng-model="post.color" ng-click="test(post, 'red')">
+          <svg height="14" width="14" value="red" ng-model="group.color" ng-click="test(group, 'red')">
           <rect x="2" y="2" height="10" width="10" fill="rgba(247,73,86,1)" stroke="#000" stroke-width="2"></rect>
           </svg>
-          <svg height="14" width="14" ng-click="post.editForm = true">
+          <svg height="14" width="14" ng-click="group.editForm = true">
           <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
           <line y2="2" x2="12" y1="12" x1="2" stroke-width="1.2" stroke="#fff"></line>
           </svg>
           </div>
       </div>
  
-    <form ng-show="post.editForm" ng-submit="updatePost(post)">
+    <form ng-show="group.editForm" ng-submit="updateGroup(group)">
       <div class="form-group">
-        <input type="text" ng-model="post.title" class="form-control">
+        <input type="text" ng-model="group.title" class="form-control">
       </div>
       <div class="form-group">
-        <input type="text" ng-model="post.body" class="form-control">
+        <input type="text" ng-model="group.description" class="form-control">
       </div>
       <input type="submit" value="Update" class="btn btn-social">
     </form>
@@ -48,7 +50,7 @@
   <div class="col-sm-9">
     <div class="card fade">
     <div id="comment-form">
-      <form ng-submit="createComment(post, user)">
+      <form ng-submit="createComment(group, user)">
         <div class="form-group">
           <label for="comment">Comment</label>
           <textarea class="form-control" ng-model="comment.body"></textarea>
@@ -58,7 +60,7 @@
     </div>
     </div>
 
-    <div ng-repeat="comment in post.comments | filter:search">
+    <div ng-repeat="comment in group.comments | filter:search">
       <div class="col-sm-3 card" id="{{comment.color}}">
         <div ng-hide="comment.editForm">
           <svg width="8" height="8" class="close-btn" ng-click="deleteComment(comment)">
