@@ -21,7 +21,7 @@
                <div id="ribbon">
                    <div ng-show="post.comments.length>0" ng-click="postShow(post)">{{post.comments.length}}</div>
                 </div>
-               <div class="card-date">{{post.created_at | date: 'MMMM d @ h:mma'}}</div>
+               <div class="card-date">{{post.updated_at | date: 'MMMM d @ h:mma'}}</div>
                   <i class="ion-plus" style="float:right" ng-click="postShow(post)"></i>
                 <h3>{{post.title}}</h3>
                 <p>{{post.body}}</p>
@@ -212,7 +212,7 @@
         <div class="col-sm-11 card " id="{{note.color}}">
           <div ng-hide="note.editForm">
                 <!--  <i class="fa fa-close pull-right" ng-click="deleteNote(note)"></i> -->
-              <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
+              <div class="card-date">{{note.updated_at | date: 'MMMM d @ h:mma'}}</div>
                <i class="ion-more"  style="float:right;" ng-click="noteShow(note)"></i>
              <!--  <div ng-init="limit = 140; moreShown = false"> -->
               <p>{{note.body}}

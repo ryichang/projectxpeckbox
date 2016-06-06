@@ -1,8 +1,8 @@
 <div class="container">
   
   <div class="col-sm-3">
-    <h1>TOTAL NOTES</h1>
-    <h1>{{user.notes.length}}</h1>
+    <h1 class="fade">TOTAL NOTES</h1>
+    <h1 class="fade">{{user.notes.length}}</h1>
   </div>
 
   <div class="col-sm-9">
@@ -27,7 +27,7 @@
                 <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="1" stroke="#fff"></line>
                 <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="1" stroke="#fff"></line>
             </svg>  
-            <div class="card-date">{{note.created_at | date: 'MMMM d @ h:mma'}}</div>
+            <div class="card-date">{{note.updated_at | date: 'MMMM d @ h:mma'}}</div>
           <!--   <div ng-init="limit = 140; moreShown = false"> -->
             <p>{{note.body}}</p>
            <!--  <a ng-show="note.body.length > limit" href ng-click="limit = note.body.length; moreShown = true">More</a> -->
