@@ -6,6 +6,7 @@ var CommentSchema = Schema({
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
   userId : {type: Schema.Types.ObjectId, ref: 'User'},
+  groupId: {type: Schema.Types.ObjectId, ref: 'Group'},
   post         : { type: Schema.Types.ObjectId, ref: 'Post' },
   note         : { type: Schema.Types.ObjectId, ref: 'Note' },
   event        : { type: Schema.Types.ObjectId, ref: 'Event' },

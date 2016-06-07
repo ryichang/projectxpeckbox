@@ -11,6 +11,11 @@ angular.module('peckbox')
 
     $scope.group = {};
 
+    $http.get('/api/groups').success(function(data){
+      console.log('group is', data)
+      $scope.groups = data;
+    })
+
     $scope.test = function(group, color) {
 
         // console.log(event);
@@ -57,7 +62,6 @@ angular.module('peckbox')
             date : $scope.group.date,
             owner: user._id,
             users: user._id,
-            userId: user._id,
             color: $scope.group.color,
         };
         console.log("front is", body);
@@ -65,7 +69,7 @@ angular.module('peckbox')
         .success(function(response){
             toastr.success('You have successfully created a group!');
             console.log('response', response);
-             $scope.user.groups.unshift(response);
+             $scope.groups.unshift(response);
         })
         .error(function(response){
             console.log('err', response);
@@ -79,7 +83,6 @@ angular.module('peckbox')
             description  : $scope.group.description,
             date : $scope.group.date,
             color: $scope.group.color,
-            userId: user._id,
         };
         console.log('edit', $scope.group);
     };
@@ -110,8 +113,8 @@ angular.module('peckbox')
       $http.delete('/api/groups/' + group._id)
         .success(function(data) {
           toastr.error('You have successfully deleted a group!');
-          var index = $scope.user.groups.indexOf(group);
-          $scope.user.groups.splice(index,1);
+          var index = $scope.groups.indexOf(group);
+          $scope.groups.splice(index,1);
 
         })
         .error(function(data) {
@@ -169,19 +172,17 @@ angular.module('peckbox')
       console.log('group is', group)
       console.log('user is', user)
 
-
       var body = {
         users: user._id,
-        groups: group._id,
-        owner: group.owner,
       }
+
       console.log('body is', body)
 
       $http.post('/api/groups/' + group._id, body)
       .success(function(response){
-        toastr.success('You have successfully created a group!');
+        toastr.success('You have successfully joined a group!');
             console.log('response', response);
-             $scope.user.groups.unshift(response);
+             $scope.group.users.unshift(response.users[0]);
       })
       .error(function(response){
             console.log('err', response);
@@ -197,7 +198,7 @@ angular.module('peckbox')
             title: group.title,
             description: group.description
         };
-        console.log('edit', $scope.post);
+        console.log('edit', $scope.group);
     };
 
     $scope.updateGroup = function(group){
@@ -215,7 +216,7 @@ angular.module('peckbox')
        var config = {
          body: $scope.comment.body,
          userId: user._id,
-         group: group._id
+         groupId: group._id
        };
 
        console.log('config', config)
@@ -232,7 +233,7 @@ angular.module('peckbox')
      };
 
      $scope.deleteComment = function(comment) {
-       $http.delete('/api/groups/' + comment.group + '/comments/' + comment._id)
+       $http.delete('/api/groups/' + comment.groupId + '/comments/' + comment._id, comment)
          .success(function(data) {
            toastr.error('You have successfully deleted a comment!');
            var index = $scope.group.comments.indexOf(comment);
@@ -245,7 +246,7 @@ angular.module('peckbox')
      };
 
      $scope.updateComment = function(comment) {
-      $http.put('/api/groups/' + comment.group + '/comments/' + comment._id)
+      $http.put('/api/groups/' + comment.groupId + '/comments/' + comment._id, comment)
       .success(function(response){
         toastr.warning('You have successfully updated a comment!');
         console.log(response);

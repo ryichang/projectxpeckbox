@@ -7,7 +7,7 @@ var GroupSchema = Schema({
   created_at: { type: Date, default: Date.now() },
   updated_at: { type: Date },
   owner  : {type: Schema.Types.ObjectId, ref: 'User'},
-  users  : {type: Schema.Types.ObjectId, ref: 'User'},
+  users  : [{type: Schema.Types.ObjectId, ref: 'User'}],
   comments         : [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   color  : {type: String, default: "default"},
 });

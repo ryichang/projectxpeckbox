@@ -69,7 +69,9 @@
           </svg>  
           <div class="card-date">{{comment.updated_at | date: 'MMMM d @ h:mma'}}</div>
           <p>{{comment.body}}</p>
+          <p>Group id is {{comment.groupId}}</p>
           <p>{{comment.userId.displayName}}</p>
+
 
             <div style="float:right">
             <svg height="14" width="14" value="default" ng-model="comment.color" ng-click="commentColor(comment, 'default')">

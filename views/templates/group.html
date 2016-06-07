@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-sm-3">
       <h1 class="fade">TOTAL GROUPS</h1>
-      <h1 class="fade">{{user.groups.length}}</h1>
+      <h1 class="fade">{{groups.length}}</h1>
     </div>
 
     <div class="col-sm-9">
@@ -23,7 +23,7 @@
       </div>
   
     
-      <div ng-repeat="group in user.groups">
+      <div ng-repeat="group in groups | orderBy:'-updated_at'">
         <div class="col-sm-3 card" id="{{group.color}}">
           <div ng-hide="group.editForm">
               <svg width="10" height="10" class="close-btn" ng-click="deleteGroup(group)">
