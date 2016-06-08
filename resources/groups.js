@@ -81,7 +81,7 @@ module.exports = function(app) {
 	        });
 	});
 
-	//USER JOIN CREATE NEW GROUP
+	//WHEN USER JOIN USE POST ROUTE TO GROUP
 	app.post('/api/groups/:group_id', auth.ensureAuthenticated, function(req,res){ 
 	    console.log('putroute', req.body);
 	    console.log('groupId', req.params.group_id);
@@ -133,23 +133,18 @@ module.exports = function(app) {
 	// });
 
 	app.delete('/api/groups/:group_id', function(req, res) {
-		Group.findByIdAndRemove({
-			_id : req.params.group_id
-		 }, function(err, group) {
+		Group.findByIdAndRemove({ _id : req.params.group_id}, function(err, group) {
 			if (err)
-				res.send(err);
-			console.log('group deleted is', group)
-			Comment.find({
-				_id : req.params.group_id
-			}, function(err, comment){
-				Comment.remove(comment), function (err, comment){
-					if (err)
-						res.send(err);
-					console.log('comment deleted is', comment)
-					};
-			});
+				res.send(err); 
+			Comment.remove({ groupId : req.params.group_id})
+			.exec(function(err, result) {
+				if (err)
+				 res.send(err)
+				 res.status(200).send('Group deleted')
+			})
 			
 		});
+		
 	});
 
 	// app.delete('/api/groups/:group_id', function(req, res) {

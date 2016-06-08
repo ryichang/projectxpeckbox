@@ -9,7 +9,8 @@
           <h3>{{group.title}}</h3>
           <p>{{group.description}}</p>
           <p>{{group.users}}</p>
-          <button type="button" class="btn btn-social" ng-click="joinGroup(group, user)">Join
+          <p>{{user._id}}</p>
+          <button type="button" class="btn btn-social" ng-click="joinGroup(group, user)" ng-hide="{{user._id}} == {{group.users}}">Join
           </button>
           <div style="float:right">
           <svg height="14" width="14" value="default" ng-model="group.color" ng-click="test(group, 'default')">

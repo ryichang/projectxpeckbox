@@ -36,24 +36,6 @@ angular.module('peckbox')
        });
     };
 
-    $scope.tabs = [{
-                title: 'Comment',
-                url: 'comment.tpl.html'
-            },{
-                title: 'Event',
-                url: 'event.tpl.html'
-        }];
-
-        $scope.currentTab = 'event.tpl.html';
-
-        $scope.onClickTab = function (tab) {
-            $scope.currentTab = tab.url;
-        };
-        
-        $scope.isActiveTab = function(tabUrl) {
-            return tabUrl == $scope.currentTab;
-        };
-
     $scope.createGroup = function(user) {
      
         var body = {
@@ -112,10 +94,10 @@ angular.module('peckbox')
     $scope.deleteGroup = function(group) {
       $http.delete('/api/groups/' + group._id)
         .success(function(data) {
+          console.log('data is', data)
           toastr.error('You have successfully deleted a group!');
           var index = $scope.groups.indexOf(group);
           $scope.groups.splice(index,1);
-
         })
         .error(function(data) {
           console.log('Error: ' + data);
@@ -167,6 +149,24 @@ angular.module('peckbox')
          console.log(response);
        });
     };
+
+    $scope.tabs = [{
+                title: 'Comment',
+                url: 'comment.tpl.html'
+            },{
+                title: 'Event',
+                url: 'event.tpl.html'
+        }];
+
+        $scope.currentTab = 'event.tpl.html';
+
+        $scope.onClickTab = function (tab) {
+            $scope.currentTab = tab.url;
+        };
+        
+        $scope.isActiveTab = function(tabUrl) {
+            return tabUrl == $scope.currentTab;
+        };
 
     $scope.joinGroup = function(group, user){
       console.log('group is', group)
