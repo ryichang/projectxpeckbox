@@ -7,6 +7,65 @@ var Note = require('../models/note.js'),
     auth = require('./auth');
 
 module.exports = function(app) {
+	app.post('/api/note/:note_id/comments', auth.ensureAuthenticated, function (req, res){
+			// console.log("comment passed back", req.body)
+			// console.log('note', req.body.note)
+			User.findById(req.userId).exec(function(err, user){
+				Note.findById(req.body.note)
+				.populate('comments')
+				.populate('userId')
+				.exec(function(err,note){
+					// console.log('commentor email in note: ', note.user.email);
+					var comment = new Comment(req.body);
+					comment.save(function(err, comment){
+						note.comments.unshift(comment._id);
+						note.save();
+						Comment.findById(comment._id)
+						.populate('userId')
+						.exec(function (err, data){
+						console.log('Data', data.userId);
+						res.send(data);
+						});
+					});
+				});	
+			});
+		});
+
+	app.put('/api/notes/:note_id/comments/:comment_id', auth.ensureAuthenticated, function(req,res){ 
+	    console.log('putroute', req.body);
+	    console.log('commentId', req.params.comment_id);
+	        Comment.findOneAndUpdate({ _id: req.params.comment_id}, req.body , function (err, comment) {
+	            // console.log("editRoute", note);
+	            if (err) { return res.send(err); }
+	            // console.log('backend', note);
+	            res.send(comment);
+	            });
+	     });
+
+	app.delete('/api/notes/:note_id/comments/:comment_id', function(req, res) {
+		Comment.findByIdAndRemove({
+			_id : req.params.comment_id
+		 }, function(err, note) {
+			if (err)
+				res.send(err);
+
+			// Delete Note in User
+			Note.findOneAndUpdate(
+				{ comments: req.params.comment_id},
+				{ "$pull": {"comments": req.params.comment_id}},
+	
+				function (err, comment){
+					if(err) {
+						res.send(err);
+					} else {
+						res.status(200).send("comment is deleted", comment);
+						
+					}
+					
+				});
+			});
+	});
+
 	app.post('/api/post/:post_id/comments', auth.ensureAuthenticated, function (req, res){
 			// console.log("comment passed back", req.body)
 			// console.log('post', req.body.post)
@@ -126,7 +185,7 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/group/:group_id/comments', auth.ensureAuthenticated, function (req, res){
-			console.log("comment passed back", req.body)
+			console.log("comment passed back", req.body);
 			Group.findById(req.body.groupId).exec(function(err,group){
 				var comment = new Comment(req.body);
 				comment.save(function(err, comment){
@@ -136,7 +195,7 @@ module.exports = function(app) {
 					.populate('userId')
 					.exec(function (err, comment){
 						res.send(comment);
-					})
+					});
 				});
 			});
 
@@ -182,7 +241,7 @@ module.exports = function(app) {
 	app.delete('/api/groups/:group_id/comments/:comment_id', auth.ensureAuthenticated, function(req,res){
 		Comment.remove({ _id: req.params.comment_id}, function (err, comment){
             if(err){
-                console.log(err)
+                console.log(err);
                 return res.send(err);
             }
             Group.findOneAndUpdate(
@@ -191,11 +250,11 @@ module.exports = function(app) {
                 function (err, group){
                     if (err) {return res.send(err);}
                     else {
-                        console.log("Object Group Delte", group) 
-                        res.status(200).send('Finished Delete')
+                        console.log("Object Group Delte", group) ;
+                        res.status(200).send('Finished Delete');
                     }
-                })
-        })
+                });
+        });
 
 	});
 

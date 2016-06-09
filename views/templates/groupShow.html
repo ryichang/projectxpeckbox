@@ -10,7 +10,7 @@
           <p>{{group.description}}</p>
           <p>{{group.users}}</p>
           <p>{{user._id}}</p>
-          <button type="button" class="btn btn-social" ng-click="joinGroup(group, user)" ng-hide="{{user._id}} == {{group.users}}">Join
+          <button type="button" class="btn btn-social" ng-click="joinGroup(group, user)" ng-hide="currentUser">Join
           </button>
           <div style="float:right">
           <svg height="14" width="14" value="default" ng-model="group.color" ng-click="test(group, 'default')">
@@ -70,7 +70,6 @@
           </svg>  
           <div class="card-date">{{comment.updated_at | date: 'MMMM d @ h:mma'}}</div>
           <p>{{comment.body}}</p>
-          <p>Group id is {{comment.groupId}}</p>
           <p>{{comment.userId.displayName}}</p>
 
 

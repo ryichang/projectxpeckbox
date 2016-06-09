@@ -20,7 +20,7 @@
            <div ng-hide="post.editForm">
                <div id="ribbon">
                    <div ng-show="post.comments.length>0" ng-click="postShow(post)">{{post.comments.length}}</div>
-                </div>
+               </div>
                <div class="card-date">{{post.updated_at | date: 'MMMM d @ h:mma'}}</div>
                   <i class="ion-plus" style="float:right" ng-click="postShow(post)"></i>
                 <h3>{{post.title}}</h3>
@@ -213,7 +213,10 @@
           <div ng-hide="note.editForm">
                 <!--  <i class="fa fa-close pull-right" ng-click="deleteNote(note)"></i> -->
               <div class="card-date">{{note.updated_at | date: 'MMMM d @ h:mma'}}</div>
-               <i class="ion-more"  style="float:right;" ng-click="noteShow(note)"></i>
+              <div id="ribbon">
+                  <div ng-show="note.comments.length>0" ng-click="noteShow(note)">{{note.comments.length}}</div>
+              </div>
+              <i class="ion-plus" style="float:right" ng-click="noteShow(note)"></i>
              <!--  <div ng-init="limit = 140; moreShown = false"> -->
               <p>{{note.body}}
              <!--  <a ng-show="note.body.length > limit" href ng-click="limit = note.body.length; moreShown = true">More</a> -->

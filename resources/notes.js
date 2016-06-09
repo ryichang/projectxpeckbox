@@ -1,5 +1,6 @@
 var Note = require('../models/note.js'),
 	User = require('../models/user.js'),
+	Comment = require('../models/comment.js'),
     auth = require('./auth');
 
 module.exports = function(app) {
@@ -21,13 +22,23 @@ module.exports = function(app) {
 
 	app.get('/api/notes/:note_id', auth.ensureAuthenticated, function (req,res) {
 	        User.findById(req.userId).exec(function (err, user) {
-	            Note.findById({ _id: req.params.note_id}, function(err, note) {
-	                if (err) { return res.status(404).send(err); }
-	                res.send(note); 
-	                console.log('note is', note);
-	            });
-	        });
-	    });
+	            Note.findById(req.params.note_id)
+	            	.populate({
+	            		path: 'comments', 
+	            		populate: {
+	            			path:'userId', 
+	            			model: 'User'
+	            		}
+	            	}) 
+	            	.populate('userId')
+	            	    .exec(function(err, note) {
+	            	        if (err) { return res.status(404).send(err); }
+	            	        res.send(note);
+	            	       
+	            	    });
+	            	});
+
+	});
 
 	app.put('/api/notes/:note_id', auth.ensureAuthenticated, function(req,res){ 
             console.log('putroute', req.body);
@@ -51,8 +62,6 @@ module.exports = function(app) {
 		});
 	});
 
-
-
 	app.delete('/api/notes/:note_id', function(req, res) {
 		Note.findByIdAndRemove({
 			_id : req.params.note_id
@@ -60,7 +69,7 @@ module.exports = function(app) {
 			if (err)
 				res.send(err);
 
-			// get and return all the notes after you create another
+			// Delete Note in User
 			User.findOneAndUpdate(
 				{ notes: req.params.note_id},
 				{ "$pull": {"notes": req.params.note_id}},
@@ -70,8 +79,17 @@ module.exports = function(app) {
 						res.send(err);
 					} else {
 						console.log("OBjectID", note);
+						Comment.remove({ note: req.params.note_id},
+							function(err, comment){
+								if(err){
+									console.log(err);
+									return res.send(err);
+								}
+							console.log('comment delete', comment);
+							});
 						res.status(200).send('Find user and deleted');
 					}
+					
 				});
 			});
 	});

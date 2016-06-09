@@ -119,6 +119,21 @@ angular.module('peckbox')
 
     });
 
+    $scope.hasRole = function(role){
+     var indexOf = $scope.group.users.indexOf(role); 
+     if (indexOfRole === -1)
+          return false;
+     else
+          return true;
+  };
+
+  $scope.hasJoined = function(role){
+     var indexOf = $scope.group.users.indexOf(role); 
+     if (indexOfRole === -1)
+          return false;
+     else
+          return true;
+  };
     //go back button
       $scope.backButton = function() {
          $window.history.back();
