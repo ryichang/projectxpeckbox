@@ -139,6 +139,7 @@ angular.module('peckbox')
         if (users[userIndex] == $scope.user._id){
           $scope.userFound = true;
            console.log('userFound is', $scope.userFound)
+           break;
         } else {
           $scope.userFound = false;
           console.log('userFound is', $scope.userFound)
@@ -161,10 +162,13 @@ angular.module('peckbox')
         toastr.success('You have successfully joined a group!');
             console.log('response', response);
              $scope.group.users.unshift(response.users[0]);
+             $http.post('/api/groups')
+             $scope.groups.unshift(response);
       })
       .error(function(response){
             console.log('err', response);
         });
+
     };
 
 
