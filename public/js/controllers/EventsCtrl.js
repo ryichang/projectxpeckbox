@@ -132,23 +132,23 @@ angular.module('peckbox')
       $scope.user = data;
     });
 
-        $scope.tabs = [{
-                title: 'Comment',
-                url: 'comment.tpl.html'
-            },{
-                title: 'Map',
-                url: 'map.tpl.html'
-        }];
+        // $scope.tabs = [{
+        //         title: 'Comment',
+        //         url: 'comment.tpl.html'
+        //     },{
+        //         title: 'Map',
+        //         url: 'map.tpl.html'
+        // }];
 
-        $scope.currentTab = 'map.tpl.html';
+        // $scope.currentTab = 'map.tpl.html';
 
-        $scope.onClickTab = function (tab) {
-            $scope.currentTab = tab.url;
-        };
+        // $scope.onClickTab = function (tab) {
+        //     $scope.currentTab = tab.url;
+        // };
         
-        $scope.isActiveTab = function(tabUrl) {
-            return tabUrl == $scope.currentTab;
-        };
+        // $scope.isActiveTab = function(tabUrl) {
+        //     return tabUrl == $scope.currentTab;
+        // };
 
     Event.get({ id: $routeParams.id }, function(event) {
       $scope.event = event;

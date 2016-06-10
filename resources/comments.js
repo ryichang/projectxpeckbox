@@ -239,18 +239,22 @@ module.exports = function(app) {
 	     });
 
 	app.delete('/api/groups/:group_id/comments/:comment_id', auth.ensureAuthenticated, function(req,res){
+		console.log('res is' , res)
 		Comment.remove({ _id: req.params.comment_id}, function (err, comment){
             if(err){
                 console.log(err);
                 return res.send(err);
             }
+
             Group.findOneAndUpdate(
-                { group: req.body.groupId},
+                { "_id": req.params.group_id},
                 { "$pull": {"comments": req.params.comment_id}},
                 function (err, group){
-                    if (err) {return res.send(err);}
+                    if (err) {
+                    	console.log("err is", err)
+                    	return res.send(err);}
                     else {
-                        console.log("Object Group Delte", group) ;
+                        console.log("Object Group Delete", group) ;
                         res.status(200).send('Finished Delete');
                     }
                 });
@@ -258,28 +262,4 @@ module.exports = function(app) {
 
 	});
 
-	// app.delete('/api/groups/:group_id/comments/:comment_id', function(req, res) {
-	// 	Comment.findByIdAndRemove({
-	// 		_id : req.params.comment_id
-	// 	 }, function(err, group) {
-	// 		if (err)
-	// 			res.send(err);
-
-	// 		// Delete Group in User
-	// 		Group.findOneAndUpdate(
-	// 			{ comments: req.params.group_id},
-	// 			{ "$pull": {"comments": req.params.group_id}},
-	
-	// 			function (err, comment){
-	// 				if(err) {
-	// 					res.send(err);
-	// 				} else {
-
-	// 					res.status(200).send("comment is deleted", comment);
-						
-	// 				}
-					
-	// 			});
-	// 		});
-	// });
 };

@@ -26,6 +26,7 @@
       <div ng-repeat="group in groups | orderBy:'-updated_at'">
         <div class="col-sm-3 card" id="{{group.color}}">
           <div ng-hide="group.editForm">
+          <!--  <svg width="10" height="10" class="close-btn" ng-click="deleteGroup(group)" ng-show="ownerFound"> -->
               <svg width="10" height="10" class="close-btn" ng-click="deleteGroup(group)">
                   <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="1" stroke="#fff"></line>
                   <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="1" stroke="#fff"></line>

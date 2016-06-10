@@ -62,13 +62,38 @@
         <input type="submit" value="Update" class="btn btn-social">
       </form>
   </div>
-         <div class="card" id="directions-panel">
-               </div>
+
+        <div class="card" id="directions-panel">
+          </div>
   </div>
   
   <div class="col-sm-9">
+   
+    <ng-map center="current-location" zoom="9" class="showmap" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#000000'},{lightness:'30'}]}]">
+       <transit-layer></transit-layer>
+       <traffic-layer></traffic-layer>
+       <marker position="{{event.location.formatted_address}}">
+       <directions
+                 draggable="true"
+                 panel="directions-panel"
+                 travel-mode="DRIVING"
+                 origin="current-location"
+                 destination="{{event.location.formatted_address}}}">
+               </directions>
+       </marker>
+
+    </ng-map>
     <div class="card fade">
-      <div id="tabs">
+    <div id="comment-form">
+      <form ng-submit="createComment(event, user)">
+        <div class="form-group">
+          <label for="comment">Comment</label>
+          <textarea class="form-control" ng-model="comment.body"></textarea>
+        </div>
+          <button class="btn btn-social"><i class="ion-plus" type="submit"></i></button>
+      </form>
+    </div>
+ <!--      <div id="tabs">
             <ul class="tabs">
                 <li ng-repeat="tab in tabs" 
                     ng-class="{active:isActiveTab(tab.url)}" 
@@ -91,9 +116,9 @@
               </form>
             </div>
           </div>
-        </script>
+        </script> -->
       
-        <script type="text/ng-template" id="map.tpl.html">
+       <!--  <script type="text/ng-template" id="map.tpl.html">
           <div id="viewTwo">
       
             <ng-map center="current-location" zoom="9" class="map" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#000000'},{lightness:'30'}]}]">
@@ -109,11 +134,11 @@
                </marker>
 
             </ng-map>
-        <!--      <div class="card" id="directions-panel">
-               </div> -->
+             <div class="card" id="directions-panel">
+               </div>
           
           </div>
-         </script>
+         </script> -->
       
 
       </div>

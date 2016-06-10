@@ -59,7 +59,7 @@
             <div class="eventMap">
               <ng-map center="current-location" zoom="9" class="map" styles="[{stylers:[{hue:'#e0efef'},{visibility:'on'}]},{elementType:'labels',stylers:[{visibility:'on'}]},{featureType:'water',stylers:[{color:'#000000'},{lightness:'30'}]}]">
                  <transit-layer></transit-layer>
-                 <traffic-layer></traffic-layer>
+              <!--    <traffic-layer></traffic-layer> -->
                  <marker ng-repeat="event in user.events" position="{{event.location.formatted_address}}">
                  </marker>
               </ng-map>

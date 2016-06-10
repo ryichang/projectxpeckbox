@@ -14,7 +14,7 @@ angular.module('peckbox')
     $http.get('/api/groups').success(function(data){
       console.log('group is', data)
       $scope.groups = data;
-    })
+    });
 
     $scope.test = function(group, color) {
 
@@ -119,21 +119,9 @@ angular.module('peckbox')
 
     });
 
-    $scope.hasRole = function(role){
-     var indexOf = $scope.group.users.indexOf(role); 
-     if (indexOfRole === -1)
-          return false;
-     else
-          return true;
-  };
+    $scope.userFound = false;
 
-  $scope.hasJoined = function(role){
-     var indexOf = $scope.group.users.indexOf(role); 
-     if (indexOfRole === -1)
-          return false;
-     else
-          return true;
-  };
+  
     //go back button
       $scope.backButton = function() {
          $window.history.back();
@@ -143,7 +131,43 @@ angular.module('peckbox')
       $scope.group = group;
       $scope.comment = group.comments;
       console.log('outside', group);
+      var users = $scope.group.users
+     
+    for (var userIndex in users) {
+        console.log('userIndex is', users[userIndex])
+        console.log('user Id is', $scope.user._id)
+        if (users[userIndex] == $scope.user._id){
+          $scope.userFound = true;
+           console.log('userFound is', $scope.userFound)
+        } else {
+          $scope.userFound = false;
+          console.log('userFound is', $scope.userFound)
+        }
+    }
     });
+
+    $scope.joinGroup = function(group, user){
+      console.log('group is', group)
+      console.log('user is', user)
+
+      var body = {
+        users: user._id,
+      }
+
+      console.log('body is', body)
+
+      $http.post('/api/groups/' + group._id, body)
+      .success(function(response){
+        toastr.success('You have successfully joined a group!');
+            console.log('response', response);
+             $scope.group.users.unshift(response.users[0]);
+      })
+      .error(function(response){
+            console.log('err', response);
+        });
+    };
+
+
 
     $scope.test = function(group, color) {
 
@@ -181,30 +205,7 @@ angular.module('peckbox')
         
         $scope.isActiveTab = function(tabUrl) {
             return tabUrl == $scope.currentTab;
-        };
-
-    $scope.joinGroup = function(group, user){
-      console.log('group is', group)
-      console.log('user is', user)
-
-      var body = {
-        users: user._id,
-      }
-
-      console.log('body is', body)
-
-      $http.post('/api/groups/' + group._id, body)
-      .success(function(response){
-        toastr.success('You have successfully joined a group!');
-            console.log('response', response);
-             $scope.group.users.unshift(response.users[0]);
-      })
-      .error(function(response){
-            console.log('err', response);
-        });
-    };
-
-    
+        };  
 
     $scope.editGroup = function(group){
         $scope.group = {
@@ -213,11 +214,11 @@ angular.module('peckbox')
             title: group.title,
             description: group.description
         };
-        console.log('edit', $scope.group);
+        // console.log('edit', $scope.group);
     };
 
     $scope.updateGroup = function(group){
-      console.log("Color: "+group.color)
+      // console.log("Color: "+group.color)
        $http.put('/api/groups/'+ group._id, group)
        .success(function(response){
          toastr.warning('You have successfully updated a group!');
@@ -234,44 +235,44 @@ angular.module('peckbox')
          groupId: group._id
        };
 
-       console.log('config', config)
+       // console.log('config', config);
        $http.post('/api/group/' + group._id + '/comments', config)
        .success(function(response){
-         toastr.success('You have successfully created a comment!');
-         console.log('response is', response)
+         toastr.success('Comment has been successfully added in group!');
+         // console.log('response is', response);
          $scope.group.comments.unshift(response);
-         console.log('group comment is', group.comments)
+         // console.log('group comment is', group.comments);
        })
        .error(function(response){
-         console.log('err', response)
+         // console.log('err', response);
        });
      };
 
      $scope.deleteComment = function(comment) {
        $http.delete('/api/groups/' + comment.groupId + '/comments/' + comment._id, comment)
          .success(function(data) {
-           toastr.error('You have successfully deleted a comment!');
+           toastr.error('Comment has been deleted in group!');
            var index = $scope.group.comments.indexOf(comment);
            $scope.group.comments.splice(index,1);
 
          })
          .error(function(data) {
-           console.log('Error: ' + data);
+           // console.log('Error: ' + data);
          });
      };
 
      $scope.updateComment = function(comment) {
       $http.put('/api/groups/' + comment.groupId + '/comments/' + comment._id, comment)
       .success(function(response){
-        toastr.warning('You have successfully updated a comment!');
-        console.log(response);
+        toastr.warning('Comment has been updated in group!');
+        // console.log(response);
         comment.editForm = false;
       });
      };
 
      $scope.commentColor = function(comment, color) {
 
-         console.log(comment);
+        
          // overriding post model with color (String)
          if (color === "red") {
            comment.color = "red";
@@ -285,7 +286,7 @@ angular.module('peckbox')
          
          $http.put('/api/groups/'+ comment.group + '/comments/' + comment._id, comment)
          .success(function(response){
-          console.log(response);
+  
         });
      };
 
