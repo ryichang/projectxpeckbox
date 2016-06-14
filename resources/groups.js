@@ -38,34 +38,23 @@ module.exports = function(app) {
 	            			path:'userId', 
 	            			model: 'User',
 	            		}
-	            	}) 
+	            	})
+	            	.populate({
+	            		path: 'events', 
+	            		populate: {
+	            			path:'userId', 
+	            			model: 'User',
+	            		}
+	            	})
 	            	.populate('userId')
 	            	    .exec(function(err, group) {
 	            	        if (err) { return res.status(404).send(err); }
 	            	        res.send(group);
 	 
-	            	    })
+	            	    });
 	    });
 	});
-	// app.get('/api/groups/:group_id', auth.ensureAuthenticated, function (req,res) {
-	//     User.findById(req.userId).exec(function(err,user){
-	//             Group.findById(req.params.group_id)
-	//             	.populate({
-	//             		path: 'comments', 
-	//             		populate: {
-	//             			path:'userId', 
-	//             			model: 'User'
-	//             		}
-	//             	}) 
-	//             	.populate('userId')
-	//             	    .exec(function(err, group) {
-	//             	        if (err) { return res.status(404).send(err); }
-	//             	        res.send(group);
-	 
-	//             	    });
-	    
-	//     });
-	// });
+
 
 	//UPDATE GROUP
 	app.put('/api/groups/:group_id', auth.ensureAuthenticated, function(req,res){ 
@@ -76,10 +65,11 @@ module.exports = function(app) {
 	            if (err) { return res.send(err); }
 	            // console.log('backend', group);
 	           
-	            group.save()
+	            group.save();
 	            res.send(group);
 	        });
 	});
+
 
 	//WHEN USER JOIN USE POST ROUTE TO GROUP
 	app.post('/api/groups/:group_id', auth.ensureAuthenticated, function(req,res){ 
@@ -89,8 +79,8 @@ module.exports = function(app) {
 	            // console.log("editRoute", group;
 	            if (err) { return res.send(err); }
 	            // console.log('backend', group);
-	            group.users.unshift(req.body.users)
-	            group.save()
+	            group.users.unshift(req.body.users);
+	            group.save();
 	            res.send(group);
 	        });
 	});
@@ -140,9 +130,13 @@ module.exports = function(app) {
 			.exec(function(err, result) {
 				if (err)
 				 res.send(err)
+			})
+			Event.remove({ groupId : req.params.group_id})
+			.exec(function(err, result) {
+				if (err)
+				 res.send(err)
 				 res.status(200).send('Group deleted')
 			})
-			
 		});
 		
 	});

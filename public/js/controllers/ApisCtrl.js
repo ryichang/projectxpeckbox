@@ -36,6 +36,14 @@ angular.module('peckbox')
   //     console.log('ApiCtrl', $scope.weather);
   //    });
   // });
+  // $http({
+  //         method: 'jsonp',
+  //         url: 'https://api.nytimes.com/svc/topstories/v1/home.json?api-key=b9ccbfb3e60d48ce9c81dcc40406ab84&callback=JSON_CALLBACK',
+  //         responseType: 'json',
+  //         data: ''})
+  //     .success(function(err, response, body) {
+  //       console.log(response);
+  //     });
 
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position){

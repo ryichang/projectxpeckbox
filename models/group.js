@@ -8,6 +8,7 @@ var GroupSchema = Schema({
   updated_at: { type: Date },
   owner  : {type: Schema.Types.ObjectId, ref: 'User'},
   users  : [{type: Schema.Types.ObjectId, ref: 'User'}],
+  events : [{type: Schema.Types.ObjectId, ref: 'Event'}],
   comments         : [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   color  : {type: String, default: "default"},
 });

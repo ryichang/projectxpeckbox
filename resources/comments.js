@@ -149,6 +149,8 @@ module.exports = function(app) {
 			});
 		});
 
+
+
 	app.put('/api/events/:event_id/comments/:comment_id', auth.ensureAuthenticated, function(req,res){ 
 	    console.log('putroute', req.body);
 	    console.log('commentId', req.params.comment_id);
@@ -201,29 +203,6 @@ module.exports = function(app) {
 
 		});
 
-	app.post('/api/event/:event_id/comments', auth.ensureAuthenticated, function (req, res){
-			// console.log("comment passed back", req.body)
-			// console.log('post', req.body.post)
-			User.findById(req.userId).exec(function(err, user){
-				Event.findById(req.body.event)
-				.populate('comments')
-				.populate('userId')
-				.exec(function(err,event){
-					// console.log('commentor email in post: ', post.user.email);
-					var comment = new Comment(req.body);
-					comment.save(function(err, comment){
-						event.comments.unshift(comment._id);
-						event.save();
-						Comment.findById(comment._id)
-						.populate('userId')
-						.exec(function (err, data){
-						console.log('Data', data.userId);
-						res.send(data);
-						});
-					});
-				});	
-			});
-		});
 
 	app.put('/api/groups/:group_id/comments/:comment_id', auth.ensureAuthenticated, function(req,res){ 
 	    console.log('putroute', req.body);

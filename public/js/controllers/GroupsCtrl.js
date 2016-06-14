@@ -113,7 +113,7 @@ angular.module('peckbox')
 
   }])
 
-  .controller('GroupShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Group', '$window','$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Group, $window, $q) {
+  .controller('GroupShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Group', 'Event','$window','$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Group, Event, $window, $q) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
 
@@ -130,6 +130,7 @@ angular.module('peckbox')
     Group.get({ id: $routeParams.id }, function(group) {
       $scope.group = group;
       $scope.comment = group.comments;
+      $scope.event = group.events;
       console.log('outside', group);
       var users = $scope.group.users
      
@@ -162,13 +163,38 @@ angular.module('peckbox')
         toastr.success('You have successfully joined a group!');
             console.log('response', response);
              $scope.group.users.unshift(response.users[0]);
-             $http.post('/api/groups')
-             $scope.groups.unshift(response);
+             // $http.post('/api/groups')
+             // $scope.groups.unshift(response);
       })
       .error(function(response){
             console.log('err', response);
         });
 
+    };
+
+    $scope.unjoinGroup = function(group, user){
+      console.log('group is', group)
+      console.log('user is', user)
+
+      var body = {
+        users: user._id,
+      }
+
+      console.log('body is', body)
+
+      $http.post('/api/groups/' + group._id, body)
+      .success(function(response){
+        toastr.success('You have successfully unjoined a group!');
+            console.log('response', response);
+
+            var users = group.users
+
+            console.log('users in group is', users)
+             $scope.group.users.unshift(response.users[0]);
+      })
+      .error(function(response){
+            console.log('err', response);
+        });
     };
 
 
@@ -199,9 +225,12 @@ angular.module('peckbox')
             },{
                 title: 'Event',
                 url: 'event.tpl.html'
-        }];
+            },{
+                title: 'Map',
+                url: 'map.tpl.html'
+          }];
 
-        $scope.currentTab = 'event.tpl.html';
+        $scope.currentTab = 'comment.tpl.html';
 
         $scope.onClickTab = function (tab) {
             $scope.currentTab = tab.url;
@@ -226,7 +255,7 @@ angular.module('peckbox')
        $http.put('/api/groups/'+ group._id, group)
        .success(function(response){
          toastr.warning('You have successfully updated a group!');
-         console.log(response)
+       
          group.editForm = false;
        });
        // console.log('edit', group);
@@ -276,7 +305,6 @@ angular.module('peckbox')
 
      $scope.commentColor = function(comment, color) {
 
-        
          // overriding post model with color (String)
          if (color === "red") {
            comment.color = "red";
@@ -288,10 +316,74 @@ angular.module('peckbox')
            comment.color = "default";
          }
          
-         $http.put('/api/groups/'+ comment.group + '/comments/' + comment._id, comment)
+         $http.put('/api/groups/'+ comment.groupId + '/comments/' + comment._id, comment)
          .success(function(response){
-  
+
         });
      };
+
+    $scope.createEvent = function(group, user){
+      var config = {
+        title: $scope.event.title,
+        description: $scope.event.description,
+        location: $scope.event.location,
+        date: $scope.event.date,
+        userId: user._id,
+        groupId: group._id
+      };
+
+ 
+      $http.post('/api/group/' + group._id + '/events', config)
+      .success(function(response){
+        toastr.success('Event has been successfully added in group!');
+        // console.log('response is', response);
+        $scope.group.events.unshift(response);
+        // console.log('group event is', group.events);
+      })
+      .error(function(response){
+       
+      });
+    };
+
+    $scope.deleteEvent = function(event) {
+      $http.delete('/api/groups/' + event.groupId + '/events/' + event._id, event)
+        .success(function(data) {
+          toastr.error('Event has been deleted in group!');
+          var index = $scope.group.events.indexOf(event);
+          $scope.group.events.splice(index,1);
+
+        })
+        .error(function(data) {
+          // console.log('Error: ' + data);
+        });
+    };
+
+    $scope.updateEvent = function(event) {
+     $http.put('/api/groups/' + event.groupId + '/events/' + event._id, event)
+     .success(function(response){
+       toastr.warning('Event has been updated in group!');
+       // console.log(response);
+       event.editForm = false;
+     });
+    };
+
+    $scope.eventColor = function(event, color) {
+
+        // overriding post model with color (String)
+        if (color === "red") {
+          event.color = "red";
+        } else if (color === "blue"){
+          event.color = "blue";
+        } else if (color === "yellow"){
+          event.color = "yellow";
+        } else {
+          event.color = "default";
+        }
+        
+        $http.put('/api/groups/'+ event.groupId + '/events/' + event._id, event)
+        .success(function(response){
+
+       });
+    };
 
   }]);

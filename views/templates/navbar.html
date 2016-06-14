@@ -178,30 +178,30 @@
 </div>
 
 <div ng-show="currentUser">
-<nav class="menu-nav">
+<nav class="menu-nav" title="Menu">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
   <label class="menu-open-button" for="menu-open">
     <span class="hamburger hamburger-1"></span>
     <span class="hamburger hamburger-2"></span>
     <span class="hamburger hamburger-3"></span>
   </label>
-  <a ng-click="logout()" class="menu-item">
+  <a ng-click="logout()" class="menu-item"  title="Logout">
     <i class="fa fa-hand-peace-o" aria-hidden="true"></i>
   </a>
-  <a href="/events" class="menu-item">
+  <a href="/events" class="menu-item" title="Events">
     <i class="fa fa-map-o" aria-hidden="true"></i>
   </a>
-  <a href="/posts" class="menu-item">
+  <a href="/posts" class="menu-item" title="Tasks">
     <i class="fa fa-list" aria-hidden="true"></i>
   </a>
-  <a href="/notes" class="menu-item">
+  <a href="/notes" class="menu-item" title="Notes">
     <i class="fa fa-file-o" aria-hidden="true"></i>
   </a>
-  <a href="/groups" class="menu-item">
+  <a href="/groups" class="menu-item" title="Groups">
     <i class="fa fa-users" aria-hidden="true"></i>
     <!-- <span class="glyphicon glyphicon-user"></i> -->
   </a>
-  <a href="/dashboard" class="menu-item">
+  <a href="/dashboard" class="menu-item" title="Dashboard">
     <i class="fa fa-newspaper-o" aria-hidden="true"></i>
   </a>
 </nav>
