@@ -344,6 +344,37 @@ nav.navbar.shrink {
   min-height: 10px;
 }
 
+.navbar-fixed-bottom{
+    border-width: 0 0 1px;
+    position: fixed;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    min-height: 10px;
+    height: 40px;
+  /*  background: transparent;*/
+    background: rgba(0,0,0,1);
+    margin: 0;
+    -webkit-text-shadow: none;
+    text-shadow: none;
+    box-shadow: none;
+     -webkit-transition: all 0.4s ease;
+     transition: all 0.4s ease;
+}
+
+.dashboardsearch {
+  min-width: 230px;
+  margin-top: -90px;
+/*  height: auto !important;*/
+  background: rgba(242,239,235, 1); 
+/*  padding-top: 20px;*/
+ /* max-width: 290px;*/
+  max-width: 230px;
+ /* margin-left: 898px;*/
+  /*padding-bottom: 20px;*/
+  /*border-bottom: 3px solid #000;*/
+}
+
 
 
 .container {

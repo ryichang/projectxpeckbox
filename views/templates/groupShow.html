@@ -46,7 +46,7 @@
     </form>
   </div>
 
-  <div ng-repeat="event in group.events | orderBy:'-created_at'">
+  <div ng-repeat="event in group.events | orderBy:'-created_at'" ng-show="userFound">
     <div class="col-sm-3 card" id="{{event.color}}">
      <div ng-hide="event.editForm">
         <svg width="10" height="10" class="close-btn" ng-click="deleteEvent(event)">

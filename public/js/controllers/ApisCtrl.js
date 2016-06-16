@@ -8,42 +8,87 @@ angular.module('peckbox')
       $scope.user = data;
     });
 
-    // $http.jsonp('http://ipinfo.io/?callback=JSON_CALLBACK').success(function(response){
-    //     var lat = response.loc.split(",")[0];
-    //     var lon = response.loc.split(",")[1];
-    //     var query = "lat=" + lat + "&lon=" + lon;
-    //     // $http.jsonp('')
-    //     $scope.location = response
-    //     console.log('ApisCtrl', $scope.location)
+   
+    $scope.myTickerItems = [
+   {
+     title: 'item 1 item 1 item 1 item 1 item 1 item 1 item 1',
+     copy: 'amazing copy here'
+   },
+   {
+     title: 'item 2',
+     copy: 'wow, this is great'
+   },
+   {
+     title: 'item 3',
+     copy: 'hello angular'
+   }
+]
+  $scope.news={}
 
-    //     var url = "http://api.openweathermap.org/data/2.5/";
-    // 	var unit = "&units=imperial";
-    // 	var key = "&appid=c55ec823be46f88fbcf55db70cc8e772";
+var api = 'http://api.nytimes.com/svc/news/v3/content/all/all.jsonp?api-key=ccb58d5412a54799e82ad086c0387669:5:74719242&responce-format=.jsonp&callback=JSON_CALLBACK'; 
+                $http.jsonp(api).success(function(data){
+                    // console.log('response', data)
+                    $scope.news = data.results;
+                    console.log("news is", $scope.news);
+                });
 
-    	
+ // $http.jsonp(url)
+ //  $http({
+ //          method: 'jsonp',
+ //          url: 'https://api.nytimes.com/svc/topstories/v2/home.jsonp/?api-key=e4cbd64f281e46f882876736e874cff6&callback=homeTopStoriesCallback',
+ //          })
+ //      .success(function(err, response) {
+ //        console.log(response);
+ //      });
 
-    // });
+//  var url ="https://www.reddit.com/r/aww/.json"
+//  $http.jsonp(url + '?jsoncallback=JSON_CALLBACK').success(function(data) {
+//      console.log(data);
+// })
 
-  //   $http.jsonp('http://ipinfo.io/?callback=JSON_CALLBACK').success(function(data){
-  //   var lat = data.loc.split(",")[0];
-  //   var lon = data.loc.split(",")[1];
-  //   var query = "lat=" + lat + "&lon=" + lon;
-  //   var url = "http://api.openweathermap.org/data/2.5/";
-  //   var unit = "&units=imperial";
-  //   var key = "&appid=c55ec823be46f88fbcf55db70cc8e772";
-  //    $http.jsonp(url+ "weather?" + query + unit + key + "&callback=JSON_CALLBACK").success(function(response){
-  //     $scope.weather = response;
-  //     console.log('ApiCtrl', $scope.weather);
-  //    });
-  // });
-  // $http({
-  //         method: 'jsonp',
-  //         url: 'https://api.nytimes.com/svc/topstories/v1/home.json?api-key=b9ccbfb3e60d48ce9c81dcc40406ab84&callback=JSON_CALLBACK',
-  //         responseType: 'json',
-  //         data: ''})
-  //     .success(function(err, response, body) {
-  //       console.log(response);
-  //     });
+ 
+
+//  var url ="http://api.nytimes.com/svc/topstories/v2/reviews/home.jsonp?&offset=20&order=updated_date&api-key=e4cbd64f281e46f882876736e874cff6&responce-format=jsonp"
+//  $http.jsonp(url + '&callback=JSON_CALLBACK').success(function(data) {
+//      console.log(data);
+// })
+
+ // var api = 'http://api.nytimes.com/svc/topstories/v2/reviews/home.jsonp?&offset=20&order=updated_date&api-key=e4cbd64f281e46f882876736e874cff6&responce-format=jsonp&callback=homeTopStoriesCallback'; 
+ //                $http.jsonp(api).success(function(data){
+ //                    console.log('response', data)
+ //                    $scope.results = data.results;
+ //                });
+// var api = 'https://hacker-news.firebaseio.com/v0/item/8863.json?print=pretty&callback=JSON_CALLBACK'; 
+//                 $http.jsonp(api).success(function(data){
+//                     console.log('response', data)
+//                     $scope.results = data.results;
+//                 });
+
+// var api = 'https://hacker-news.firebaseio.com/v0/topstories.json?print=pretty&callback=JSON_CALLBACK'; 
+//                 $http.jsonp(api).success(function(data){
+//                     console.log('response', data)
+//                     $scope.results = data.results;
+//                 });
+
+ // google.load("feeds", "1");
+
+ //    function initialize() {
+ //      var feed = new google.feeds.Feed("http://fastpshb.appspot.com/feed/1/fastpshb");
+ //      feed.load(function(result) {
+ //        if (!result.error) {
+ //          var container = document.getElementById("feed");
+ //          for (var i = 0; i < result.feed.entries.length; i++) {
+ //            var entry = result.feed.entries[i];
+ //            var div = document.createElement("div");
+ //            div.appendChild(document.createTextNode(entry.title));
+ //            container.appendChild(div);
+ //          }
+ //        }
+ //      });
+ //    }
+ //    google.setOnLoadCallback(initialize);
+
+  
 
     if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position){
@@ -84,18 +129,3 @@ setTimeout(itsaclock, 2000);
 }]);
 
 
-
-
-  // var url = "http://api.openweathermap.org/data/2.5/";
-  //   var unit = "&units=imperial";
-  //   var key = "&appid=c55ec823be46f88fbcf55db70cc8e772";
-  //   var cityName;
-  //   $.getJSON('http://ipinfo.io', function(data) {
-
-  //       var lat = data.loc.split(",")[0];
-  //       var lon = data.loc.split(",")[1];
-  //       var query = "lat=" + lat + "&lon=" + lon;
-  //       $.get(url + "weather?" + query + unit + key, function(response){
-  //           console.log(response)
-  //       });
-  //   });

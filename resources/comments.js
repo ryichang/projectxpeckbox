@@ -218,7 +218,7 @@ module.exports = function(app) {
 	     });
 
 	app.delete('/api/groups/:group_id/comments/:comment_id', auth.ensureAuthenticated, function(req,res){
-		console.log('res is' , res)
+		console.log('res is' , res);
 		Comment.remove({ _id: req.params.comment_id}, function (err, comment){
             if(err){
                 console.log(err);
@@ -230,7 +230,7 @@ module.exports = function(app) {
                 { "$pull": {"comments": req.params.comment_id}},
                 function (err, group){
                     if (err) {
-                    	console.log("err is", err)
+                    	console.log("err is", err);
                     	return res.send(err);}
                     else {
                         console.log("Object Group Delete", group) ;

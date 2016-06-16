@@ -9,6 +9,18 @@ console.log("SANITY CHECK!!!!!!!");
 //   }
 // });
 
+// var url = "https://api.nytimes.com/svc/topstories/v2/home.json";
+// url += '?' + $.param({
+//   'api-key': "e4cbd64f281e46f882876736e874cff6",
+//   'callback': "homeTopStoriesCallback"
+// });
+// $.ajax({
+//   url: url,
+//   method: 'GET',
+// }).done(function(result) {
+//   console.log(result);
+// }).fail(function(err) {
+// });
 
 $('.text-1').children('p').each(function(index){
   var blinkInt=setInterval(function(){},1000);
@@ -65,7 +77,6 @@ $('.text-1').children('p').each(function(index){
 		$(".month").html(date);
 		$(".year").html(yr);
 	},1000);
-
 
 
 

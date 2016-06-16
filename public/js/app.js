@@ -11,6 +11,7 @@ angular.module('peckbox', ['peckbox.services',
                               'sticky',
                               'toastr',
                               'angular-loading-bar',
+                              'simpleAngularTicker',
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {

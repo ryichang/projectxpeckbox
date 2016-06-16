@@ -11,7 +11,16 @@
         <div class="center">
           
           <div class="content">
-            <h1 ng-show="currentUser">Hi, {{user.displayName}}</h1>
+            <div><h1 ng-show="currentUser">Hi, {{user.displayName}}</h1></div>
+           <!--  <ul ticker timing="3000">
+              <li ng-repeat="new in news">
+                {{new.title}}
+              </li>
+            </ul> -->
+             <!--  <div ng-repeat="new in news">
+                <p>{{new.title}}</p>
+                <p>{{new.abstract}}</p>
+              </div> -->
             <div class="neon" data-toggle="modal" data-target="#login-modal" ng-show="!currentUser">
              PE<br/>CK<br/>
             </div>
@@ -22,6 +31,18 @@
        
             <div class='shadow' ng-show="!currentUser"></div>
           </div>
+
+          <ul ticker timing="1000">
+            <li ng-repeat="item in myTickerItems | limitTo:3" class="item-{{$index}}">
+              {{item.title}}
+            </li>
+          </ul>
+
+         <!--  <ul ticker timing="1000">
+            <li ng-repeat="item in myTickerItems | limitTo:3">
+              {{item.title}}
+            </li>
+          </ul> -->
       </div>
 
           
