@@ -60,6 +60,9 @@
     src: url("/font/STAGSANS-LIGHT.OTF");
 }
 
+.splashname {
+  padding: 8px;
+}
 
 body {
   margin:0px; 
@@ -88,7 +91,7 @@ h1, h2, h3, h4, h5 {
   /*color: #fff;*/
 }
 h1 { font-size: 72px; color: #fff; }
-h2 { font-size: 36px; font-weight: 400; }
+h2 { font-size: 40px; font-weight: 400; color: #fff; }
 h3 { 
 /*  background-color: #000;
   color: #fff;*/
@@ -192,7 +195,8 @@ html, body {
         opacity: .5;*/
   /*  background: radial-gradient(ellipse at bottom left, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25), rgba(42, 60, 87, 0.4)), linear-gradient(135deg, #670d10, #092756);*/
    /* background: linear-gradient(135deg, #34a4ca 0%, #59d7dd 28%, #a8f2f0 59%, #d0f8ef 84%, #d6f6e1 100%);*/
-    background-image: url('https://images.unsplash.com/photo-1433190152045-5a94184895da?format=auto&auto=compress&dpr=1&crop=entropy&fit=crop&w=1920&h=1280&q=80');
+    background-image: url('https://images.unsplash.com/photo-1440492248262-6895f9da82fc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b55bcaa28b217821a149f4d2479a1f59');
+  
     z-index: 10;
   }
 
@@ -352,7 +356,7 @@ nav.navbar.shrink {
     width: 100%;
     min-height: 10px;
     height: 40px;
-  /*  background: transparent;*/
+/*    background: transparent;*/
     background: rgba(0,0,0,1);
     margin: 0;
     -webkit-text-shadow: none;
@@ -1152,6 +1156,12 @@ small.text-muted {
   padding-bottom: 20px;*/
 /*}*/
 
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
 @media screen and (min-width: 0px) and (max-width: 400px) {
   #profile { display: block; }  /* show it on small screens */
 }
@@ -1371,4 +1381,37 @@ li {
           transform: translate3d(0, -450px, 0);
 }
 
+/*.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
 
+.fullscreen-bg__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: auto;
+    height: auto;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+}*/
+
+/*@media (max-width: 767px) {
+    .fullscreen-bg {
+        background: url('') center center / cover no-repeat;
+    }
+
+    .fullscreen-bg__video {
+        display: none;
+    }
+}
+*/

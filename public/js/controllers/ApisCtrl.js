@@ -9,27 +9,39 @@ angular.module('peckbox')
     });
 
    
-    $scope.myTickerItems = [
-   {
-     title: 'item 1 item 1 item 1 item 1 item 1 item 1 item 1',
-     copy: 'amazing copy here'
-   },
-   {
-     title: 'item 2',
-     copy: 'wow, this is great'
-   },
-   {
-     title: 'item 3',
-     copy: 'hello angular'
-   }
-]
-  $scope.news={}
+//     $scope.myTickerItems = [
+//    {
+//      title: 'item 1 item 1 item 1 item 1 item 1 item 1 item 1',
+//      copy: 'amazing copy here'
+//    },
+//    {
+//      title: 'item 2',
+//      copy: 'wow, this is great'
+//    },
+//    {
+//      title: 'item 3',
+//      copy: 'hello angular'
+//    }
+// ]
+//   $scope.news={}
+  $scope.types = ['hot'];         
+  $scope.subredit="worldnews";      
+  $scope.type="top";
+  var url="http://api.reddit.com/r/"+$scope.subredit+"/?jsonp=JSON_CALLBACK";
+  $http.jsonp(url).success(function(data) {
+    $scope.elements = [];
+    var dataset = data.data.children;
+    for (var i=0; i<dataset.length; i++ ){
+          $scope.elements.push(dataset[i].data); // response data 
+          console.log('reddit', $scope.elements);
+        }       
+      });
 
 var api = 'http://api.nytimes.com/svc/news/v3/content/all/all.jsonp?api-key=ccb58d5412a54799e82ad086c0387669:5:74719242&responce-format=.jsonp&callback=JSON_CALLBACK'; 
                 $http.jsonp(api).success(function(data){
                     // console.log('response', data)
                     $scope.news = data.results;
-                    console.log("news is", $scope.news);
+                    console.log('news scope is', $scope.news)
                 });
 
  // $http.jsonp(url)
@@ -70,23 +82,6 @@ var api = 'http://api.nytimes.com/svc/news/v3/content/all/all.jsonp?api-key=ccb5
 //                     $scope.results = data.results;
 //                 });
 
- // google.load("feeds", "1");
-
- //    function initialize() {
- //      var feed = new google.feeds.Feed("http://fastpshb.appspot.com/feed/1/fastpshb");
- //      feed.load(function(result) {
- //        if (!result.error) {
- //          var container = document.getElementById("feed");
- //          for (var i = 0; i < result.feed.entries.length; i++) {
- //            var entry = result.feed.entries[i];
- //            var div = document.createElement("div");
- //            div.appendChild(document.createTextNode(entry.title));
- //            container.appendChild(div);
- //          }
- //        }
- //      });
- //    }
- //    google.setOnLoadCallback(initialize);
 
   
 

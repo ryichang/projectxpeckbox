@@ -1,18 +1,23 @@
 /* line 3, ../app/styles/angular-ticker.scss */
 [ticker] * {
   box-sizing: border-box;
+  font-family: "YeezyB";
+  font-size: 20px;
+  color: #fff;
 }
 /* line 7, ../app/styles/angular-ticker.scss */
 [ticker].active {
-  display: block;
-  height: 100px;
-  width: 500px;
+  background-color: transparent;
+  display: relative;
+  height: 125px;
+/*  width: 700px;*/
   overflow-y: hidden;
 }
 /* line 13, ../app/styles/angular-ticker.scss */
 [ticker] li {
-  padding: 10.5px;
-  transition: opacity 0.3s ease, margin 1s ease;
+  display: inline;
+  /*padding: 10.5px;*/
+  transition: opacity 0.5s ease, margin 2s ease;
 }
 /* line 18, ../app/styles/angular-ticker.scss */
 [ticker] .fade-out {
@@ -20,5 +25,5 @@
 }
 /* line 22, ../app/styles/angular-ticker.scss */
 [ticker] .minus-margin-top {
-  margin-top: -39px;
+  margin-top: -100px;
 }

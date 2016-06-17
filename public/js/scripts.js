@@ -9,6 +9,25 @@ console.log("SANITY CHECK!!!!!!!");
 //   }
 // });
 
+// $(function() {
+
+//             $.ajax({
+//                 url: "http://cors.io/?u=https://api.fantasydata.net/nba/v2/JSON/News",
+//                 beforeSend: function(xhrObj){
+//                     // Request headers
+//                     xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","2b9f1a534dd54c359e101c94bc7547aa");
+//                 },
+//                 type: "GET",
+//                 dataType: 'json',
+//             })
+//             .done(function(data) {
+//                 alert("success");
+//             })
+//             .fail(function() {
+//                 alert("error");
+//             });
+//         });
+
 // var url = "https://api.nytimes.com/svc/topstories/v2/home.json";
 // url += '?' + $.param({
 //   'api-key': "e4cbd64f281e46f882876736e874cff6",
