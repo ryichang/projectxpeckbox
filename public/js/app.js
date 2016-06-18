@@ -12,6 +12,7 @@ angular.module('peckbox', ['peckbox.services',
                               'toastr',
                               'angular-loading-bar',
                               'simpleAngularTicker',
+                              'angularScreenfull',
                               ])
 
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
@@ -22,7 +23,7 @@ angular.module('peckbox', ['peckbox.services',
 
       // $routeProvider.when('/', {
       //         templateUrl: 'templates/navbar',
-      //         controller: 'ApisCtrl'
+      //         controller: 'SidebarCtrl'
       //       });
 
       $routeProvider.when('/profile', {

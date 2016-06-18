@@ -1,23 +1,26 @@
 <div class="overlay">
 
  
-<!-- 
-  <div class='back'>
+
+ <!--  <div class='back'>
   <div class='background'></div> -->
 <!--   <div class='midground'></div> -->
  <!--  <div class='foreground'></div>  -->
 <!--   </div> -->
 <!-- <div class="fullscreen-bg">
     <video loop muted autoplay poster="img/videoframe.jpg" class="fullscreen-bg__video">
-        <source src="/img/Under.webm" type="video/webm">
-        <source src="/img/Under.mp4" type="video/mp4">
-        <source src="/img/Under.ogv" type="video/ogg">
+        <source src="/img/Out.webm" type="video/webm">
+        <source src="/img/Out.mp4" type="video/mp4">
+        <source src="/img/Out.ogv" type="video/ogg">
     </video>
-</div> -->
- 
+</div>
+  -->
         <div class="center">
           
           <div class="content">
+         
+        
+   
             <div class="splashname"><h2 ng-show="currentUser">Hi, {{user.displayName}}</h2></div>
            <!--  <ul ticker timing="3000">
               <li ng-repeat="new in news">
@@ -36,7 +39,7 @@
             <h1 ng-show="currentUser">{{weather.weather[0].description}} </h1>
             <h1 ng-show="currentUser">{{weather.main.temp}}</h1> -->
        
-            <div class='shadow' ng-show="!currentUser"></div>
+          <!--   <div class='shadow' ng-show="!currentUser"></div> -->
           </div>
           <div ng-show="currentUser">
               <ul ticker timing="3000">

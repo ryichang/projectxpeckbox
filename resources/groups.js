@@ -85,6 +85,20 @@ module.exports = function(app) {
 	        });
 	});
 
+	//UNJOIN GROUP
+	app.put('/api/groups/:group_id/unjoin', auth.ensureAuthenticated, function(req,res){
+		console.log('req body is', req.body)
+		Group.findOneAndUpdate(
+				{ "_id": req.body.groupId},
+				{ "$pull": {"users": req.body.userId}},
+				function (err, group){
+					if (err) {return res.send(err);}
+				else {
+					res.status(200).send('Finished Delete');
+				}
+				});
+	});
+
 	// app.post('/api/groups/:group_id', auth.ensureAuthenticated, function(req, res){
 	// 	console.log('comment is', req.body)
 	// });

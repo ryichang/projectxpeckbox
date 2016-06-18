@@ -15,7 +15,9 @@
 }
 /* line 13, ../app/styles/angular-ticker.scss */
 [ticker] li {
-  display: inline;
+  /*display: inline;*/
+  display:flex;  
+  list-style:none;
   /*padding: 10.5px;*/
   transition: opacity 0.5s ease, margin 2s ease;
 }

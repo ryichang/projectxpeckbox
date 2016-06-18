@@ -64,6 +64,21 @@
   padding: 8px;
 }
 
+.fullscreen {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(76,76,76,1);
+    overflow:scroll;
+}
+
+.ion-arrow-expand{
+  color: #fff;
+}
+
+.ion-arrow-shrink{
+  color: #fff;
+}
+
 body {
   margin:0px; 
   padding:0px;
@@ -75,7 +90,9 @@ body {
 /*  background-color: rgba(189,197,201,1);*/
  /* background-color: rgba(150,150,150,1);*/
   background-color: rgba(76,76,76,1);
- /* background-image: url('https://images.unsplash.com/photo-1433190152045-5a94184895da?format=auto&auto=compress&dpr=1&crop=entropy&fit=crop&w=1920&h=1280&q=80');*/
+/*  background-image: url('https://images.unsplash.com/photo-1440492248262-6895f9da82fc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b55bcaa28b217821a149f4d2479a1f59');*/
+  /*
+  background-image: url('https://images.unsplash.com/photo-1433190152045-5a94184895da?format=auto&auto=compress&dpr=1&crop=entropy&fit=crop&w=1920&h=1280&q=80');*/
 /*  background-color: rgba(238,237,233,1); */
   color: rgba(29,29,27,1);
   }
@@ -110,11 +127,10 @@ p {
 /*  font-family:'Rajdhani';*/
  /* font-family: 'Stag';*/
 /*  font-weight: 500;*/
-  
-  font: "Roboto Mono",Helvetica,sans-serif;
+  font-family: 'Roboto', sans-serif;
   word-wrap: break-word;
 /*  color: #000;*/
-  font-weight: 350;
+  font-weight: 400;
  /* max-height: 100px;*/
 /*  overflow: auto;*/
   -webkit-font-smoothing: antialiased;
@@ -194,9 +210,8 @@ html, body {
 /*     background: linear-gradient(to right, #D24335 55%, #6E4CD2);
         opacity: .5;*/
   /*  background: radial-gradient(ellipse at bottom left, rgba(104, 128, 138, 0.4) 10%, rgba(138, 114, 76, 0) 40%), linear-gradient(to bottom, rgba(57, 173, 219, .25), rgba(42, 60, 87, 0.4)), linear-gradient(135deg, #670d10, #092756);*/
-   /* background: linear-gradient(135deg, #34a4ca 0%, #59d7dd 28%, #a8f2f0 59%, #d0f8ef 84%, #d6f6e1 100%);*/
+    /*background: linear-gradient(135deg, #34a4ca 0%, #59d7dd 28%, #a8f2f0 59%, #d0f8ef 84%, #d6f6e1 100%);*/
     background-image: url('https://images.unsplash.com/photo-1440492248262-6895f9da82fc?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b55bcaa28b217821a149f4d2479a1f59');
-  
     z-index: 10;
   }
 

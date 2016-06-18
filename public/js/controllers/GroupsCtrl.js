@@ -177,20 +177,24 @@ angular.module('peckbox')
       console.log('user is', user)
 
       var body = {
-        users: user._id,
+         userId: user._id,
+         groupId: group._id,
       }
 
       console.log('body is', body)
 
-      $http.post('/api/groups/' + group._id, body)
+      $http.put('/api/groups/' + group._id + '/unjoin', body)
       .success(function(response){
         toastr.success('You have successfully unjoined a group!');
             console.log('response', response);
 
-            var users = group.users
-
-            console.log('users in group is', users)
-             $scope.group.users.unshift(response.users[0]);
+            var users = $scope.group.users
+            for (var userIndex in users){
+              if(users[userIndex] == user._id){
+                $scope.group.users.splice(userIndex, 1)
+              }
+            }
+            
       })
       .error(function(response){
             console.log('err', response);
@@ -254,7 +258,7 @@ angular.module('peckbox')
       // console.log("Color: "+group.color)
        $http.put('/api/groups/'+ group._id, group)
        .success(function(response){
-         toastr.warning('You have successfully updated a group!');
+         toastr.warning(group.title + ' has been updated!');
        
          group.editForm = false;
        });
@@ -271,7 +275,7 @@ angular.module('peckbox')
        // console.log('config', config);
        $http.post('/api/group/' + group._id + '/comments', config)
        .success(function(response){
-         toastr.success('Comment has been successfully added in group!');
+         toastr.success('Comment has been added in ' + group.title);
          // console.log('response is', response);
          $scope.group.comments.unshift(response);
          // console.log('group comment is', group.comments);
@@ -335,7 +339,7 @@ angular.module('peckbox')
  
       $http.post('/api/group/' + group._id + '/events', config)
       .success(function(response){
-        toastr.success('Event has been successfully added in group!');
+        toastr.success('Event has been successfully added in ' + group.title);
         // console.log('response is', response);
         $scope.group.events.unshift(response);
         // console.log('group event is', group.events);

@@ -111,3 +111,4 @@ $('.text-1').children('p').each(function(index){
 
 });
 
+
