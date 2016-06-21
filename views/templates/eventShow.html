@@ -16,7 +16,7 @@
 
     <div class="card" id={{event.color}}>
       <div ng-hide="event.editForm">
-        <div class="card-date">{{event.created_at | date: 'MMMM d @ h:mma'}}</div>
+        <div class="card-date">{{event.date | date: 'EEE MMM d @ hh:mma'}}</div>
           <h3>{{event.title}}</h3>
           <p>{{event.description}}</p>
           <p>{{event.location.formatted_address}}</p>
@@ -51,7 +51,7 @@
         </div>
         <div class="form-group">
           <label for="title">Date</label>
-          <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+          <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-format="MMM d, y h:mm a">
           <input ng-model="event.date" type="text" class="form-control"/>
           </datepicker>
         </div>

@@ -3,10 +3,13 @@
 /* API Controllers */
 
 angular.module('peckbox')
-  .controller('ApisCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', function($scope, $http, $auth, Auth, toastr) {
+  .controller('ApisCtrl', ['$scope', '$http', '$auth', 'Auth', 'toastr', '$interval',  function($scope, $http, $auth, Auth, toastr, $interval) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
+
+
+
 
    
 //     $scope.myTickerItems = [
@@ -23,7 +26,7 @@ angular.module('peckbox')
 //      copy: 'hello angular'
 //    }
 // ]
-//   $scope.news={}
+  $scope.news={}
   $scope.types = ['hot'];         
   $scope.subredit="worldnews";      
   $scope.type="top";

@@ -60,6 +60,7 @@ module.exports = function(app) {
 	            // console.log("editRoute", event);
 	            if (err) { return res.send(err); }
 	            // console.log('backend', event);
+	            
 	            res.send(event);
 	        });
 	});

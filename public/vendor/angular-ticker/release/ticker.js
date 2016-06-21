@@ -87,7 +87,7 @@ directive('ticker', function ($interval, $timeout) {
                     element.on('mouseleave', function () {
                         isHovered = false;
                     });
-                }, 2500);    
+                }, 5000);    
                 
 
             };

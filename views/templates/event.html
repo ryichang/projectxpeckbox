@@ -36,7 +36,7 @@
                 <div class="form-group">
                   <label for="title">Date</label>
               
-                  <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+                  <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-format="MMM d, y h:mm a">
                   <input ng-model="event.date" type="text" class="form-control"/>
                   </datepicker>
                   <!-- <input type="text" datetimepicker class="form-control" ng-model="event.date"></textarea> -->
@@ -128,7 +128,7 @@
                 <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="1" stroke="#fff"></line>
             </svg>    
            <!--  <i class="fa fa-close pull-right" ng-click="deleteEvent(event)"></i> -->
-            <div class="card-date">{{event.date | date: 'EEE MMMM d @ hh:mma'}}</div>
+            <div class="card-date">{{event.date | date: 'EEE MMM d @ hh:mma'}}</div>
             <div id="ribbon">
                 <div ng-show="event.comments.length>0" ng-click="eventShow(event)">{{event.comments.length}}</div>
              </div>
@@ -173,7 +173,7 @@
             </div>
             <div class="form-group">
               <label for="title">Date</label>
-              <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+              <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-format="MMM d, y h:mm a">
               <input ng-model="event.date" type="text" class="form-control"/>
               </datepicker>
             </div>

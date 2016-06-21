@@ -29,6 +29,7 @@ module.exports = function(app) {
 		});
 	});
 
+
 	app.get('/api/groups/:group_id', auth.ensureAuthenticated, function (req,res) {
 	    User.findById(req.userId).exec(function(err,user){
 	            Group.findById(req.params.group_id)
@@ -124,6 +125,8 @@ module.exports = function(app) {
 			res.send(group)
 		});
 	});
+
+
 
 	// app.post('/api/notes', auth.ensureAuthenticated, function (req,res) {
 	// 	User.findById(req.userId).exec(function(err, user) {

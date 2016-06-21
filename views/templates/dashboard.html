@@ -68,7 +68,7 @@
 
            
          </div>
-         <!--- safdjasdklfj kl-->
+
         <!-- <div ng-repeat="post in user.posts | filter:search">
          <div ng-hide="post.editForm">
             <div class="card fade">
@@ -163,7 +163,7 @@
                   
                   <div class="form-group">
                     <label for="title">Date</label>
-                    <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+                    <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-format="MMM d, y h:mm a">
                     <input ng-model="event.date" type="text" class="form-control" required="true"/>
                     </datepicker>
                     <!-- <input type="text" datetimepicker class="form-control" ng-model="event.date"></textarea> -->
@@ -271,14 +271,16 @@
       <div ng-repeat="event in user.events | filter:search">
         <div class="card " id="{{event.color}}">
           <div ng-hide="event.editForm">
-            <div class="card-date">{{event.date | date: 'EEE MMMM d @ hh:mma'}}</div>
+            <div class="card-date">{{event.date | date: 'EEE MMM d @ hh:mma'}}</div>
             <div id="ribbon">
                 <div ng-show="event.comments.length>0" ng-click="eventShow(event)">{{event.comments.length}}</div>
              </div>
             <i class="ion-plus" style="float:right;" ng-click="eventShow(event)"></i>
             <h3>{{event.title}}</h3>
+          <!--   <h3>{{event.date | date: 'hh:mma'}}</h3> -->
             <p>{{event.description}}</p>
             <p>{{event.location.formatted_address}}</p>
+            
              <div style="float:right">
              <svg height="14" width="14" value="default" ng-model="event.color" ng-click="test(event, 'default')">
              <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
@@ -317,7 +319,7 @@
               </div>
               <div class="form-group">
                 <label for="title">Date</label>
-                <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>">
+                <datepicker button-prev="<i class='fa fa-arrow-left'></i>" button-next="<i class='fa fa-arrow-right'></i>" date-format="MMM d, y h:mm a">
                 <input ng-model="event.date" type="text" class="form-control"/>
                 </datepicker>
               </div>

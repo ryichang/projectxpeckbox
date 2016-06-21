@@ -1,8 +1,8 @@
 <div class="overlay">
 
- 
+ <div id="particles-js"></div>  
 
- <!--  <div class='back'>
+<!--   <div class='back'>
   <div class='background'></div> -->
 <!--   <div class='midground'></div> -->
  <!--  <div class='foreground'></div>  -->
@@ -13,21 +13,21 @@
         <source src="/img/Out.mp4" type="video/mp4">
         <source src="/img/Out.ogv" type="video/ogg">
     </video>
-</div>
-  -->
+</div> -->
+ 
         <div class="center">
           
           <div class="content">
          
-        
+            
    
             <div class="splashname"><h2 ng-show="currentUser">Hi, {{user.displayName}}</h2></div>
-           <!--  <ul ticker timing="3000">
+         <!--    <ul ticker timing="3000">
               <li ng-repeat="new in news">
                 {{new.title}}
               </li>
-            </ul> -->
-             <!--  <div ng-repeat="new in news">
+            </ul>
+              <div ng-repeat="new in news">
                 <p>{{new.title}}</p>
                 <p>{{new.abstract}}</p>
               </div> -->
@@ -42,7 +42,7 @@
           <!--   <div class='shadow' ng-show="!currentUser"></div> -->
           </div>
           <div ng-show="currentUser">
-              <ul ticker timing="3000">
+              <ul ticker timing="5000">
                 <li ng-repeat="new in elements | limitTo:20">
                   <div>
                       <a href="{{new.url}}" target="#">
@@ -52,7 +52,19 @@
                   </div>
                 </li>
               </ul>
-          </div>      
+          </div>
+          <div ng-show="currentUser">
+              <ul ticker timing="5000">
+                <li ng-repeat="new in news | limitTo:20">
+                  <div>
+                      <a href="{{new.url}}" target="#">
+                      {{new.title}}
+                   <!--    <img ng-src="{{new.thumbnail_standard}}" alt="Description"/> -->
+                      </a>
+                  </div>
+                </li>
+              </ul>
+          </div>        
          
       </div>
 
