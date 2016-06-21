@@ -4,20 +4,36 @@
 
   <div class="page-wrap">
     <nav id="navbar"><label for="sidebartoggler" class="toggle"><ng-show="currentUser" class="navbar-logo">PE<br/>CK</label></nav>
-    <a ngsf-toggle-fullscreen show-if-fullscreen-enabled>
+  <!--   <a ngsf-toggle-fullscreen show-if-fullscreen-enabled>
             <i show-if-fullscreen=false class="ion-arrow-expand"></i>
             <i show-if-fullscreen=true class="ion-arrow-shrink"></i>
         </a>
-    
+     -->
     
     
     <div class="sidebar" ng-show="currentUser">
       <ul ng-controller="GroupsCtrl">
-        <li><label for="sidebartoggler" class="toggle"><ng-show="currentUser" class="navbar-logo">PE<br/>CK</label></li>
-        <li><a href="/splash">Home<a></li>
-        <li ng-repeat="group in groups | orderBy:'-updated_at'">
-          <h5 ng-click="groupShow(group)">{{group.title}}</h5>
+        
+    
+        <li><label for="sidebartoggler" class="toggle"><ng-show="currentUser" class="navbar-logo">PE<br/>CK</label>
+            <a ngsf-toggle-fullscreen show-if-fullscreen-enabled class="fullscreenToggle">
+            <i show-if-fullscreen=false class="ion-arrow-expand"></i>
+            <i show-if-fullscreen=true class="ion-arrow-shrink"></i>
+            </a>
         </li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        <li><a href="/splash">News<a></li>
+        <li><a href="/notes">Notes</a></li>
+        <li><a href="/posts">Tasks</a></li>
+        <li><a href="/events">Events</a></li>
+        <li><a href="/groups">Groups</a></li>
+        <li><a ng-click="logout()">Logout</a></li>
+
+    
+
+        <!-- <li ng-repeat="group in groups | orderBy:'-updated_at'">
+          <h5 ng-click="groupShow(group)">{{group.title}}</h5>
+        </li> -->
 
       </ul>
     </div>
