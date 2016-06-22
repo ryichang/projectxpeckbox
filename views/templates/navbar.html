@@ -3,7 +3,7 @@
   <input type="checkbox" id="sidebartoggler" name="" value="">
 
   <div class="page-wrap">
-    <nav id="navbar"><label for="sidebartoggler" class="toggle"><ng-show="currentUser" class="navbar-logo">PE<br/>CK</label></nav>
+    <nav id="navbar"><!-- <label for="sidebartoggler" class="toggle"><ng-show="currentUser" class="navbar-logo">PE<br/>CK</label> --></nav>
   <!--   <a ngsf-toggle-fullscreen show-if-fullscreen-enabled>
             <i show-if-fullscreen=false class="ion-arrow-expand"></i>
             <i show-if-fullscreen=true class="ion-arrow-shrink"></i>
@@ -141,19 +141,19 @@
         <form>
           <div ng-show="signupMode" class="form-group">
             <label for="">Name</label>
-            <input type="text" ng-model="user.displayName" class="form-control"/>
+            <input type="text" ng-model="user.displayName" class="form-control" required="true"/>
           </div>
           <div class="form-group">
             <label for="">Email</label>
-            <input type="text" ng-model="user.email" class="form-control"/>
+            <input type="email" ng-model="user.email" class="form-control" required="true"/>
           </div>
           <div class="form-group">
             <label for="">Password</label>
-            <input type="password" ng-model="user.password" class="form-control"/>
+            <input type="password" ng-model="user.password" class="form-control" required="true"/>
           </div>
           <div ng-show="signupMode" class="form-group">
             <label for="">Confirm Password</label>
-            <input type="password" ng-model="user.confirm" class="form-control"/>
+            <input type="password" ng-model="user.confirm" class="form-control" required="true"/>
           </div>
         </form>
       </div>
@@ -221,7 +221,7 @@
  
 </div>
 
-<div ng-show="currentUser">
+<!-- <div ng-show="currentUser">
 <nav class="menu-nav" title="Menu">
   <input type="checkbox" href="#" class="menu-open" name="menu-open" id="menu-open"/>
   <label class="menu-open-button" for="menu-open">
@@ -242,14 +242,14 @@
     <i class="fa fa-file-o" aria-hidden="true"></i>
   </a>
   <a href="/groups" class="menu-item" title="Groups">
-    <i class="fa fa-users" aria-hidden="true"></i>
+    <i class="fa fa-users" aria-hidden="true"></i> -->
     <!-- <span class="glyphicon glyphicon-user"></i> -->
-  </a>
+ <!--  </a>
   <a href="/dashboard" class="menu-item" title="Dashboard">
     <i class="fa fa-newspaper-o" aria-hidden="true"></i>
   </a>
 </nav>
-</div>
+</div> -->
 
 <!-- <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

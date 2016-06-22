@@ -127,10 +127,15 @@ angular.module('peckbox')
 
   }])
 
-  .controller('EventShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Event', '$q', function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Event, $q) {
+  .controller('EventShowCtrl', ['$scope', '$http', '$auth', 'Auth', '$location', '$routeParams', 'toastr', 'Event', '$q', '$window',function($scope, $http, $auth, Auth, $location, $routeParams, toastr, Event, $q, $window) {
     $http.get('/api/me').success(function(data) {
       $scope.user = data;
     });
+
+    //go back button
+      $scope.backButton = function() {
+         $window.history.back();
+      };
 
         // $scope.tabs = [{
         //         title: 'Comment',
