@@ -26,8 +26,7 @@
       <div ng-repeat="group in groups | orderBy:'-updated_at'">
         <div class="col-sm-3 card" id="{{group.color}}">
           <div ng-hide="group.editForm">
-          <!--  <svg width="10" height="10" class="close-btn" ng-click="deleteGroup(group)" ng-show="ownerFound"> -->
-              <svg width="10" height="10" class="close-btn" ng-click="deleteGroup(group)">
+              <svg width="10" height="10" class="close-btn" ng-click="deleteGroup(group)" ng-if="group.owner == user._id">
                   <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="1" stroke="#fff"></line>
                   <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="1" stroke="#fff"></line>
               </svg>  
@@ -39,6 +38,8 @@
             <!-- <div class="card-date">{{post.created_at | date: 'MMMM d'}}</div> -->
             <h3>{{group.title}}</h3>
             <p>{{group.description}}</p>
+            <p>{{group.owner}}</p>
+            <p>{{user._id}}</p>
               <div style="float:right">
               <svg height="14" width="14" value="default" ng-model="group.color" ng-click="test(group, 'default')">
               <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
@@ -53,7 +54,7 @@
               <rect x="2" y="2" height="10" width="10" fill="rgba(247,73,86,1)" stroke="#000" stroke-width="2"></rect>
               </svg>
 
-              <svg height="14" width="14" ng-click="group.editForm = true">
+              <svg height="14" width="14" ng-click="group.editForm = true" ng-if="group.owner == user._id">
               <rect x="2" y="2" height="10" width="10" fill="rgba(0,0,0,1)" stroke="#000" stroke-width="2"></rect>
               <line y2="2" x2="12" y1="12" x1="2" stroke-width="1.2" stroke="#fff"></line>
               </svg>

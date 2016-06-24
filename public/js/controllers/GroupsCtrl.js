@@ -13,6 +13,19 @@ angular.module('peckbox')
 
 
 
+    // if ($scope.group.owner == $scope.user._id){
+    //    console.log('scope group is', $scope.group)
+    //    console.log('group owner is', $scope.group.owner)
+    //    console.log('scope user id is', $scope.user._id)
+    //      $scope.Owner = true
+
+    //      console.log('owner', $scope.Owner) 
+    //    }else {
+    //      $scope.Owner = false
+    //      console.log('false', $scope.Owner)
+    //    }
+
+
     $http.get('/api/groups').success(function(data){
       console.log('group is', data)
       $scope.groups = data;
@@ -134,6 +147,14 @@ angular.module('peckbox')
       $scope.event = group.events;
       console.log('outside', group);
       var users = $scope.group.users
+
+      if ($scope.group.owner == $scope.user._id){
+         $scope.Owner = true
+         console.log('owner', $scope.Owner) 
+       }else {
+         $scope.Owner = false
+         console.log('false', $scope.Owner)
+       }
      
     for (var userIndex in users) {
         console.log('userIndex is', users[userIndex])
@@ -148,6 +169,8 @@ angular.module('peckbox')
         }
     }
     });
+
+    
 
     $scope.joinGroup = function(group, user){
       console.log('group is', group)
