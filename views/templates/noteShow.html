@@ -2,7 +2,7 @@
   <div class="col-sm-3">
     <div class="card" id={{note.color}}>
       <div ng-hide="note.editForm">
-        <div class="card-date">{{note.updated_at | date: 'MMMM d @ h:mma'}}</div>
+        <div class="card-date">{{note.updated_at | date: 'MMM d @ h:mma'}}</div>
         <button type="button" class="close" ng-click="backButton()" aria-label="Close">
         <i class='icon ion-arrow-return-left custom-icon'></i>
         </button>
@@ -61,7 +61,7 @@
               <line y2="100%" x2="0" y1="0" x1="100%" stroke-width="0.8" stroke="#fff"></line>
               <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
           </svg>  
-          <div class="card-date">{{comment.updated_at | date: 'MMMM d @ h:mma'}}</div>
+          <div class="card-date">{{comment.updated_at | date: 'MMM d @ h:mma'}}</div>
           <p>{{comment.body}}</p>
           <p>{{comment.userId.displayName}}</p>
 
