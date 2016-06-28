@@ -7,7 +7,7 @@
         <i class='icon ion-arrow-return-left custom-icon'></i>
         </button>
           <p>{{note.body}}</p>
-          <p>{{note.userId.displayName}}</p>
+         <!--  <p>{{note.userId.displayName}}</p> -->
           <div style="float:right">
           <svg height="14" width="14" value="default" ng-model="note.color" ng-click="test(note, 'default')">
           <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
@@ -63,8 +63,8 @@
           </svg>  
           <div class="card-date">{{comment.updated_at | date: 'MMM d @ h:mma'}}</div>
           <p>{{comment.body}}</p>
-          <p>{{comment.userId.displayName}}</p>
-
+         <!--  <p>{{comment.userId.displayName}}</p>
+ -->
             <div style="float:right">
             <svg height="14" width="14" value="default" ng-model="comment.color" ng-click="commentColor(comment, 'default')">
             <rect x="2" y="2" height="10" width="10" fill="rgba(242,239,235, 1)" stroke="#000" stroke-width="2"></rect>
