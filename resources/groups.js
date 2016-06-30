@@ -47,11 +47,25 @@ module.exports = function(app) {
 	            			model: 'User',
 	            		}
 	            	})
-	            	.populate('userId')
+	            	.populate({
+	            		path: 'owner',
+	            		populate: {
+	            			path:'userId',
+	            			model: 'User',
+	            		}
+	            	})
+	            	.populate({
+	            		path: 'users',
+	            		populate: {
+	            			path:'userId',
+	            			model: 'User',
+	            		}
+	            	})
+	           
 	            	    .exec(function(err, group) {
 	            	        if (err) { return res.status(404).send(err); }
+	            	        console.log('group users is', group.users)
 	            	        res.send(group);
-	 
 	            	    });
 	    });
 	});
