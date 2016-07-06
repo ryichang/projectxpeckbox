@@ -8,7 +8,6 @@ angular.module('peckbox')
       $scope.user = data;
     });
 
-
     $scope.group = {};
 
 
@@ -119,7 +118,7 @@ angular.module('peckbox')
     };
 
     $scope.groupShow = function(group) {
-      $location.path('/groups/' + group._id + '/comments');
+      $location.path('/groups/' + group._id);
     
     };
 
@@ -210,7 +209,11 @@ angular.module('peckbox')
       .success(function(response){
         toastr.success('You have successfully joined a group!');
             console.log('response', response);
-             $scope.group.users.unshift(response.users[0]);
+            $scope.group.users.unshift(response.users[0].displayName);
+             // $scope.group.users.unshift(response.users[0]);
+             $window.location.reload();
+            
+
              // $http.post('/api/groups')
              // $scope.groups.unshift(response);
       })
@@ -242,7 +245,7 @@ angular.module('peckbox')
                 $scope.group.users.splice(userIndex, 1)
               }
             }
-            
+            $window.location.reload(); 
       })
       .error(function(response){
             console.log('err', response);

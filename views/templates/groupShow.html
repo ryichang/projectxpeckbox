@@ -9,14 +9,16 @@
           <h3>{{group.title}}</h3>
           <p>{{group.description}}</p>
           <div ng-repeat="user in group.users">
-          <p>{{user.displayName}}</p>
+            <div class="groupProfile">
+              <h5><img src="{{user.picture}}" alt="" class="groupprofilePicture">{{user.displayName}}</h5>
+            </div>
           </div>
-          <p>group is {{group.users}}</p>
-          <p>current user is {{user.displayName}}</p>
-          <p>owner is {{group.owner.displayName}}</p>
-       <!--    <p>group owner id is {{group.owner}}</p> -->
-          <p>userID is {{user._id}}</p>
-          <button type="button" class="btn btn-social" ng-click="joinGroup(group, user) ; userFound=true" ng-hide="userFound" >Join
+          <!-- <p>group is {{group.users}}</p> -->
+          <!-- <p>current user is {{user.displayName}}</p> -->
+          <!-- <p>owner is {{group.owner.displayName}}</p> -->
+    <!--       <p>group owner id is {{group.owner}}</p> -->
+        <!--   <p>userID is {{user._id}}</p> -->
+          <button type="button" class="btn btn-social" ng-click="joinGroup(group, user) ; userFound=true" ng-hide="userFound">Join
           </button>
           <button type="button" class="btn btn-social" ng-click="unjoinGroup(group, user)" ng-show="userFound" ng-hide="user.displayName == group.owner.displayName">Unjoin
           </button>
@@ -145,7 +147,7 @@
           <div id="comment-form">
             <form ng-submit="createComment(group, user)">
               <div class="form-group">
-                <label for="comment">Comment</label>
+                <label for="comment">Content</label>
                 <textarea class="form-control" ng-model="comment.body"></textarea>
               </div>
                 <button class="btn btn-social"><i class="ion-plus" type="submit"></i></button>
@@ -222,9 +224,14 @@
               <line y2="100%" x2="100%" y1="0%" x1="0%" stroke-width="0.8" stroke="#fff"></line>
           </svg>  
           <div class="card-date">{{comment.updated_at | date: 'MMM d @ h:mma'}}</div>
-          <h3>{{comment.userId.displayName}}</h3>
+       
+            <div class="groupProfile">
+              <h5><img src="{{comment.userId.picture}}" alt="" class="groupprofilePicture">{{comment.userId.displayName}}</h5>
+            </div>
+         
+     <!--      <h3>{{comment.userId.displayName}}</h3> -->
           <p>{{comment.body}}</p>
-          <p>{{comment.userId._id}}</p>
+        <!--   <p>{{comment.userId._id}}</p> -->
 
 
             <div style="float:right">

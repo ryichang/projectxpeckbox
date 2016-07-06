@@ -120,7 +120,7 @@ angular.module('peckbox')
     };
 
     $scope.eventShow = function(event) {
-      $location.path('/events/' + event._id + '/comments');
+      $location.path('/events/' + event._id );
     
     };
 

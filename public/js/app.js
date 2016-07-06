@@ -77,7 +77,7 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'GroupsCtrl'
       });
 
-      $routeProvider.when('/groups/:id/comments', {
+      $routeProvider.when('/groups/:id', {
         templateUrl: 'templates/groupShow',
         controller: 'GroupShowCtrl'
       });
@@ -102,12 +102,12 @@ angular.module('peckbox', ['peckbox.services',
         controller: 'NoteShowCtrl'
       });
 
-      $routeProvider.when('/events/:id/comments', {
+      $routeProvider.when('/events/:id', {
         templateUrl: 'templates/eventShow',
         controller: 'EventsCtrl'
       });
 
-      $routeProvider.when('/events/:id/comments', {
+      $routeProvider.when('/events/:id', {
         templateUrl: 'templates/eventShow',
         controller: 'EventShowCtrl'
       });

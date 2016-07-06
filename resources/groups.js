@@ -94,6 +94,7 @@ module.exports = function(app) {
 	            // console.log("editRoute", group;
 	            if (err) { return res.send(err); }
 	            // console.log('backend', group);
+	            
 	            group.users.unshift(req.body.users);
 	            group.save();
 	            res.send(group);
@@ -109,6 +110,7 @@ module.exports = function(app) {
 				function (err, group){
 					if (err) {return res.send(err);}
 				else {
+					group.users.unshift(req.body.users);
 					res.status(200).send('Finished Delete');
 				}
 				});
